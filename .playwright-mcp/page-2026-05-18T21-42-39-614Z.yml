@@ -1,0 +1,336 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "ZYVO" [ref=e4]:
+        - /url: "#"
+        - generic [ref=e5]: ZYVO
+      - navigation [ref=e7]:
+        - button "Problema" [ref=e8]
+        - button "Servicios" [ref=e9]
+        - button "Agentes" [ref=e10]
+        - button "Proceso" [ref=e11]
+      - button "Solicitar auditoría" [ref=e12]
+  - main [ref=e13]:
+    - generic [ref=e19]:
+      - generic [ref=e22]: Arquitectura de sistemas inteligentes
+      - heading "Erradicamos la fuga operativa de tu empresa" [level=1] [ref=e23]:
+        - text: Erradicamos la fuga
+        - text: operativa de tu empresa
+      - paragraph [ref=e24]: Diseñamos sistemas de IA y automatización que eliminan el trabajo manual, reducen errores y devuelven el control operativo a tu equipo.
+      - generic [ref=e25]:
+        - button "Solicitar auditoría" [ref=e26]:
+          - text: Solicitar auditoría
+          - img [ref=e27]
+        - button "Ver servicios" [ref=e29]
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: ROI 3x
+          - generic [ref=e33]: mínimo garantizado
+        - generic [ref=e34]:
+          - generic [ref=e35]: 10 días
+          - generic [ref=e36]: primera entrega
+        - generic [ref=e37]:
+          - generic [ref=e38]: 85%
+          - generic [ref=e39]: menos carga manual
+    - generic [ref=e45]:
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - img [ref=e48]
+          - generic [ref=e50]: Fuga operativa
+        - generic [ref=e51]:
+          - heading "Tu empresa pierde dinero todos los días sin saberlo" [level=2] [ref=e52]
+          - paragraph [ref=e53]: "La fuga operativa es el costo silencioso del desorden: tiempo, errores y procesos manuales que drenan el margen mes a mes."
+        - list [ref=e54]:
+          - listitem [ref=e55]:
+            - generic [ref=e58]: Tareas manuales que consumen horas de tu equipo cada semana
+          - listitem [ref=e59]:
+            - generic [ref=e62]: Seguimiento lento, errores por descuido y datos dispersos
+          - listitem [ref=e63]:
+            - generic [ref=e66]: Procesos que dependen de personas específicas para funcionar
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - paragraph [ref=e70]: Lo que cambia con ZYVO
+          - heading "Procesos que se ejecutan solos. Sin depender de nadie." [level=3] [ref=e71]
+        - paragraph [ref=e72]: Convertimos cada proceso repetitivo en un sistema autónomo. Tu equipo deja de ejecutar tareas y empieza a supervisar resultados.
+        - generic [ref=e73]:
+          - generic [ref=e74]:
+            - generic [ref=e75]: 85%
+            - generic [ref=e76]: menos carga operativa manual
+          - generic [ref=e77]:
+            - generic [ref=e78]: 3x
+            - generic [ref=e79]: ROI mínimo garantizado
+          - generic [ref=e80]:
+            - generic [ref=e81]: 10 días
+            - generic [ref=e82]: entrega del primer sistema
+    - generic [ref=e85]:
+      - generic [ref=e86]:
+        - paragraph [ref=e87]: Servicios
+        - heading "Lo que construimos para ti" [level=2] [ref=e88]
+        - paragraph [ref=e89]: Cada implementación parte de la auditoría de fricción. Sin diagnóstico no hay propuesta.
+      - generic [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - img [ref=e94]
+            - generic [ref=e98]: Procesos
+          - generic [ref=e99]:
+            - heading "Automatización de Procesos" [level=3] [ref=e100]
+            - paragraph [ref=e101]: Conectamos tus sistemas y eliminamos la captura manual de datos, los reenvíos y las tareas repetitivas que consumen el tiempo de tu equipo.
+          - generic [ref=e102]:
+            - paragraph [ref=e105]: Operación continua sin intervención humana en tareas rutinarias
+            - button "Solicitar" [ref=e107]:
+              - text: Solicitar
+              - img [ref=e108]
+        - generic [ref=e110]:
+          - generic [ref=e111]:
+            - img [ref=e113]
+            - generic [ref=e116]: Inteligencia
+          - generic [ref=e117]:
+            - heading "Agentes IA Personalizados" [level=3] [ref=e118]
+            - paragraph [ref=e119]: Empleados digitales autónomos que gestionan leads, atienden soporte, procesan documentos y actualizan sistemas en tiempo real.
+          - generic [ref=e120]:
+            - paragraph [ref=e123]: Capacidad operativa sin aumentar nómina
+            - button "Solicitar" [ref=e125]:
+              - text: Solicitar
+              - img [ref=e126]
+        - generic [ref=e128]:
+          - generic [ref=e129]:
+            - img [ref=e131]
+            - generic [ref=e136]: Plataforma
+          - generic [ref=e137]:
+            - heading "Sistemas Agénticos" [level=3] [ref=e138]
+            - paragraph [ref=e139]: CRM y ERP operados por agentes IA que califican leads, gestionan inventario, generan reportes y coordinan equipos de forma autónoma.
+          - generic [ref=e140]:
+            - paragraph [ref=e143]: Tu operación funciona aunque nadie esté mirando
+            - button "Solicitar" [ref=e145]:
+              - text: Solicitar
+              - img [ref=e146]
+      - paragraph [ref=e150]: Toda implementación incluye auditoría de fricción previa
+    - generic [ref=e155]:
+      - generic [ref=e156]:
+        - paragraph [ref=e157]: Calculadora de fuga operativa
+        - heading "¿Cuánto le cuesta el desorden a tu empresa?" [level=2] [ref=e158]:
+          - text: ¿Cuánto le cuesta el desorden
+          - text: a tu empresa?
+        - paragraph [ref=e159]: Basado en el salario mínimo general 2026 ($315.04/día) más carga social del 48%. Ajusta el número de empleados para ver tu caso real.
+      - generic [ref=e160]:
+        - generic [ref=e161]:
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - img [ref=e165]
+                - generic [ref=e170]: Empleados administrativos
+              - generic [ref=e171]: "5"
+            - generic [ref=e172]:
+              - slider [ref=e173]: "5"
+              - generic [ref=e174]:
+                - generic [ref=e175]: "1"
+                - generic [ref=e176]: "5"
+                - generic [ref=e177]: "10"
+                - generic [ref=e178]: "15"
+                - generic [ref=e179]: "20"
+            - generic [ref=e180]:
+              - paragraph [ref=e181]: Costo real por empleado · salario mínimo
+              - generic [ref=e182]:
+                - generic [ref=e183]: Salario base mensual
+                - generic [ref=e184]: $9,451 MXN
+              - generic [ref=e185]:
+                - generic [ref=e186]: Carga social (IMSS, INFONAVIT, SAR…)
+                - generic [ref=e187]: $4,537 MXN
+              - generic [ref=e188]:
+                - generic [ref=e189]: Costo real total / empleado
+                - generic [ref=e190]: $13,988 MXN
+          - generic [ref=e191]:
+            - generic [ref=e192]:
+              - img [ref=e194]
+              - generic [ref=e196]:
+                - paragraph [ref=e197]: Fuga operativa estimada
+                - paragraph [ref=e198]: 5 empleados · 40% tiempo improductivo
+            - generic [ref=e199]:
+              - generic [ref=e200]:
+                - paragraph [ref=e201]: Mensual
+                - generic [ref=e202]: $0 MXN
+              - generic [ref=e203]:
+                - paragraph [ref=e204]: Anual
+                - generic [ref=e205]: $0 MXN
+        - generic [ref=e206]:
+          - generic [ref=e207]:
+            - generic [ref=e208]:
+              - paragraph [ref=e209]: Impacto potencial con ZYVO
+              - paragraph [ref=e210]: Con nuestras implementaciones, empresas similares recuperan entre el 50% y 60% de su fuga operativa
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - paragraph [ref=e213]: ahorro mínimo anual
+                - generic [ref=e214]: $0 MXN
+              - generic [ref=e215]:
+                - paragraph [ref=e216]: ahorro máximo anual
+                - generic [ref=e217]: $0 MXN
+            - generic [ref=e219]:
+              - generic [ref=e220]: 50%
+              - generic [ref=e221]: 60%
+          - generic [ref=e224]:
+            - paragraph [ref=e225]: "Mensualmente, tu equipo podría liberar entre:"
+            - generic [ref=e226]:
+              - generic [ref=e228]: $0 MXN/mes
+              - generic [ref=e230]: $0 MXN/mes
+          - paragraph [ref=e231]: "* Estimado basado en empresas del mismo perfil. El resultado exacto varía según número de agentes, procesos a automatizar y complejidad de la operación."
+          - button "Quiero recuperar ese dinero" [ref=e232]:
+            - text: Quiero recuperar ese dinero
+            - img [ref=e233]
+    - generic [ref=e237]:
+      - generic [ref=e238]:
+        - paragraph [ref=e239]: Agentes IA
+        - heading "Empleados digitales que trabajan mientras tu equipo duerme" [level=2] [ref=e240]
+        - paragraph [ref=e241]: No son bots con respuestas programadas. Son sistemas con memoria, contexto y capacidad de decisión para procesos reales de negocio.
+      - generic [ref=e242]:
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - img [ref=e246]
+            - generic [ref=e250]:
+              - paragraph [ref=e251]: Agente SDR
+              - generic [ref=e254]: activo|
+          - paragraph [ref=e255]: Califica leads entrantes, responde preguntas, agenda llamadas y actualiza el CRM automáticamente.
+          - generic [ref=e256]:
+            - paragraph [ref=e257]: Qué elimina
+            - paragraph [ref=e258]: Elimina el seguimiento manual de prospectos. Tu equipo de ventas sólo habla con leads listos para cerrar.
+          - generic [ref=e259]:
+            - generic [ref=e262]: 200 leads/día sin intervención
+            - generic [ref=e265]: Respuesta en menos de 1 minuto
+        - generic [ref=e266]:
+          - generic [ref=e267]:
+            - img [ref=e269]
+            - generic [ref=e272]:
+              - paragraph [ref=e273]: Agente de Onboarding
+              - generic [ref=e276]: activo|
+          - paragraph [ref=e277]: Guía a nuevos empleados o clientes a través del proceso de incorporación, asigna tareas y reporta avances.
+          - generic [ref=e278]:
+            - paragraph [ref=e279]: Qué elimina
+            - paragraph [ref=e280]: Elimina la dependencia de una persona para hacer onboarding. El proceso ocurre solo, siempre igual, sin errores.
+          - generic [ref=e281]:
+            - generic [ref=e284]: 60% menos tiempo de incorporación
+            - generic [ref=e287]: Disponible 24/7
+        - generic [ref=e288]:
+          - generic [ref=e289]:
+            - img [ref=e291]
+            - generic [ref=e293]:
+              - paragraph [ref=e294]: Agente Contabilidad
+              - generic [ref=e297]: activo|
+          - paragraph [ref=e298]: Procesa facturas, categoriza gastos, detecta anomalías y genera reportes financieros sin intervención manual.
+          - generic [ref=e299]:
+            - paragraph [ref=e300]: Qué elimina
+            - paragraph [ref=e301]: Elimina la captura de datos y la revisión manual de documentos. El cierre mensual tarda horas, no días.
+          - generic [ref=e302]:
+            - generic [ref=e305]: 500 documentos/día
+            - generic [ref=e308]: Alertas automáticas de anomalías
+      - paragraph [ref=e309]: Cada agente se configura para los procesos específicos de tu empresa. No son plantillas genéricas.
+    - generic [ref=e312]:
+      - generic [ref=e313]:
+        - paragraph [ref=e314]: Cómo trabajamos
+        - heading "De la auditoría al sistema en producción" [level=2] [ref=e315]
+      - generic [ref=e319]:
+        - generic [ref=e320]:
+          - generic [ref=e321]: "01"
+          - generic [ref=e322]:
+            - heading "Diagnóstico" [level=3] [ref=e323]
+            - paragraph [ref=e324]: Auditamos tus procesos operativos, identificamos las fugas de tiempo y dinero, y entregamos un roadmap priorizado por impacto financiero real.
+          - generic [ref=e327]: 1–3 días hábiles
+        - generic [ref=e328]:
+          - generic [ref=e329]: "02"
+          - generic [ref=e330]:
+            - heading "Diseño e implementación" [level=3] [ref=e331]
+            - paragraph [ref=e332]: Construimos los sistemas, flujos y agentes sobre tu infraestructura. Sin vendor lock-in, sin dependencias externas. Todo queda en tu control.
+          - generic [ref=e335]: 7–14 días hábiles
+        - generic [ref=e336]:
+          - generic [ref=e337]: "03"
+          - generic [ref=e338]:
+            - heading "Estabilización y mejora" [level=3] [ref=e339]
+            - paragraph [ref=e340]: Monitoreamos el sistema en producción, corregimos lo que sea necesario y mejoramos de forma iterativa según los resultados reales.
+          - generic [ref=e343]: Continuo
+      - generic [ref=e345]: ROI mínimo 3x o devolvemos la inversión. Sin letra pequeña.
+    - generic [ref=e352]:
+      - generic [ref=e353]:
+        - generic [ref=e354]:
+          - paragraph [ref=e355]: El primer paso
+          - heading "Descubre cuánto dinero está perdiendo tu empresa hoy" [level=2] [ref=e356]
+          - paragraph [ref=e357]: Una auditoría de fricción operativa revela en 48 horas los principales puntos donde tu empresa pierde tiempo y dinero — y qué se puede automatizar primero.
+        - list [ref=e358]:
+          - listitem [ref=e359]:
+            - img [ref=e360]
+            - generic [ref=e363]: Diagnóstico de procesos en 1–3 días
+          - listitem [ref=e364]:
+            - img [ref=e365]
+            - generic [ref=e368]: Roadmap de automatización priorizado por ROI
+          - listitem [ref=e369]:
+            - img [ref=e370]
+            - generic [ref=e373]: Sin compromiso de implementación
+          - listitem [ref=e374]:
+            - img [ref=e375]
+            - generic [ref=e378]: ROI mínimo 3x garantizado en proyectos
+        - generic [ref=e379]:
+          - generic [ref=e380]: Desde $250 USD
+          - generic [ref=e382]: Se paga sola en el primer mes
+      - generic [ref=e384]:
+        - generic [ref=e385]:
+          - generic [ref=e386]:
+            - text: Nombre *
+            - textbox "Tu nombre" [ref=e387]
+          - generic [ref=e388]:
+            - text: Empresa
+            - textbox "Nombre de empresa" [ref=e389]
+        - generic [ref=e390]:
+          - text: Email *
+          - textbox "tu@empresa.com" [ref=e391]
+        - generic [ref=e392]:
+          - text: Facturación mensual
+          - combobox [ref=e393]:
+            - option "Selecciona un rango" [disabled] [selected]
+            - option "$100K – $500K MXN/mes"
+            - option "$500K – $2M MXN/mes"
+            - option "$2M – $10M MXN/mes"
+            - option "+$10M MXN/mes"
+        - button "Solicitar auditoría" [ref=e394]:
+          - text: Solicitar auditoría
+          - img [ref=e395]
+        - paragraph [ref=e397]: Sin compromiso. Sin pitch agresivo.
+  - contentinfo [ref=e398]:
+    - generic [ref=e399]:
+      - generic [ref=e400]:
+        - generic [ref=e402]: ZYVO
+        - paragraph [ref=e404]: Infraestructura inteligente. Resultados medibles.
+        - generic [ref=e405]:
+          - link "Instagram" [ref=e406]:
+            - /url: https://instagram.com/zyvo.ai
+            - img [ref=e407]
+          - link "Facebook" [ref=e410]:
+            - /url: https://facebook.com/zyvo.ai
+            - img [ref=e411]
+          - link "TikTok" [ref=e413]:
+            - /url: https://tiktok.com/@zyvo.ai
+            - img [ref=e414]
+          - link "LinkedIn" [ref=e416]:
+            - /url: https://linkedin.com/company/zyvo-ai
+            - img [ref=e417]
+      - generic [ref=e421]:
+        - generic [ref=e424]: Sistemas activos
+        - generic [ref=e425]: ·
+        - generic [ref=e426]: © 2026 ZYVO
+      - generic [ref=e427]:
+        - generic [ref=e428]:
+          - img [ref=e429]
+          - generic [ref=e431]:
+            - text: Tratamiento de datos personales conforme a la
+            - strong [ref=e432]: Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)
+            - text: y su Reglamento vigente.
+        - paragraph [ref=e433]: México · IA Ética · Self-Hosted
+  - generic [ref=e434]:
+    - generic [ref=e435]:
+      - generic [ref=e436]: Habla con Rome IA
+      - button "Abrir Rome IA" [ref=e437]:
+        - img [ref=e439]
+    - generic [ref=e442]:
+      - generic [ref=e443]: WhatsApp
+      - link "Contactar por WhatsApp" [ref=e444]:
+        - /url: https://wa.me/5215500000000?text=Hola%2C%20vi%20ZYVO%20y%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20la%20auditor%C3%ADa%20de%20fricci%C3%B3n%20para%20mi%20empresa.
+        - img [ref=e445]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e453] [cursor=pointer]:
+    - img [ref=e454]
