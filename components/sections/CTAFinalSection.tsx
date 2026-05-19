@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
+import { Spotlight } from '@/components/ui/Spotlight'
 
 type Form = {
   nombre: string
@@ -50,8 +51,9 @@ export default function CTAFinalSection() {
   return (
     <section id="cta" className="section-pad relative overflow-hidden">
       {/* Línea dorada superior */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-zyvo-gold/35 to-transparent" />
+      <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-zyvo-gold/35 to-transparent" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+
 
       {/* Decoraciones flotantes */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
@@ -128,7 +130,9 @@ export default function CTAFinalSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-60px' }}
             transition={{ delay: 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
+            className="relative"
           >
+            <Spotlight size={220} />
             {sent ? (
               <div className="glass rounded-2xl p-10 text-center space-y-4">
                 <CheckCircle2 size={40} className="text-zyvo-gold mx-auto" />

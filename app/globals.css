@@ -127,3 +127,56 @@ a, button, input, textarea, select, [role="button"] { cursor: none; }
 
 /* ─── Selection ──────────────────────────────────────────────────────────── */
 ::selection { background: rgba(212,175,55,0.18); color: #F5F5F5; }
+
+/* ─── CSS Vars (shadcn/TestimonialStack mapping → tokens ZYVO) ───────────── */
+:root {
+  --radius: 1rem;
+  --card-foreground: #F5F5F5;
+  --primary: #D4AF37;
+  --primary-foreground: #080C14;
+  --secondary: rgba(255,255,255,0.06);
+  --secondary-foreground: #F5F5F5;
+  --muted-foreground: rgba(245,245,245,0.40);
+  --border: rgba(255,255,255,0.08);
+}
+
+/* ─── TestimonialStack ───────────────────────────────────────────────────── */
+.testimonials-stack { position: relative; }
+
+.testimonial-card {
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  cursor: grab;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.5s;
+  will-change: transform;
+  border-radius: 1rem;
+}
+.testimonial-card.is-dragging {
+  cursor: grabbing;
+  transition: none;
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.pagination {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+.pagination-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+.pagination-dot.active {
+  background: #D4AF37;
+  transform: scale(1.3);
+}

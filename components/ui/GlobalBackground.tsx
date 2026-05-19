@@ -1,208 +1,140 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-
-type NT = 'gold' | 'blue' | 'white'
-
-interface Node {
-  x: number; y: number; vx: number; vy: number
-  r: number; type: NT; pulse: number; pulseSpeed: number
-}
-
-interface Pkt { from: number; to: number; t: number; gold: boolean }
-
-const GOLD  = '65,105,225'
-const BLUE  = '74,144,226'
-const WHITE = '210,225,255'
+import * as THREE from 'three'
 
 export default function GlobalBackground() {
-  const cvRef = useRef<HTMLCanvasElement>(null)
-  const mouse = useRef({ x: -9999, y: -9999 })
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const cv = cvRef.current
-    if (!cv) return
-    const canvas = cv as HTMLCanvasElement
-    const ctx = canvas.getContext('2d')!
+    const container = containerRef.current
+    if (!container) return
 
-    const N  = 100   // nodos
-    const CD = 200   // distancia de conexión
+    const scene    = new THREE.Scene()
+    const camera   = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
 
-    let W = 0, H = 0, raf = 0, frame = 0
-    const nodes: Node[] = []
-    const pkts:  Pkt[]  = []
-    let conns: { i: number; j: number }[] = []
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setSize(window.innerWidth, window.innerHeight)
+    container.appendChild(renderer.domElement)
 
-    function resize() {
-      W = canvas.width  = window.innerWidth
-      H = canvas.height = window.innerHeight
-    }
-
-    function init() {
-      nodes.length = 0
-      for (let i = 0; i < N; i++) {
-        const roll = Math.random()
-        const t: NT = roll < 0.20 ? 'gold' : roll < 0.48 ? 'blue' : 'white'
-        const sp    = 0.18 + Math.random() * 0.28
-        nodes.push({
-          x: Math.random() * W, y: Math.random() * H,
-          vx: (Math.random() - 0.5) * sp, vy: (Math.random() - 0.5) * sp,
-          r:  t === 'gold' ? 4 + Math.random() * 2
-            : t === 'blue' ? 3 + Math.random() * 2
-            :                2 + Math.random() * 2,
-          type: t, pulse: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.018 + Math.random() * 0.022,
-        })
-      }
-      for (let p = 0; p < 8; p++) {
-        const f = ~~(Math.random() * N)
-        let t   = ~~(Math.random() * N)
-        while (t === f) t = ~~(Math.random() * N)
-        pkts.push({ from: f, to: t, t: Math.random(),
-          gold: nodes[f].type === 'gold' || nodes[t].type === 'gold' })
-      }
-    }
-
-    function radGrad(x: number, y: number, r: number, col: string, a: number) {
-      const g = ctx.createRadialGradient(x, y, 0, x, y, r)
-      g.addColorStop(0,    `rgba(${col},${a})`)
-      g.addColorStop(0.35, `rgba(${col},${(a * 0.5).toFixed(2)})`)
-      g.addColorStop(1,    `rgba(${col},0)`)
-      ctx.fillStyle = g
-      ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2); ctx.fill()
-    }
-
-    function draw() {
-      /* clear each frame completely */
-      ctx.clearRect(0, 0, W, H)
-
-      /* dark base */
-      ctx.fillStyle = '#080C14'
-      ctx.fillRect(0, 0, W, H)
-
-      /* ambient glow zones */
-      radGrad(W * 0.75, H * 0.20, W * 0.50, BLUE,  0.03)
-      radGrad(W * 0.20, H * 0.80, W * 0.45, GOLD,  0.015)
-      radGrad(W * 0.50, H * 0.50, W * 0.60, BLUE,  0.01)
-
-      frame++
-      const mx = mouse.current.x, my = mouse.current.y
-
-      /* move */
-      for (const n of nodes) {
-        const dx = n.x - mx, dy = n.y - my, dm = Math.hypot(dx, dy)
-        if (dm < 130 && dm > 0) {
-          n.vx += dx / dm * 0.018; n.vy += dy / dm * 0.018
-          const sp = Math.hypot(n.vx, n.vy)
-          if (sp > 0.8) { n.vx = n.vx / sp * 0.8; n.vy = n.vy / sp * 0.8 }
+    const material = new THREE.ShaderMaterial({
+      uniforms: {
+        iTime:       { value: 0 },
+        iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+      },
+      vertexShader: `
+        void main() {
+          gl_Position = vec4(position, 1.0);
         }
-        n.x += n.vx; n.y += n.vy; n.pulse += n.pulseSpeed
-        if (n.x < 0 || n.x > W) n.vx *= -1
-        if (n.y < 0 || n.y > H) n.vy *= -1
-      }
+      `,
+      fragmentShader: `
+        uniform float iTime;
+        uniform vec2  iResolution;
 
-      /* connections */
-      conns = []
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x
-          const dy = nodes[i].y - nodes[j].y
-          const d  = Math.hypot(dx, dy)
-          if (d < CD) {
-            const t    = 1 - d / CD
-            const gold = nodes[i].type === 'gold' || nodes[j].type === 'gold'
-            const blue = !gold && (nodes[i].type === 'blue' || nodes[j].type === 'blue')
-            ctx.lineWidth = gold ? 0.8 : blue ? 0.6 : 0.5
-            ctx.strokeStyle = gold
-              ? `rgba(${GOLD},${(t * 0.11).toFixed(2)})`
-              : blue
-              ? `rgba(${BLUE},${(t * 0.08).toFixed(2)})`
-              : `rgba(${WHITE},${(t * 0.04).toFixed(2)})`
-            ctx.beginPath()
-            ctx.moveTo(nodes[i].x, nodes[i].y)
-            ctx.lineTo(nodes[j].x, nodes[j].y)
-            ctx.stroke()
-            if (d < 130) conns.push({ i, j })
+        #define NUM_OCTAVES 3
+
+        float rand(vec2 n) {
+          return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
+        }
+
+        float noise(vec2 p) {
+          vec2 ip = floor(p);
+          vec2 u  = fract(p);
+          u = u * u * (3.0 - 2.0 * u);
+          float res = mix(
+            mix(rand(ip),              rand(ip + vec2(1.0, 0.0)), u.x),
+            mix(rand(ip + vec2(0.0,1.0)), rand(ip + vec2(1.0,1.0)), u.x),
+            u.y
+          );
+          return res * res;
+        }
+
+        float fbm(vec2 x) {
+          float v = 0.0;
+          float a = 0.3;
+          vec2  shift = vec2(100.0);
+          mat2  rot   = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.5));
+          for (int i = 0; i < NUM_OCTAVES; ++i) {
+            v += a * noise(x);
+            x  = rot * x * 2.0 + shift;
+            a *= 0.4;
           }
+          return v;
         }
-      }
 
-      /* packets */
-      for (const p of pkts) {
-        p.t += 0.013
-        if (p.t >= 1) {
-          if (conns.length) {
-            const c = conns[~~(Math.random() * conns.length)]
-            p.from = c.i; p.to = c.j
-            p.gold = nodes[p.from].type === 'gold' || nodes[p.to].type === 'gold'
+        void main() {
+          vec2 shake = vec2(sin(iTime * 1.2) * 0.005, cos(iTime * 2.1) * 0.005);
+          vec2 p = ((gl_FragCoord.xy + shake * iResolution.xy) - iResolution.xy * 0.5)
+                   / iResolution.y * mat2(6.0, -4.0, 4.0, 6.0);
+          vec2 v;
+          vec4 o = vec4(0.0);
+
+          float f = 2.0 + fbm(p + vec2(iTime * 5.0, 0.0)) * 0.5;
+
+          for (float i = 0.0; i < 35.0; i++) {
+            v = p + cos(i * i + (iTime + p.x * 0.08) * 0.025 + i * vec2(13.0, 11.0)) * 3.5
+              + vec2(sin(iTime * 3.0 + i) * 0.003, cos(iTime * 3.5 - i) * 0.003);
+
+            float tailNoise = fbm(v + vec2(iTime * 0.5, i)) * 0.3 * (1.0 - (i / 35.0));
+
+            vec4 auroraColors = vec4(
+              0.05 + 0.15 * sin(i * 0.2 + iTime * 0.4),
+              0.10 + 0.20 * cos(i * 0.3 + iTime * 0.5),
+              0.30 + 0.20 * sin(i * 0.4 + iTime * 0.3),
+              1.0
+            );
+
+            vec4 cc = auroraColors
+              * exp(sin(i * i + iTime * 0.8))
+              / length(max(v, vec2(v.x * f * 0.015, v.y * 1.5)));
+
+            float thin = smoothstep(0.0, 1.0, i / 35.0) * 0.6;
+            o += cc * (1.0 + tailNoise * 0.8) * thin;
           }
-          p.t = 0; continue
+
+          /* tone-map, keep it very dark/subtle */
+          o = tanh(pow(o / 120.0, vec4(1.7)));
+          gl_FragColor = vec4(o.rgb * 1.2, o.a * 0.85);
         }
-        const px = nodes[p.from].x + (nodes[p.to].x - nodes[p.from].x) * p.t
-        const py = nodes[p.from].y + (nodes[p.to].y - nodes[p.from].y) * p.t
-        const col = p.gold ? GOLD : BLUE
-        radGrad(px, py, p.gold ? 8 : 6, col, 0.14)
-        ctx.beginPath(); ctx.arc(px, py, p.gold ? 3 : 2.5, 0, Math.PI * 2)
-        ctx.fillStyle = p.gold ? `rgb(${GOLD})` : `rgb(${BLUE})`; ctx.fill()
-      }
+      `,
+      transparent: true,
+    })
 
-      /* ripple */
-      if (frame % 220 === 110) {
-        const gs = nodes.filter(n => n.type === 'gold')
-        if (gs.length) {
-          const src = gs[~~(Math.random() * gs.length)]
-          let f = 0
-          const ripple = () => {
-            if (f > 80) return
-            radGrad(src.x, src.y, (f / 80) * 100, GOLD, 0.10 * (1 - f / 80))
-            f++; requestAnimationFrame(ripple)
-          }
-          ripple()
-        }
-      }
+    const geometry = new THREE.PlaneGeometry(2, 2)
+    const mesh     = new THREE.Mesh(geometry, material)
+    scene.add(mesh)
 
-      /* draw nodes */
-      for (const n of nodes) {
-        const g = 0.55 + 0.45 * Math.sin(n.pulse)
+    let frameId: number
 
-        if (n.type === 'gold') {
-          /* outer halo — 100px */
-          radGrad(n.x, n.y, 80, GOLD, 0.06 * g)
-          /* mid glow — 40px */
-          radGrad(n.x, n.y, 30, GOLD, 0.11 * g)
-          /* core — big */
-          ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 1.8, 0, Math.PI * 2)
-          ctx.fillStyle = `rgb(${GOLD})`; ctx.fill()
-          /* hot spot */
-          ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 0.7, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(180,210,255,${g})`; ctx.fill()
-
-        } else if (n.type === 'blue') {
-          radGrad(n.x, n.y, 50, BLUE, 0.05 * g)
-          radGrad(n.x, n.y, 18, BLUE, 0.10 * g)
-          ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 1.5, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${BLUE},1)`; ctx.fill()
-
-        } else {
-          radGrad(n.x, n.y, 20, WHITE, 0.04 * g)
-          ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 1.2, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(${WHITE},0.80)`; ctx.fill()
-        }
-      }
-
-      raf = requestAnimationFrame(draw)
+    const animate = () => {
+      material.uniforms.iTime.value += 0.012
+      renderer.render(scene, camera)
+      frameId = requestAnimationFrame(animate)
     }
+    animate()
 
-    window.addEventListener('resize',    () => resize())
-    window.addEventListener('mousemove', (e) => { mouse.current = { x: e.clientX, y: e.clientY } })
+    const handleResize = () => {
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      material.uniforms.iResolution.value.set(window.innerWidth, window.innerHeight)
+    }
+    window.addEventListener('resize', handleResize)
 
-    resize(); init(); draw()
-    return () => { cancelAnimationFrame(raf) }
+    return () => {
+      cancelAnimationFrame(frameId)
+      window.removeEventListener('resize', handleResize)
+      if (container.contains(renderer.domElement)) {
+        container.removeChild(renderer.domElement)
+      }
+      geometry.dispose()
+      material.dispose()
+      renderer.dispose()
+    }
   }, [])
 
   return (
-    <canvas
-      ref={cvRef}
+    <div
+      ref={containerRef}
       className="fixed inset-0 w-full h-full pointer-events-none"
       style={{ zIndex: -1 }}
     />
