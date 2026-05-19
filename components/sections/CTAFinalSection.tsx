@@ -80,7 +80,7 @@ export default function CTAFinalSection() {
       </div>
 
       <div className="max-w-5xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
           {/* Texto izquierdo */}
           <motion.div
@@ -98,7 +98,7 @@ export default function CTAFinalSection() {
                 Descubre cuánto dinero está perdiendo tu empresa{' '}
                 <span className="text-gradient-gold italic">hoy</span>
               </h2>
-              <p className="text-zyvo-white/45 text-sm leading-relaxed">
+              <p className="text-zyvo-white/60 text-sm leading-relaxed">
                 Una auditoría de fricción operativa revela en 48 horas los
                 principales puntos donde tu empresa pierde tiempo y dinero —
                 y qué se puede automatizar primero.
@@ -115,7 +115,7 @@ export default function CTAFinalSection() {
               ].map(item => (
                 <li key={item} className="flex items-center gap-3">
                   <CheckCircle2 size={15} className="text-zyvo-gold shrink-0" />
-                  <span className="text-zyvo-white/55 text-sm">{item}</span>
+                  <span className="text-zyvo-white/70 text-sm">{item}</span>
                 </li>
               ))}
             </ul>
@@ -133,7 +133,7 @@ export default function CTAFinalSection() {
               <div className="glass rounded-2xl p-10 text-center space-y-4">
                 <CheckCircle2 size={40} className="text-zyvo-gold mx-auto" />
                 <h3 className="text-zyvo-white font-semibold text-xl">¡Solicitud recibida!</h3>
-                <p className="text-zyvo-white/45 text-sm">
+                <p className="text-zyvo-white/60 text-sm">
                   Te contactamos en menos de 24 horas hábiles para coordinar la auditoría.
                 </p>
               </div>

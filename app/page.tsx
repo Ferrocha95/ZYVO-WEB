@@ -4,6 +4,7 @@ import ServiciosSection      from '@/components/sections/ServiciosSection'
 import CalculadoraSection    from '@/components/sections/CalculadoraSection'
 import AgentesSimpleSection  from '@/components/sections/AgentesSimpleSection'
 import ProcesoSection        from '@/components/sections/ProcesoSection'
+import ResenasSection        from '@/components/sections/ResenasSection'
 import CTAFinalSection       from '@/components/sections/CTAFinalSection'
 
 type DividerVariant = 'gold' | 'blue' | 'subtle'
@@ -38,6 +39,8 @@ export default function HomePage() {
       <AgentesSimpleSection />
       <Divider variant="blue" />
       <ProcesoSection />
+      <Divider variant="subtle" />
+      <ResenasSection />
       <Divider variant="gold" />
       <CTAFinalSection />
     </>

@@ -36,7 +36,7 @@ export default function ProblemaValorSection() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* Columna izquierda — el problema */}
           <motion.div
@@ -56,10 +56,10 @@ export default function ProblemaValorSection() {
             <div className="space-y-3">
               <h2 className="font-(family-name:--font-instrument-serif) text-3xl md:text-4xl font-normal text-zyvo-white leading-snug">
                 Tu empresa pierde dinero{' '}
-                <span className="italic text-zyvo-white/50">todos los días</span>{' '}
+                <span className="italic text-zyvo-white/65">todos los días</span>{' '}
                 sin saberlo
               </h2>
-              <p className="text-zyvo-white/45 text-sm leading-relaxed max-w-sm">
+              <p className="text-zyvo-white/60 text-sm leading-relaxed max-w-sm">
                 La fuga operativa es el costo silencioso del desorden: tiempo,
                 errores y procesos manuales que drenan el margen mes a mes.
               </p>
@@ -78,7 +78,7 @@ export default function ProblemaValorSection() {
                   <div className="w-5 h-5 rounded-full border border-red-500/30 flex items-center justify-center shrink-0 mt-0.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-red-500/60" />
                   </div>
-                  <span className="text-zyvo-white/50 text-sm leading-relaxed">{p}</span>
+                  <span className="text-zyvo-white/65 text-sm leading-relaxed">{p}</span>
                 </motion.li>
               ))}
             </ul>
@@ -103,7 +103,7 @@ export default function ProblemaValorSection() {
                 </h3>
               </div>
 
-              <p className="text-zyvo-white/45 text-sm leading-relaxed">
+              <p className="text-zyvo-white/60 text-sm leading-relaxed">
                 Convertimos cada proceso repetitivo en un sistema autónomo.
                 Tu equipo deja de ejecutar tareas y empieza a supervisar resultados.
               </p>

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 export default function CustomCursor() {
@@ -10,26 +10,21 @@ export default function CustomCursor() {
   const mx = useMotionValue(-100)
   const my = useMotionValue(-100)
 
-  const cfg  = { damping: 28, stiffness: 380, mass: 0.4 }
-  const cfgD = { damping: 48, stiffness: 600, mass: 0.3 }
+  const cfg = { damping: 22, stiffness: 280, mass: 0.4 }
 
   const rx = useSpring(mx, cfg)
   const ry = useSpring(my, cfg)
-  const dx = useSpring(mx, cfgD)
-  const dy = useSpring(my, cfgD)
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
       setHidden(false)
-      mx.set(e.clientX - 10)
-      my.set(e.clientY - 10)
+      mx.set(e.clientX - 20)
+      my.set(e.clientY - 20)
     }
-
     const over = (e: MouseEvent) => {
       const el = (e.target as HTMLElement).closest('a,button,[role="button"],.cursor-hover')
       setHovered(!!el)
     }
-
     window.addEventListener('mousemove', move)
     window.addEventListener('mouseover', over)
     return () => {
@@ -40,31 +35,92 @@ export default function CustomCursor() {
 
   if (hidden) return null
 
+  const armLen = hovered ? 10 : 7
+  const opacity = hovered ? 1 : 0.7
+  const gold = 'rgba(212,175,55,'
+
   return (
-    <>
-      {/* Anillo exterior */}
+    <motion.div
+      style={{ x: rx, y: ry }}
+      className="fixed top-0 left-0 w-10 h-10 pointer-events-none z-99999"
+      aria-hidden="true"
+    >
+      {/* línea horizontal izquierda */}
       <motion.div
-        style={{ x: rx, y: ry }}
-        animate={{
-          scale: hovered ? 1.7 : 1,
-          opacity: hovered ? 0.85 : 0.6,
+        animate={{ width: armLen, opacity }}
+        transition={{ duration: 0.15 }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          right: '50%',
+          marginRight: 3,
+          height: 1,
+          background: `${gold}0.9)`,
+          transformOrigin: 'right center',
+          transform: 'translateY(-50%)',
         }}
-        transition={{ duration: 0.2 }}
-        className="fixed top-0 left-0 w-5 h-5 rounded-full border border-zyvo-gold/60 pointer-events-none z-99998"
-        aria-hidden="true"
       />
-      {/* Punto central */}
+      {/* línea horizontal derecha */}
       <motion.div
-        style={{ x: dx, y: dy }}
-        className="fixed top-0 left-0 w-5 h-5 flex items-center justify-center pointer-events-none z-99999"
-        aria-hidden="true"
-      >
-        <motion.div
-          animate={{ scale: hovered ? 1.5 : 1 }}
-          transition={{ duration: 0.15 }}
-          className="w-1 h-1 rounded-full bg-zyvo-gold"
-        />
-      </motion.div>
-    </>
+        animate={{ width: armLen, opacity }}
+        transition={{ duration: 0.15 }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          marginLeft: 3,
+          height: 1,
+          background: `${gold}0.9)`,
+          transformOrigin: 'left center',
+          transform: 'translateY(-50%)',
+        }}
+      />
+      {/* línea vertical arriba */}
+      <motion.div
+        animate={{ height: armLen, opacity }}
+        transition={{ duration: 0.15 }}
+        style={{
+          position: 'absolute',
+          left: '50%',
+          bottom: '50%',
+          marginBottom: 3,
+          width: 1,
+          background: `${gold}0.9)`,
+          transformOrigin: 'bottom center',
+          transform: 'translateX(-50%)',
+        }}
+      />
+      {/* línea vertical abajo */}
+      <motion.div
+        animate={{ height: armLen, opacity }}
+        transition={{ duration: 0.15 }}
+        style={{
+          position: 'absolute',
+          left: '50%',
+          top: '50%',
+          marginTop: 3,
+          width: 1,
+          background: `${gold}0.9)`,
+          transformOrigin: 'top center',
+          transform: 'translateX(-50%)',
+        }}
+      />
+      {/* punto central */}
+      <motion.div
+        animate={{ scale: hovered ? 1.6 : 1, opacity: hovered ? 1 : 0.85 }}
+        transition={{ duration: 0.15 }}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          width: 3,
+          height: 3,
+          borderRadius: '50%',
+          background: '#D4AF37',
+          transform: 'translate(-50%, -50%)',
+          boxShadow: '0 0 6px rgba(212,175,55,0.8)',
+        }}
+      />
+    </motion.div>
   )
 }

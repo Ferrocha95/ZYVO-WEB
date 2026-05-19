@@ -1,0 +1,399 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "ZYVO" [ref=e4]:
+        - /url: "#"
+        - generic [ref=e5]: ZYVO
+      - navigation [ref=e7]:
+        - button "Problema" [ref=e8]
+        - button "Servicios" [ref=e9]
+        - button "Agentes" [ref=e10]
+        - button "Proceso" [ref=e11]
+      - button "Solicitar auditoría" [ref=e12]
+  - main [ref=e13]:
+    - generic [ref=e19]:
+      - generic [ref=e22]: Arquitectura de sistemas inteligentes
+      - heading "Erradicamos la fuga operativa de tu empresa" [level=1] [ref=e23]:
+        - text: Erradicamos la fuga
+        - text: operativa de tu empresa
+      - paragraph [ref=e24]: Diseñamos sistemas de IA y automatización que eliminan el trabajo manual, reducen errores y devuelven el control operativo a tu equipo.
+      - generic [ref=e25]:
+        - button "Solicitar auditoría" [ref=e26]:
+          - text: Solicitar auditoría
+          - img [ref=e27]
+        - button "Ver servicios" [ref=e29]
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: ROI 3x
+          - generic [ref=e33]: mínimo garantizado
+        - generic [ref=e34]:
+          - generic [ref=e35]: 10 días
+          - generic [ref=e36]: primera entrega
+        - generic [ref=e37]:
+          - generic [ref=e38]: 85%
+          - generic [ref=e39]: menos carga manual
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - img [ref=e51]
+          - generic [ref=e53]: Fuga operativa
+        - generic [ref=e54]:
+          - heading "Tu empresa pierde dinero todos los días sin saberlo" [level=2] [ref=e55]
+          - paragraph [ref=e56]: "La fuga operativa es el costo silencioso del desorden: tiempo, errores y procesos manuales que drenan el margen mes a mes."
+        - list [ref=e57]:
+          - listitem [ref=e58]:
+            - generic [ref=e61]: Tareas manuales que consumen horas de tu equipo cada semana
+          - listitem [ref=e62]:
+            - generic [ref=e65]: Seguimiento lento, errores por descuido y datos dispersos
+          - listitem [ref=e66]:
+            - generic [ref=e69]: Procesos que dependen de personas específicas para funcionar
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - paragraph [ref=e73]: Lo que cambia con ZYVO
+          - heading "Procesos que se ejecutan solos. Sin depender de nadie." [level=3] [ref=e74]
+        - paragraph [ref=e75]: Convertimos cada proceso repetitivo en un sistema autónomo. Tu equipo deja de ejecutar tareas y empieza a supervisar resultados.
+        - generic [ref=e76]:
+          - generic [ref=e77]:
+            - generic [ref=e78]: 85%
+            - generic [ref=e79]: menos carga operativa manual
+          - generic [ref=e80]:
+            - generic [ref=e81]: 3x
+            - generic [ref=e82]: ROI mínimo garantizado
+          - generic [ref=e83]:
+            - generic [ref=e84]: 10 días
+            - generic [ref=e85]: entrega del primer sistema
+    - generic [ref=e91]:
+      - generic [ref=e92]:
+        - paragraph [ref=e93]: Servicios
+        - heading "Lo que construimos para ti" [level=2] [ref=e94]
+        - paragraph [ref=e95]: Cada implementación parte de la auditoría de fricción. Sin diagnóstico no hay propuesta.
+      - generic [ref=e96]:
+        - generic [ref=e97]:
+          - generic [ref=e98]:
+            - img [ref=e100]
+            - generic [ref=e104]: Procesos
+          - generic [ref=e105]:
+            - heading "Automatización de Procesos" [level=3] [ref=e106]
+            - paragraph [ref=e107]: Conectamos tus sistemas y eliminamos la captura manual de datos, los reenvíos y las tareas repetitivas que consumen el tiempo de tu equipo.
+          - generic [ref=e108]:
+            - paragraph [ref=e111]: Operación continua sin intervención humana en tareas rutinarias
+            - button "Solicitar" [ref=e113]:
+              - text: Solicitar
+              - img [ref=e114]
+        - generic [ref=e116]:
+          - generic [ref=e117]:
+            - img [ref=e119]
+            - generic [ref=e122]: Inteligencia
+          - generic [ref=e123]:
+            - heading "Agentes IA Personalizados" [level=3] [ref=e124]
+            - paragraph [ref=e125]: Empleados digitales autónomos que gestionan leads, atienden soporte, procesan documentos y actualizan sistemas en tiempo real.
+          - generic [ref=e126]:
+            - paragraph [ref=e129]: Capacidad operativa sin aumentar nómina
+            - button "Solicitar" [ref=e131]:
+              - text: Solicitar
+              - img [ref=e132]
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - img [ref=e137]
+            - generic [ref=e142]: Plataforma
+          - generic [ref=e143]:
+            - heading "Sistemas Agénticos" [level=3] [ref=e144]
+            - paragraph [ref=e145]: CRM y ERP operados por agentes IA que califican leads, gestionan inventario, generan reportes y coordinan equipos de forma autónoma.
+          - generic [ref=e146]:
+            - paragraph [ref=e149]: Tu operación funciona aunque nadie esté mirando
+            - button "Solicitar" [ref=e151]:
+              - text: Solicitar
+              - img [ref=e152]
+      - paragraph [ref=e156]: Toda implementación incluye auditoría de fricción previa
+    - generic [ref=e164]:
+      - generic [ref=e165]:
+        - paragraph [ref=e166]: Calculadora de fuga operativa
+        - heading "¿Cuánto le cuesta el desorden a tu empresa?" [level=2] [ref=e167]:
+          - text: ¿Cuánto le cuesta el desorden
+          - text: a tu empresa?
+        - paragraph [ref=e168]: Basado en el salario mínimo general 2026 ($315.04/día) más carga social del 48%. Ajusta el número de empleados para ver tu caso real.
+      - generic [ref=e169]:
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - generic [ref=e173]:
+                - img [ref=e174]
+                - generic [ref=e179]: Empleados administrativos
+              - generic [ref=e180]: "5"
+            - generic [ref=e181]:
+              - slider [ref=e182]: "5"
+              - generic [ref=e183]:
+                - generic [ref=e184]: "1"
+                - generic [ref=e185]: "5"
+                - generic [ref=e186]: "10"
+                - generic [ref=e187]: "15"
+                - generic [ref=e188]: "20"
+            - generic [ref=e189]:
+              - paragraph [ref=e190]: Costo real por empleado · salario mínimo
+              - generic [ref=e191]:
+                - generic [ref=e192]: Salario base mensual
+                - generic [ref=e193]: $9,451 MXN
+              - generic [ref=e194]:
+                - generic [ref=e195]: Carga social (IMSS, INFONAVIT, SAR…)
+                - generic [ref=e196]: $4,537 MXN
+              - generic [ref=e197]:
+                - generic [ref=e198]: Costo real total / empleado
+                - generic [ref=e199]: $13,988 MXN
+          - generic [ref=e200]:
+            - generic [ref=e201]:
+              - img [ref=e203]
+              - generic [ref=e205]:
+                - paragraph [ref=e206]: Fuga operativa estimada
+                - paragraph [ref=e207]: 5 empleados · 40% tiempo improductivo
+            - generic [ref=e208]:
+              - generic [ref=e209]:
+                - paragraph [ref=e210]: Mensual
+                - generic [ref=e211]: $0 MXN
+              - generic [ref=e212]:
+                - paragraph [ref=e213]: Anual
+                - generic [ref=e214]: $0 MXN
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - generic [ref=e217]:
+              - paragraph [ref=e218]: Impacto potencial con ZYVO
+              - paragraph [ref=e219]: Con nuestras implementaciones, empresas similares recuperan entre el 50% y 60% de su fuga operativa
+            - generic [ref=e220]:
+              - generic [ref=e221]:
+                - paragraph [ref=e222]: ahorro mínimo anual
+                - generic [ref=e223]: $0 MXN
+              - generic [ref=e224]:
+                - paragraph [ref=e225]: ahorro máximo anual
+                - generic [ref=e226]: $0 MXN
+            - generic [ref=e228]:
+              - generic [ref=e229]: 50%
+              - generic [ref=e230]: 60%
+          - generic [ref=e233]:
+            - paragraph [ref=e234]: "Mensualmente, tu equipo podría liberar entre:"
+            - generic [ref=e235]:
+              - generic [ref=e237]: $0 MXN/mes
+              - generic [ref=e239]: $0 MXN/mes
+          - paragraph [ref=e240]: "* Estimado basado en empresas del mismo perfil. El resultado exacto varía según número de agentes, procesos a automatizar y complejidad de la operación."
+          - button "Quiero recuperar ese dinero" [ref=e241]:
+            - text: Quiero recuperar ese dinero
+            - img [ref=e242]
+    - generic [ref=e247]:
+      - generic [ref=e248]:
+        - generic [ref=e249]: Infraestructura Operativa
+        - heading "Agentes que trabajan mientras tú cierras" [level=2] [ref=e250]:
+          - text: Agentes que trabajan
+          - text: mientras tú cierras
+        - paragraph [ref=e251]: Tus operaciones no necesitan más gente. Necesitan mejor infraestructura. Los agentes de ZYVO trabajan en silencio, sin errores y sin días libres — para que tu equipo se enfoque en lo que realmente importa.
+      - generic [ref=e252]:
+        - generic [ref=e254]:
+          - generic [ref=e255]:
+            - img [ref=e257]
+            - generic [ref=e259]: "01"
+          - heading "Agente de Atención Instantánea" [level=3] [ref=e260]
+          - paragraph [ref=e261]: Responde, filtra y guía a tus clientes en segundos, sin que nadie tenga que estar disponible.
+          - generic [ref=e262]:
+            - generic [ref=e263]:
+              - img [ref=e264]
+              - generic [ref=e267]:
+                - text: Elimina
+                - paragraph [ref=e268]: Tiempos de espera, respuestas perdidas y atención inconsistente.
+            - generic [ref=e269]:
+              - img [ref=e270]
+              - generic [ref=e273]:
+                - text: Gana
+                - paragraph [ref=e274]: Clientes atendidos al instante, a cualquier hora, sin costo operativo adicional.
+        - button "Agente anterior" [ref=e275]:
+          - img [ref=e276]
+        - button "Siguiente agente" [ref=e278]:
+          - img [ref=e279]
+      - generic [ref=e281]:
+        - button "Ir al agente 1" [ref=e282]
+        - button "Ir al agente 2" [ref=e283]
+        - button "Ir al agente 3" [ref=e284]
+        - button "Ir al agente 4" [ref=e285]
+        - button "Ir al agente 5" [ref=e286]
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - paragraph [ref=e294]: Cómo trabajamos
+        - heading "De la auditoría al sistema en producción" [level=2] [ref=e295]
+      - generic [ref=e299]:
+        - generic [ref=e300]:
+          - generic [ref=e301]: "01"
+          - generic [ref=e302]:
+            - heading "Diagnóstico" [level=3] [ref=e303]
+            - paragraph [ref=e304]: Auditamos tus procesos operativos, identificamos las fugas de tiempo y dinero, y entregamos un roadmap priorizado por impacto financiero real.
+          - generic [ref=e307]: 1–3 días hábiles
+        - generic [ref=e308]:
+          - generic [ref=e309]: "02"
+          - generic [ref=e310]:
+            - heading "Diseño e implementación" [level=3] [ref=e311]
+            - paragraph [ref=e312]: Construimos los sistemas, flujos y agentes sobre tu infraestructura. Sin vendor lock-in, sin dependencias externas. Todo queda en tu control.
+          - generic [ref=e315]: 7–14 días hábiles
+        - generic [ref=e316]:
+          - generic [ref=e317]: "03"
+          - generic [ref=e318]:
+            - heading "Estabilización y mejora" [level=3] [ref=e319]
+            - paragraph [ref=e320]: Monitoreamos el sistema en producción, corregimos lo que sea necesario y mejoramos de forma iterativa según los resultados reales.
+          - generic [ref=e323]: Continuo
+      - generic [ref=e325]: ROI mínimo 3x o devolvemos la inversión. Sin letra pequeña.
+    - generic [ref=e331]:
+      - generic [ref=e332]:
+        - generic [ref=e333]: Resultados reales
+        - heading "Lo que dicen quienes ya operan diferente" [level=2] [ref=e334]
+      - generic [ref=e335]:
+        - generic [ref=e336]:
+          - generic [ref=e337]:
+            - generic [ref=e338]:
+              - img [ref=e339]
+              - img [ref=e341]
+              - img [ref=e343]
+              - img [ref=e345]
+              - img [ref=e347]
+            - generic [ref=e349]: Logística
+          - paragraph [ref=e350]: “Implementamos el agente de documentos para procesar nuestras guías de embarque. Lo que antes tomaba 3 días con 2 personas, ahora ocurre en horas. No lo creímos hasta verlo.”
+          - generic [ref=e351]:
+            - paragraph [ref=e352]: Roberto Cisneros
+            - paragraph [ref=e353]: Director General · Grupo Logística Norteña
+        - generic [ref=e354]:
+          - generic [ref=e355]:
+            - generic [ref=e356]:
+              - img [ref=e357]
+              - img [ref=e359]
+              - img [ref=e361]
+              - img [ref=e363]
+              - img [ref=e365]
+            - generic [ref=e367]: Salud
+          - paragraph [ref=e368]: “El agente de atención redujo las llamadas al 40% porque los pacientes ya encuentran lo que necesitan solos. Nuestro personal ahora se enfoca en lo que realmente importa.”
+          - generic [ref=e369]:
+            - paragraph [ref=e370]: Dra. Sofía Rangel
+            - paragraph [ref=e371]: Directora Médica · Clínica MedVida
+        - generic [ref=e372]:
+          - generic [ref=e373]:
+            - generic [ref=e374]:
+              - img [ref=e375]
+              - img [ref=e377]
+              - img [ref=e379]
+              - img [ref=e381]
+              - img [ref=e383]
+            - generic [ref=e385]: Construcción
+          - paragraph [ref=e386]: “Teníamos un problema serio con el seguimiento de cotizaciones. El agente comercial de ZYVO convirtió ese caos en un proceso limpio. Cerramos 30% más en el primer trimestre.”
+          - generic [ref=e387]:
+            - paragraph [ref=e388]: Ing. Carlos Mondragón
+            - paragraph [ref=e389]: CEO · Constructora Tierra Firme
+        - generic [ref=e390]:
+          - generic [ref=e391]:
+            - generic [ref=e392]:
+              - img [ref=e393]
+              - img [ref=e395]
+              - img [ref=e397]
+              - img [ref=e399]
+              - img [ref=e401]
+            - generic [ref=e403]: Distribución
+          - paragraph [ref=e404]: “Lo que más me convenció fue que no nos vendieron tecnología, nos vendieron resultados. A los 45 días ya veíamos el impacto en números reales.”
+          - generic [ref=e405]:
+            - paragraph [ref=e406]: Ana Villanueva
+            - paragraph [ref=e407]: Gerente de Operaciones · Distribuidora El Roble
+        - generic [ref=e408]:
+          - generic [ref=e409]:
+            - generic [ref=e410]:
+              - img [ref=e411]
+              - img [ref=e413]
+              - img [ref=e415]
+              - img [ref=e417]
+              - img [ref=e419]
+            - generic [ref=e421]: Educación
+          - paragraph [ref=e422]: “El onboarding de nuevos alumnos era un dolor de cabeza constante. Hoy corre solo. Puedo escalar sin contratar más gente de soporte.”
+          - generic [ref=e423]:
+            - paragraph [ref=e424]: Mtro. Diego Fuentes
+            - paragraph [ref=e425]: Fundador · Academia Impulsa
+        - generic [ref=e426]:
+          - generic [ref=e427]:
+            - generic [ref=e428]:
+              - img [ref=e429]
+              - img [ref=e431]
+              - img [ref=e433]
+              - img [ref=e435]
+              - img [ref=e437]
+            - generic [ref=e439]: Inmobiliaria
+          - paragraph [ref=e440]: “Cada lead que llega ahora está calificado antes de llegar a mis asesores. Dejamos de perder tiempo con personas que solo estaban curioseando. Resultados desde la primera semana.”
+          - generic [ref=e441]:
+            - paragraph [ref=e442]: Lic. Patricia Solís
+            - paragraph [ref=e443]: Directora Comercial · Inmobiliaria Cima
+    - generic [ref=e451]:
+      - generic [ref=e452]:
+        - generic [ref=e453]:
+          - paragraph [ref=e454]: El primer paso
+          - heading "Descubre cuánto dinero está perdiendo tu empresa hoy" [level=2] [ref=e455]
+          - paragraph [ref=e456]: Una auditoría de fricción operativa revela en 48 horas los principales puntos donde tu empresa pierde tiempo y dinero — y qué se puede automatizar primero.
+        - list [ref=e457]:
+          - listitem [ref=e458]:
+            - img [ref=e459]
+            - generic [ref=e462]: Diagnóstico de procesos en 1–3 días
+          - listitem [ref=e463]:
+            - img [ref=e464]
+            - generic [ref=e467]: Roadmap de automatización priorizado por ROI
+          - listitem [ref=e468]:
+            - img [ref=e469]
+            - generic [ref=e472]: Sin compromiso de implementación
+          - listitem [ref=e473]:
+            - img [ref=e474]
+            - generic [ref=e477]: ROI mínimo 3x garantizado en proyectos
+      - generic [ref=e479]:
+        - generic [ref=e480]:
+          - generic [ref=e481]:
+            - text: Nombre *
+            - textbox "Tu nombre" [ref=e482]
+          - generic [ref=e483]:
+            - text: Empresa
+            - textbox "Nombre de empresa" [ref=e484]
+        - generic [ref=e485]:
+          - text: Email *
+          - textbox "tu@empresa.com" [ref=e486]
+        - generic [ref=e487]:
+          - text: Facturación mensual
+          - combobox [ref=e488]:
+            - option "Selecciona un rango" [disabled] [selected]
+            - option "$100K – $500K MXN/mes"
+            - option "$500K – $2M MXN/mes"
+            - option "$2M – $10M MXN/mes"
+            - option "+$10M MXN/mes"
+        - button "Solicitar auditoría" [ref=e489]:
+          - text: Solicitar auditoría
+          - img [ref=e490]
+        - paragraph [ref=e492]: Sin compromiso. Sin pitch agresivo.
+  - contentinfo [ref=e493]:
+    - generic [ref=e494]:
+      - generic [ref=e495]:
+        - generic [ref=e497]: ZYVO
+        - paragraph [ref=e499]: Infraestructura inteligente. Resultados medibles.
+        - generic [ref=e500]:
+          - link "Instagram" [ref=e501]:
+            - /url: https://instagram.com/zyvo.ai
+            - img [ref=e502]
+          - link "Facebook" [ref=e505]:
+            - /url: https://facebook.com/zyvo.ai
+            - img [ref=e506]
+          - link "TikTok" [ref=e508]:
+            - /url: https://tiktok.com/@zyvo.ai
+            - img [ref=e509]
+          - link "LinkedIn" [ref=e511]:
+            - /url: https://linkedin.com/company/zyvo-ai
+            - img [ref=e512]
+      - generic [ref=e516]:
+        - generic [ref=e519]: Sistemas activos
+        - generic [ref=e520]: ·
+        - generic [ref=e521]: © 2026 ZYVO
+      - generic [ref=e522]:
+        - generic [ref=e523]:
+          - img [ref=e524]
+          - generic [ref=e526]:
+            - text: Tratamiento de datos personales conforme a la
+            - strong [ref=e527]: Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)
+            - text: y su Reglamento vigente.
+        - paragraph [ref=e528]: México · IA Ética · Self-Hosted
+  - generic [ref=e530]:
+    - generic [ref=e531]: Habla con Rome IA
+    - button "Abrir Rome IA" [ref=e532]:
+      - img [ref=e534]
+  - region "Notifications alt+T"
+  - button "Open Next.js Dev Tools" [ref=e542] [cursor=pointer]:
+    - img [ref=e543]

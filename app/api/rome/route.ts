@@ -142,7 +142,37 @@ async function captureLead(lead: Record<string, string>) {
     }
   }
 
-  if (!supabaseUrl && !webhookUrl) {
+  // Enviar email de notificación
+  const resendKey = process.env.RESEND_API_KEY
+  if (resendKey) {
+    try {
+      const { Resend } = await import('resend')
+      const resend = new Resend(resendKey)
+      await resend.emails.send({
+        from: 'Rome IA <noreply@zyvo.com.mx>',
+        to: 'direccion@zyvo.com.mx',
+        subject: `Nuevo lead Rome — ${lead.nombre ?? 'Sin nombre'}${lead.empresa ? ` (${lead.empresa})` : ''}`,
+        html: `
+          <div style="font-family:sans-serif;max-width:520px;margin:0 auto;background:#080C14;color:#F5F5F5;padding:32px;border-radius:12px;border:1px solid rgba(212,175,55,0.2)">
+            <h2 style="color:#D4AF37;margin:0 0 24px">Nuevo lead — Agente Rome</h2>
+            <table style="width:100%;border-collapse:collapse">
+              <tr><td style="padding:8px 0;color:#aaa;width:120px">Nombre</td><td style="padding:8px 0">${lead.nombre ?? '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#aaa">Empresa</td><td style="padding:8px 0">${lead.empresa ?? '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#aaa">WhatsApp</td><td style="padding:8px 0">${lead.whatsapp ?? '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#aaa">Email</td><td style="padding:8px 0">${lead.email ?? '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#aaa">Facturación</td><td style="padding:8px 0">${lead.facturacion ?? '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#aaa">Problema</td><td style="padding:8px 0">${lead.problema ?? '—'}</td></tr>
+              <tr><td style="padding:8px 0;color:#aaa">Resumen</td><td style="padding:8px 0">${lead.resumen ?? '—'}</td></tr>
+            </table>
+          </div>
+        `,
+      })
+    } catch (e) {
+      console.error('[Rome] Resend error:', e)
+    }
+  }
+
+  if (!supabaseUrl && !webhookUrl && !resendKey) {
     console.log('[Rome] Lead capturado:', payload)
   }
 }

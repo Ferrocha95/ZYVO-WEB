@@ -142,7 +142,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.25, duration: 0.6, ease: EASE }}
-          className="max-w-xl text-base md:text-lg text-zyvo-white/50 leading-relaxed"
+          className="max-w-xl text-base md:text-lg text-zyvo-white/65 leading-relaxed"
         >
           Diseñamos sistemas de IA y automatización que eliminan el trabajo
           manual, reducen errores y devuelven el control operativo a tu equipo.
@@ -179,7 +179,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.55, duration: 0.5 }}
-          className="flex items-center gap-10 pt-6 border-t border-white/[0.06] mt-2"
+          className="flex items-center gap-6 sm:gap-10 pt-6 border-t border-white/6 mt-2 w-full justify-center"
         >
           {[
             { value: 'ROI 3x',  label: 'mínimo garantizado' },

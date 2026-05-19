@@ -11,7 +11,7 @@ interface Node {
 
 interface Pkt { from: number; to: number; t: number; gold: boolean }
 
-const GOLD  = '212,175,55'
+const GOLD  = '65,105,225'
 const BLUE  = '74,144,226'
 const WHITE = '210,225,255'
 
@@ -22,7 +22,8 @@ export default function GlobalBackground() {
   useEffect(() => {
     const cv = cvRef.current
     if (!cv) return
-    const ctx = cv.getContext('2d')!
+    const canvas = cv as HTMLCanvasElement
+    const ctx = canvas.getContext('2d')!
 
     const N  = 100   // nodos
     const CD = 200   // distancia de conexión
@@ -33,8 +34,8 @@ export default function GlobalBackground() {
     let conns: { i: number; j: number }[] = []
 
     function resize() {
-      W = cv.width  = window.innerWidth
-      H = cv.height = window.innerHeight
+      W = canvas.width  = window.innerWidth
+      H = canvas.height = window.innerHeight
     }
 
     function init() {
@@ -80,9 +81,9 @@ export default function GlobalBackground() {
       ctx.fillRect(0, 0, W, H)
 
       /* ambient glow zones */
-      radGrad(W * 0.75, H * 0.20, W * 0.50, BLUE,  0.18)
-      radGrad(W * 0.20, H * 0.80, W * 0.45, GOLD,  0.10)
-      radGrad(W * 0.50, H * 0.50, W * 0.60, BLUE,  0.06)
+      radGrad(W * 0.75, H * 0.20, W * 0.50, BLUE,  0.03)
+      radGrad(W * 0.20, H * 0.80, W * 0.45, GOLD,  0.015)
+      radGrad(W * 0.50, H * 0.50, W * 0.60, BLUE,  0.01)
 
       frame++
       const mx = mouse.current.x, my = mouse.current.y
@@ -111,12 +112,12 @@ export default function GlobalBackground() {
             const t    = 1 - d / CD
             const gold = nodes[i].type === 'gold' || nodes[j].type === 'gold'
             const blue = !gold && (nodes[i].type === 'blue' || nodes[j].type === 'blue')
-            ctx.lineWidth = gold ? 1.4 : blue ? 0.9 : 0.7
+            ctx.lineWidth = gold ? 0.8 : blue ? 0.6 : 0.5
             ctx.strokeStyle = gold
-              ? `rgba(${GOLD},${(t * 0.70).toFixed(2)})`
+              ? `rgba(${GOLD},${(t * 0.11).toFixed(2)})`
               : blue
-              ? `rgba(${BLUE},${(t * 0.50).toFixed(2)})`
-              : `rgba(${WHITE},${(t * 0.28).toFixed(2)})`
+              ? `rgba(${BLUE},${(t * 0.08).toFixed(2)})`
+              : `rgba(${WHITE},${(t * 0.04).toFixed(2)})`
             ctx.beginPath()
             ctx.moveTo(nodes[i].x, nodes[i].y)
             ctx.lineTo(nodes[j].x, nodes[j].y)
@@ -140,7 +141,7 @@ export default function GlobalBackground() {
         const px = nodes[p.from].x + (nodes[p.to].x - nodes[p.from].x) * p.t
         const py = nodes[p.from].y + (nodes[p.to].y - nodes[p.from].y) * p.t
         const col = p.gold ? GOLD : BLUE
-        radGrad(px, py, p.gold ? 12 : 9, col, 0.85)
+        radGrad(px, py, p.gold ? 8 : 6, col, 0.14)
         ctx.beginPath(); ctx.arc(px, py, p.gold ? 3 : 2.5, 0, Math.PI * 2)
         ctx.fillStyle = p.gold ? `rgb(${GOLD})` : `rgb(${BLUE})`; ctx.fill()
       }
@@ -153,7 +154,7 @@ export default function GlobalBackground() {
           let f = 0
           const ripple = () => {
             if (f > 80) return
-            radGrad(src.x, src.y, (f / 80) * 120, GOLD, 0.5 * (1 - f / 80))
+            radGrad(src.x, src.y, (f / 80) * 100, GOLD, 0.10 * (1 - f / 80))
             f++; requestAnimationFrame(ripple)
           }
           ripple()
@@ -166,24 +167,24 @@ export default function GlobalBackground() {
 
         if (n.type === 'gold') {
           /* outer halo — 100px */
-          radGrad(n.x, n.y, 100, GOLD, 0.55 * g)
+          radGrad(n.x, n.y, 80, GOLD, 0.06 * g)
           /* mid glow — 40px */
-          radGrad(n.x, n.y, 40,  GOLD, 0.85 * g)
+          radGrad(n.x, n.y, 30, GOLD, 0.11 * g)
           /* core — big */
           ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 1.8, 0, Math.PI * 2)
           ctx.fillStyle = `rgb(${GOLD})`; ctx.fill()
           /* hot spot */
           ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 0.7, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(255,245,170,${g})`; ctx.fill()
+          ctx.fillStyle = `rgba(180,210,255,${g})`; ctx.fill()
 
         } else if (n.type === 'blue') {
-          radGrad(n.x, n.y, 65, BLUE, 0.45 * g)
-          radGrad(n.x, n.y, 24, BLUE, 0.80 * g)
+          radGrad(n.x, n.y, 50, BLUE, 0.05 * g)
+          radGrad(n.x, n.y, 18, BLUE, 0.10 * g)
           ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 1.5, 0, Math.PI * 2)
           ctx.fillStyle = `rgba(${BLUE},1)`; ctx.fill()
 
         } else {
-          radGrad(n.x, n.y, 28, WHITE, 0.35 * g)
+          radGrad(n.x, n.y, 20, WHITE, 0.04 * g)
           ctx.beginPath(); ctx.arc(n.x, n.y, n.r * 1.2, 0, Math.PI * 2)
           ctx.fillStyle = `rgba(${WHITE},0.80)`; ctx.fill()
         }

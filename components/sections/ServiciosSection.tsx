@@ -66,7 +66,7 @@ export default function ServiciosSection() {
           <h2 className="font-(family-name:--font-instrument-serif) text-3xl md:text-5xl font-normal text-zyvo-white">
             Lo que construimos para ti
           </h2>
-          <p className="text-zyvo-white/40 text-sm max-w-md">
+          <p className="text-zyvo-white/55 text-sm max-w-md">
             Cada implementación parte de la auditoría de fricción. Sin diagnóstico no hay propuesta.
           </p>
         </motion.div>
@@ -161,7 +161,7 @@ function ServiceCard({
       {/* Texto */}
       <div className="flex-1 space-y-2">
         <h3 className="text-zyvo-white font-semibold text-lg leading-snug">{s.titulo}</h3>
-        <p className="text-zyvo-white/45 text-sm leading-relaxed">{s.descripcion}</p>
+        <p className="text-zyvo-white/60 text-sm leading-relaxed">{s.descripcion}</p>
       </div>
 
       {/* Resultado */}
@@ -171,7 +171,7 @@ function ServiceCard({
             animate={{ backgroundColor: hovered ? '#D4AF37' : 'rgba(212,175,55,0.4)' }}
             className="w-1 h-1 rounded-full mt-1.5 shrink-0"
           />
-          <p className="text-zyvo-white/40 text-xs leading-relaxed">{s.resultado}</p>
+          <p className="text-zyvo-white/55 text-xs leading-relaxed">{s.resultado}</p>
         </div>
         <div className="pt-3 border-t border-white/6">
           <button
