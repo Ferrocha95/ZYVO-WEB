@@ -93,7 +93,7 @@ export default function Navbar() {
                 {/* CTA */}
                 <button
                   onClick={() => scrollTo('#cta')}
-                  className="flex items-center px-5 py-2 mx-2 text-sm font-semibold bg-zyvo-gold text-zyvo-dark rounded-full hover:bg-[#E8C547] transition-colors duration-200 shrink-0 whitespace-nowrap"
+                  className="flex items-center px-5 py-2 mx-2 text-sm shrink-0 whitespace-nowrap btn-glow-nav"
                 >
                   Auditoría →
                 </button>
@@ -158,7 +158,7 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => { scrollTo('#cta'); setMobileOpen(false) }}
-              className="mt-4 px-8 py-3.5 bg-zyvo-gold text-zyvo-dark font-semibold rounded-full"
+              className="mt-4 px-8 py-3.5 btn-glow"
             >
               Solicitar auditoría
             </button>

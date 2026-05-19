@@ -30,7 +30,7 @@ const agents: Agent[] = [
     tagline: 'Analiza cada prospecto que llega, hace las preguntas correctas y te entrega solo los que vale la pena trabajar.',
     elimina: 'El tiempo que tu equipo pierde con prospectos que nunca van a comprar.',
     gana: 'Un pipeline más limpio, ciclos de venta más cortos y más cierres.',
-    color: '212,175,55',
+    color: '0,170,255',
   },
   {
     icon: <RefreshCw size={28} />,
@@ -38,7 +38,7 @@ const agents: Agent[] = [
     tagline: 'Mantiene el contacto con cada prospecto en el momento exacto, con el mensaje correcto, sin que nadie lo recuerde manualmente.',
     elimina: 'Los seguimientos olvidados y las oportunidades que se enfrían por falta de contacto.',
     gana: 'Más conversiones sin aumentar la carga de tu equipo comercial.',
-    color: '212,175,55',
+    color: '0,170,255',
   },
   {
     icon: <FileText size={28} />,
@@ -54,7 +54,7 @@ const agents: Agent[] = [
     tagline: 'Incorpora a nuevos colaboradores o clientes con un proceso estructurado, consistente y sin fricción.',
     elimina: 'La dependencia de una persona para explicar lo mismo una y otra vez.',
     gana: 'Onboardings más rápidos, equipos listos antes y menos errores en los primeros días.',
-    color: '212,175,55',
+    color: '0,170,255',
   },
 ]
 
@@ -96,7 +96,7 @@ export default function AgentesSimpleSection() {
         animate={{ y: [0, 14, 0], opacity: [0.05, 0.10, 0.05] }}
         transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
         className="absolute bottom-20 right-1/4 w-64 h-64 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(212,175,55,0.14) 0%, transparent 70%)', filter: 'blur(36px)' }}
+        style={{ background: 'radial-gradient(circle, rgba(0,170,255,0.12) 0%, transparent 70%)', filter: 'blur(36px)' }}
       />
 
       <div className="max-w-5xl mx-auto px-6">
@@ -172,8 +172,8 @@ export default function AgentesSimpleSection() {
                       <p className="text-zyvo-white/60 text-sm mt-0.5">{agent.elimina}</p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-3 p-3 rounded-lg" style={{ background: 'rgba(212,175,55,0.06)', border: '1px solid rgba(212,175,55,0.14)' }}>
-                    <TrendingUp size={14} className="mt-0.5 shrink-0" style={{ color: 'rgba(212,175,55,0.8)' }} />
+                  <div className="flex items-start gap-3 p-3 rounded-lg" style={{ background: 'rgba(0,170,255,0.06)', border: '1px solid rgba(0,170,255,0.14)' }}>
+                    <TrendingUp size={14} className="mt-0.5 shrink-0" style={{ color: 'rgba(0,170,255,0.8)' }} />
                     <div>
                       <span className="text-xs font-semibold uppercase tracking-wider text-zyvo-gold/60">Gana</span>
                       <p className="text-zyvo-white/60 text-sm mt-0.5">{agent.gana}</p>
@@ -213,7 +213,7 @@ export default function AgentesSimpleSection() {
               style={{
                 width: i === current ? 20 : 6,
                 height: 6,
-                background: i === current ? '#D4AF37' : 'rgba(255,255,255,0.2)',
+                background: i === current ? '#00AAFF' : 'rgba(255,255,255,0.2)',
               }}
               aria-label={`Ir al agente ${i + 1}`}
             />

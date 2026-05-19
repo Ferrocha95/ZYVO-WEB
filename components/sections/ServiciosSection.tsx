@@ -121,9 +121,9 @@ function ServiceCard({
       onMouseLeave={() => setHovered(false)}
       className="relative glass rounded-2xl p-7 flex flex-col gap-5 cursor-hover overflow-hidden"
       style={{
-        borderColor: hovered ? 'rgba(212,175,55,0.22)' : 'rgba(255,255,255,0.08)',
+        borderColor: hovered ? 'rgba(0,170,255,0.22)' : 'rgba(255,255,255,0.08)',
         transition: 'border-color 0.3s, box-shadow 0.3s, transform 0.3s',
-        boxShadow: hovered ? '0 16px 50px rgba(212,175,55,0.07)' : 'none',
+        boxShadow: hovered ? '0 16px 50px rgba(0,170,255,0.07)' : 'none',
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
       }}
     >
@@ -141,7 +141,7 @@ function ServiceCard({
       <div className="flex items-start justify-between">
         <motion.div
           animate={{
-            backgroundColor: hovered ? 'rgba(212,175,55,0.1)' : 'rgba(255,255,255,0.04)',
+            backgroundColor: hovered ? 'rgba(0,170,255,0.1)' : 'rgba(255,255,255,0.04)',
             scale: [1, 1.02, 1],
           }}
           transition={{
@@ -149,9 +149,9 @@ function ServiceCard({
             scale: { duration: 3, repeat: Infinity, ease: 'easeInOut' },
           }}
           className="w-11 h-11 rounded-xl flex items-center justify-center"
-          style={{ border: hovered ? '1px solid rgba(212,175,55,0.25)' : '1px solid rgba(255,255,255,0.08)' }}
+          style={{ border: hovered ? '1px solid rgba(0,170,255,0.25)' : '1px solid rgba(255,255,255,0.08)' }}
         >
-          <Icon size={19} style={{ color: hovered ? '#D4AF37' : 'rgba(255,255,255,0.45)', transition: 'color 0.3s' }} />
+          <Icon size={19} style={{ color: hovered ? '#00AAFF' : 'rgba(255,255,255,0.45)', transition: 'color 0.3s' }} />
         </motion.div>
         <span className="text-xs font-mono text-zyvo-white/25 border border-white/6 px-2 py-1 rounded-full">
           {s.tag}
@@ -168,7 +168,7 @@ function ServiceCard({
       <div className="space-y-3">
         <div className="flex items-start gap-2">
           <motion.div
-            animate={{ backgroundColor: hovered ? '#D4AF37' : 'rgba(212,175,55,0.4)' }}
+            animate={{ backgroundColor: hovered ? '#00AAFF' : 'rgba(0,170,255,0.4)' }}
             className="w-1 h-1 rounded-full mt-1.5 shrink-0"
           />
           <p className="text-zyvo-white/55 text-xs leading-relaxed">{s.resultado}</p>

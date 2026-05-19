@@ -32,7 +32,7 @@ export default function GlobalBackground() {
         uniform float iTime;
         uniform vec2  iResolution;
 
-        #define NUM_OCTAVES 3
+        #define NUM_OCTAVES 2
 
         float rand(vec2 n) {
           return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
@@ -72,11 +72,11 @@ export default function GlobalBackground() {
 
           float f = 2.0 + fbm(p + vec2(iTime * 5.0, 0.0)) * 0.5;
 
-          for (float i = 0.0; i < 35.0; i++) {
+          for (float i = 0.0; i < 20.0; i++) {
             v = p + cos(i * i + (iTime + p.x * 0.08) * 0.025 + i * vec2(13.0, 11.0)) * 3.5
               + vec2(sin(iTime * 3.0 + i) * 0.003, cos(iTime * 3.5 - i) * 0.003);
 
-            float tailNoise = fbm(v + vec2(iTime * 0.5, i)) * 0.3 * (1.0 - (i / 35.0));
+            float tailNoise = fbm(v + vec2(iTime * 0.5, i)) * 0.3 * (1.0 - (i / 20.0));
 
             vec4 auroraColors = vec4(
               0.05 + 0.15 * sin(i * 0.2 + iTime * 0.4),
@@ -89,7 +89,7 @@ export default function GlobalBackground() {
               * exp(sin(i * i + iTime * 0.8))
               / length(max(v, vec2(v.x * f * 0.015, v.y * 1.5)));
 
-            float thin = smoothstep(0.0, 1.0, i / 35.0) * 0.6;
+            float thin = smoothstep(0.0, 1.0, i / 20.0) * 0.6;
             o += cc * (1.0 + tailNoise * 0.8) * thin;
           }
 
@@ -106,13 +106,22 @@ export default function GlobalBackground() {
     scene.add(mesh)
 
     let frameId: number
+    let lastTime = 0
 
-    const animate = () => {
-      material.uniforms.iTime.value += 0.012
-      renderer.render(scene, camera)
+    const animate = (time: number) => {
       frameId = requestAnimationFrame(animate)
+      if (time - lastTime < 28) return   // ~36fps cap
+      lastTime = time
+      material.uniforms.iTime.value += 0.018
+      renderer.render(scene, camera)
     }
-    animate()
+    frameId = requestAnimationFrame(animate)
+
+    const handleVisibility = () => {
+      if (document.hidden) cancelAnimationFrame(frameId)
+      else frameId = requestAnimationFrame(animate)
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
 
     const handleResize = () => {
       renderer.setSize(window.innerWidth, window.innerHeight)
@@ -122,6 +131,7 @@ export default function GlobalBackground() {
 
     return () => {
       cancelAnimationFrame(frameId)
+      document.removeEventListener('visibilitychange', handleVisibility)
       window.removeEventListener('resize', handleResize)
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement)

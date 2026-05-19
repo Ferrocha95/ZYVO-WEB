@@ -19,7 +19,7 @@ function Divider({ variant = 'gold' }: { variant?: DividerVariant }) {
     <div className="relative h-px max-w-6xl mx-auto px-6">
       <div className={`h-px bg-linear-to-r from-transparent ${via[variant]} to-transparent`} />
       {variant !== 'subtle' && (
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-zyvo-gold/60" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-zyvo-electric/60" />
       )}
     </div>
   )

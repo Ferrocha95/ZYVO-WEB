@@ -6,7 +6,7 @@
   --color-zyvo-blue:     #0A2463;
   --color-zyvo-midnight: #1D3557;
   --color-zyvo-teal:     #264653;
-  --color-zyvo-gold:     #D4AF37;
+  --color-zyvo-gold:     #00AAFF;
   --color-zyvo-slate:    #7F8C8D;
   --color-zyvo-white:    #F5F5F5;
   --color-zyvo-electric: #00E5FF;
@@ -37,8 +37,8 @@ a, button, input, textarea, select, [role="button"] { cursor: none; }
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #0A0E18; }
-::-webkit-scrollbar-thumb { background: rgba(212,175,55,0.35); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(212,175,55,0.6); }
+::-webkit-scrollbar-thumb { background: rgba(0,170,255,0.35); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,170,255,0.6); }
 
 /* ─── Grain Overlay ──────────────────────────────────────────────────────── */
 .grain-overlay {
@@ -61,10 +61,10 @@ a, button, input, textarea, select, [role="button"] { cursor: none; }
 }
 
 .glass-gold {
-  background: rgba(212,175,55,0.04);
+  background: rgba(0,170,255,0.04);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(212,175,55,0.14);
+  border: 1px solid rgba(0,170,255,0.14);
 }
 
 /* ─── Tipografía utilidades ──────────────────────────────────────────────── */
@@ -98,8 +98,8 @@ a, button, input, textarea, select, [role="button"] { cursor: none; }
   50%       { transform: translateY(-8px); }
 }
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 12px rgba(212,175,55,0.15); }
-  50%       { box-shadow: 0 0 28px rgba(212,175,55,0.4); }
+  0%, 100% { box-shadow: 0 0 12px rgba(0,170,255,0.15); }
+  50%       { box-shadow: 0 0 28px rgba(0,170,255,0.4); }
 }
 @keyframes shimmer {
   0%   { transform: translateX(-100%); }
@@ -127,18 +127,67 @@ a, button, input, textarea, select, [role="button"] { cursor: none; }
 }
 
 /* ─── Selection ──────────────────────────────────────────────────────────── */
-::selection { background: rgba(212,175,55,0.18); color: #F5F5F5; }
+::selection { background: rgba(0,170,255,0.18); color: #F5F5F5; }
 
 /* ─── CSS Vars (shadcn/TestimonialStack mapping → tokens ZYVO) ───────────── */
 :root {
   --radius: 1rem;
   --card-foreground: #F5F5F5;
-  --primary: #D4AF37;
+  --primary: #00AAFF;
   --primary-foreground: #080C14;
   --secondary: rgba(255,255,255,0.06);
   --secondary-foreground: #F5F5F5;
   --muted-foreground: rgba(245,245,245,0.40);
   --border: rgba(255,255,255,0.08);
+}
+
+/* ─── Touch device — restore native cursor ──────────────────────────────── */
+@media (hover: none) {
+  html { cursor: auto; }
+  a, button, input, textarea, select, [role="button"] { cursor: auto; }
+}
+
+/* ─── Glow button ────────────────────────────────────────────────────────── */
+.btn-glow {
+  position: relative;
+  background: #0D0118;
+  color: #F5F5F5;
+  border: none;
+  border-radius: 0.875rem;
+  isolation: isolate;
+  font-weight: 600;
+  transition: transform 0.1s;
+}
+.btn-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+  filter: blur(14px);
+  z-index: -1;
+  border-radius: inherit;
+}
+.btn-glow:active {
+  background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,1) 17.8%, rgba(2,245,255,1) 100.2%);
+  transform: scale(0.9) rotate(3deg);
+  transition: transform 0.5s;
+}
+.btn-glow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.btn-glow:disabled:active {
+  background: #0D0118;
+  transform: none;
+}
+
+/* ─── Navbar gradient CTA (inside overflow:hidden pill) ─────────────────── */
+.btn-glow-nav {
+  background: radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,0.85) 17.8%, rgba(2,245,255,0.85) 100.2%);
+  color: #F5F5F5;
+  border: none;
+  border-radius: 0.875rem;
+  font-weight: 600;
 }
 
 /* ─── TestimonialStack ───────────────────────────────────────────────────── */
@@ -178,6 +227,6 @@ a, button, input, textarea, select, [role="button"] { cursor: none; }
   transition: background 0.3s, transform 0.3s;
 }
 .pagination-dot.active {
-  background: #D4AF37;
+  background: #00AAFF;
   transform: scale(1.3);
 }

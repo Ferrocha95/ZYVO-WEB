@@ -74,7 +74,7 @@ export function Spotlight({
         left: spotlightLeft,
         top: spotlightTop,
         background:
-          'radial-gradient(circle at center, rgba(212,175,55,0.13) 0%, rgba(10,36,99,0.07) 50%, transparent 80%)',
+          'radial-gradient(circle at center, rgba(0,170,255,0.12) 0%, rgba(10,36,99,0.07) 50%, transparent 80%)',
       }}
     />
   )

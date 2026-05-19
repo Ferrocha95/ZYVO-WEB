@@ -37,13 +37,13 @@ export default function FloatingContactButtons() {
             className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-200"
             style={{
               background: romeOpen
-                ? 'rgba(212,175,55,0.15)'
-                : 'linear-gradient(135deg, rgba(212,175,55,0.9), rgba(180,145,25,0.9))',
-              border: '1px solid rgba(212,175,55,0.4)',
+                ? 'rgba(0,170,255,0.12)'
+                : 'radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,0.9) 17.8%, rgba(2,245,255,0.9) 100.2%)',
+              border: '1px solid rgba(0,170,255,0.35)',
               backdropFilter: 'blur(12px)',
               boxShadow: romeOpen
-                ? '0 8px 30px rgba(212,175,55,0.15)'
-                : '0 8px 30px rgba(212,175,55,0.35)',
+                ? '0 8px 30px rgba(0,170,255,0.12)'
+                : '0 8px 40px rgba(255,94,247,0.4), 0 0 40px rgba(2,245,255,0.2)',
             }}
             aria-label={romeOpen ? 'Cerrar Rome' : 'Abrir Rome IA'}
           >
@@ -53,7 +53,7 @@ export default function FloatingContactButtons() {
             <AnimatePresence mode="wait">
               {romeOpen ? (
                 <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
-                  <X size={20} style={{ color: '#D4AF37' }} />
+                  <X size={20} style={{ color: '#00E5FF' }} />
                 </motion.span>
               ) : (
                 <motion.span key="bot" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>

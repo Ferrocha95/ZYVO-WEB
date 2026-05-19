@@ -52,7 +52,7 @@ export default function CTAFinalSection() {
     <section id="cta" className="section-pad relative overflow-hidden">
       {/* Línea dorada superior */}
       <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-zyvo-gold/35 to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(212,175,55,0.05)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_50%,rgba(0,170,255,0.05)_0%,transparent_70%)]" />
 
 
       {/* Decoraciones flotantes */}
@@ -199,7 +199,7 @@ export default function CTAFinalSection() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 bg-zyvo-gold text-zyvo-dark font-semibold text-sm rounded-xl hover:bg-[#E8C547] transition-colors duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 btn-glow text-sm disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <><Loader2 size={15} className="animate-spin" /> Enviando...</>

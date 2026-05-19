@@ -113,7 +113,7 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
         borderRadius: '20px',
         backdropFilter: 'blur(32px)',
         WebkitBackdropFilter: 'blur(32px)',
-        boxShadow: '0 32px 80px rgba(0,0,0,0.75), 0 0 0 1px rgba(212,175,55,0.06)',
+        boxShadow: '0 32px 80px rgba(0,0,0,0.75), 0 0 0 1px rgba(0,170,255,0.06)',
         maxHeight: 'min(75vh, 560px)',
       }}
     >
@@ -231,8 +231,10 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
               disabled={!input.trim() || loading}
               className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 disabled:opacity-30"
               style={{
-                background: input.trim() && !loading ? 'rgba(212,175,55,0.9)' : 'transparent',
-                color: input.trim() && !loading ? '#080C14' : 'rgba(255,255,255,0.3)',
+                background: input.trim() && !loading
+                  ? 'radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,0.9) 17.8%, rgba(2,245,255,0.9) 100.2%)'
+                  : 'transparent',
+                color: input.trim() && !loading ? '#F5F5F5' : 'rgba(255,255,255,0.3)',
               }}
             >
               <Send size={13} />

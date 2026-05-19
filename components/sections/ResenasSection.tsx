@@ -56,7 +56,7 @@ const testimonialesZyvo: Testimonial[] = [
       { icon: TrendingUp, text: '+30% cierres Q1' },
       { icon: Target, text: 'Pipeline limpio' },
     ],
-    avatarGradient: 'linear-gradient(135deg, #D4AF37, #b8860b)',
+    avatarGradient: 'linear-gradient(135deg, #0077CC, #00AAFF)',
   },
   {
     id: 4,
@@ -107,7 +107,7 @@ const testimonialesZyvo: Testimonial[] = [
       { icon: Target, text: 'Leads precalificados' },
       { icon: TrendingUp, text: 'Resultados semana 1' },
     ],
-    avatarGradient: 'linear-gradient(135deg, #D4AF37, #0A2463)',
+    avatarGradient: 'linear-gradient(135deg, #00AAFF, #0A2463)',
   },
 ]
 
@@ -121,7 +121,7 @@ export default function ResenasSection() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(212,175,55,0.07) 0%, transparent 70%)',
+            'radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,170,255,0.07) 0%, transparent 70%)',
         }}
       />
 

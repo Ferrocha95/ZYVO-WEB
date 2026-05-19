@@ -76,7 +76,7 @@ export default function HeroSection() {
             key={i}
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: p.duration, repeat: Infinity, ease: 'easeInOut', delay: p.delay }}
-            className="absolute w-1 h-1 rounded-full bg-zyvo-gold/40"
+            className="absolute w-1 h-1 rounded-full bg-zyvo-electric/40"
             style={{ top: p.top, left: p.left }}
           />
         ))}
@@ -94,7 +94,7 @@ export default function HeroSection() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.55, ease: EASE }}
             className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass"
-            style={{ borderColor: 'rgba(212,175,55,0.2)' }}
+            style={{ borderColor: 'rgba(0,170,255,0.2)' }}
           >
             <motion.span
               animate={{ opacity: [1, 0.3, 1] }}
@@ -138,10 +138,10 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row items-center gap-3 mt-1"
           >
             <motion.button
-              whileHover={{ scale: 1.04, boxShadow: '0 0 28px rgba(212,175,55,0.35)' }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.04, boxShadow: '0 8px 40px rgba(255,94,247,0.45), 0 0 60px rgba(2,245,255,0.25)' }}
+              whileTap={{ scale: 0.9, rotate: 3 }}
               onClick={() => scrollTo('cta')}
-              className="flex items-center gap-2 px-8 py-3.5 bg-zyvo-gold text-zyvo-dark font-semibold text-sm rounded-full transition-colors duration-200 cursor-hover"
+              className="flex items-center gap-2 px-8 py-3.5 btn-glow cursor-hover"
             >
               Solicitar auditoría
               <ArrowRight size={15} />

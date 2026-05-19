@@ -81,7 +81,7 @@ export default function CalculadoraSection() {
   return (
     <section id="calculadora" className="section-pad relative overflow-hidden">
       {/* Fondo */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(212,175,55,0.04)_0%,transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_50%,rgba(0,170,255,0.04)_0%,transparent_70%)]" />
       <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-zyvo-gold/30 to-transparent" />
 
       <div className="max-w-6xl mx-auto px-6">
@@ -149,7 +149,7 @@ export default function CalculadoraSection() {
                   onChange={e => setEmpleados(Number(e.target.value))}
                   className="w-full h-1 rounded-full appearance-none cursor-pointer"
                   style={{
-                    background: `linear-gradient(to right, #D4AF37 ${((empleados - 1) / 19) * 100}%, rgba(255,255,255,0.08) ${((empleados - 1) / 19) * 100}%)`,
+                    background: `linear-gradient(to right, #00AAFF ${((empleados - 1) / 19) * 100}%, rgba(255,255,255,0.08) ${((empleados - 1) / 19) * 100}%)`,
                     outline: 'none',
                   }}
                 />
@@ -158,17 +158,17 @@ export default function CalculadoraSection() {
                     -webkit-appearance: none;
                     width: 18px; height: 18px;
                     border-radius: 50%;
-                    background: #D4AF37;
+                    background: #00AAFF;
                     border: 2px solid #080C14;
-                    box-shadow: 0 0 10px rgba(212,175,55,0.5);
+                    box-shadow: 0 0 10px rgba(0,170,255,0.5);
                     cursor: pointer;
                   }
                   input[type=range]::-moz-range-thumb {
                     width: 18px; height: 18px;
                     border-radius: 50%;
-                    background: #D4AF37;
+                    background: #00AAFF;
                     border: 2px solid #080C14;
-                    box-shadow: 0 0 10px rgba(212,175,55,0.5);
+                    box-shadow: 0 0 10px rgba(0,170,255,0.5);
                     cursor: pointer;
                   }
                 `}</style>
@@ -299,7 +299,7 @@ export default function CalculadoraSection() {
                     whileInView={{ width: '55%' }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.0, delay: 0.3, ease: EASE }}
-                    className="absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-zyvo-white/20 to-zyvo-gold/60"
+                    className="absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-zyvo-white/20 to-zyvo-electric/60"
                   />
                 </div>
               </div>
@@ -337,10 +337,10 @@ export default function CalculadoraSection() {
 
             {/* CTA */}
             <motion.button
-              whileHover={{ scale: 1.03, boxShadow: '0 0 28px rgba(212,175,55,0.3)' }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.03, boxShadow: '0 8px 40px rgba(255,94,247,0.45), 0 0 60px rgba(2,245,255,0.25)' }}
+              whileTap={{ scale: 0.9, rotate: 3 }}
               onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-full flex items-center justify-center gap-2 py-4 bg-zyvo-gold text-zyvo-dark font-semibold text-sm rounded-full cursor-hover transition-colors duration-200 hover:bg-[#E8C547]"
+              className="w-full flex items-center justify-center gap-2 py-4 btn-glow text-sm cursor-hover"
             >
               Quiero recuperar ese dinero
               <ChevronRight size={16} />

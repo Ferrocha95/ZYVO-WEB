@@ -94,7 +94,7 @@ export default function ProcesoSection() {
               whileHover={{
                 scale: 1.02,
                 backgroundColor: 'rgba(12,18,32,1)',
-                borderColor: 'rgba(212,175,55,0.15)',
+                borderColor: 'rgba(0,170,255,0.15)',
               }}
               className="bg-zyvo-dark p-8 flex flex-col gap-5 transition-colors duration-300"
             >
