@@ -177,7 +177,7 @@ function ServiceCard({
           <button
             onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
             className="flex items-center gap-1 text-xs font-medium transition-colors duration-200 cursor-hover"
-            style={{ color: hovered ? '#D4AF37' : 'rgba(255,255,255,0.35)' }}
+            style={{ color: hovered ? '#00E5FF' : 'rgba(255,255,255,0.35)' }}
           >
             Solicitar <ArrowRight size={12} />
           </button>

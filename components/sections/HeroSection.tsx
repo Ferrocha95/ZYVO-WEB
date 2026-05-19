@@ -175,7 +175,7 @@ export default function HeroSection() {
                 transition={{ delay: 0.6 + i * 0.08, duration: 0.4 }}
                 className="flex flex-col items-center gap-0.5"
               >
-                <span className="text-zyvo-gold font-bold text-base tracking-tight">{s.value}</span>
+                <span className="text-zyvo-electric font-bold text-base tracking-tight">{s.value}</span>
                 <span className="text-zyvo-white/30 text-xs">{s.label}</span>
               </motion.div>
             ))}

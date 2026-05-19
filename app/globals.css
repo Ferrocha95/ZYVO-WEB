@@ -9,6 +9,7 @@
   --color-zyvo-gold:     #D4AF37;
   --color-zyvo-slate:    #7F8C8D;
   --color-zyvo-white:    #F5F5F5;
+  --color-zyvo-electric: #00E5FF;
 
   --font-instrument: var(--font-instrument-serif);
   --font-jakarta:    var(--font-plus-jakarta);
@@ -68,7 +69,7 @@ a, button, input, textarea, select, [role="button"] { cursor: none; }
 
 /* ─── Tipografía utilidades ──────────────────────────────────────────────── */
 .text-gradient-gold {
-  background: linear-gradient(135deg, #C9A227 0%, #F0D060 50%, #D4AF37 100%);
+  background: linear-gradient(135deg, #00B4D8 0%, #00E5FF 50%, #0096C7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

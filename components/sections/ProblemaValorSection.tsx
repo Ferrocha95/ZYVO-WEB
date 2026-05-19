@@ -112,7 +112,7 @@ export default function ProblemaValorSection() {
               <div className="grid grid-cols-3 gap-3 pt-2 border-t border-white/6">
                 {BENEFICIOS.map(b => (
                   <div key={b.valor} className="flex flex-col items-center gap-1 py-3">
-                    <span className="text-zyvo-gold font-bold text-xl">{b.valor}</span>
+                    <span className="text-zyvo-electric font-bold text-xl">{b.valor}</span>
                     <span className="text-zyvo-white/35 text-xs text-center leading-tight">{b.texto}</span>
                   </div>
                 ))}

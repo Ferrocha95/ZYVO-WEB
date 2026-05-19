@@ -1,4 +1,10 @@
+'use client'
+
+import type { ReactNode } from 'react'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Shield } from 'lucide-react'
+
+const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
 function InstagramIcon() {
   return (
@@ -36,11 +42,62 @@ function LinkedInIcon() {
   )
 }
 
-const SOCIAL_LINKS = [
-  { label: 'Instagram', href: 'https://www.instagram.com/zyvo_ai/',           Icon: InstagramIcon },
-  { label: 'Facebook',  href: 'https://www.facebook.com/share/1Cqb4Qrti7/',   Icon: FacebookIcon },
-  { label: 'TikTok',    href: 'https://tiktok.com/@zyvo.ai',    Icon: TikTokIcon },
-  { label: 'LinkedIn',  href: 'https://linkedin.com/company/zyvo-ai', Icon: LinkedInIcon },
+const LINK_SECTIONS = [
+  {
+    title: 'Soluciones',
+    links: [
+      { label: 'Automatización',     href: '#servicios',   external: false },
+      { label: 'Agentes IA',         href: '#agentes',     external: false },
+      { label: 'Sistemas Agénticos', href: '#servicios',   external: false },
+      { label: 'Calculadora',        href: '#calculadora', external: false },
+    ],
+  },
+  {
+    title: 'Empresa',
+    links: [
+      { label: 'Auditoría de Fricción', href: '#cta', external: false },
+      { label: 'Privacidad',            href: '#',    external: false },
+      { label: 'LFPDPPP',              href: '#',    external: false },
+    ],
+  },
+  {
+    title: 'Redes Sociales',
+    links: [
+      { label: 'Instagram', href: 'https://www.instagram.com/zyvo_ai/',         external: true },
+      { label: 'Facebook',  href: 'https://www.facebook.com/share/1Cqb4Qrti7/', external: true },
+      { label: 'TikTok',    href: 'https://tiktok.com/@zyvo.ai',               external: true },
+      { label: 'LinkedIn',  href: 'https://linkedin.com/company/zyvo-ai',      external: true },
+    ],
+  },
+  {
+    title: 'Soporte',
+    links: [
+      { label: 'contacto@zyvo.ai', href: 'mailto:contacto@zyvo.ai', external: true },
+      { label: 'WhatsApp',         href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''}`, external: true },
+      { label: 'Documentación',    href: '#',                       external: false },
+    ],
+  },
+]
+
+function AnimatedSection({ children, delay = 0 }: { children: ReactNode; delay?: number }) {
+  const reduced = useReducedMotion()
+  return (
+    <motion.div
+      initial={reduced ? false : { opacity: 0, y: 14, filter: 'blur(4px)' }}
+      whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.55, delay, ease: EASE }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+const SOCIAL_ICONS = [
+  { label: 'Instagram', href: 'https://www.instagram.com/zyvo_ai/',         Icon: InstagramIcon },
+  { label: 'Facebook',  href: 'https://www.facebook.com/share/1Cqb4Qrti7/', Icon: FacebookIcon },
+  { label: 'TikTok',    href: 'https://tiktok.com/@zyvo.ai',               Icon: TikTokIcon },
+  { label: 'LinkedIn',  href: 'https://linkedin.com/company/zyvo-ai',      Icon: LinkedInIcon },
 ]
 
 export default function Footer() {
@@ -48,66 +105,86 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-white/6 bg-[#050810]">
-      <div className="max-w-6xl mx-auto px-6 py-10 space-y-6">
+      <div className="max-w-6xl mx-auto px-6 pt-14 pb-8">
 
-        {/* Fila principal */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Logo */}
-          <div className="flex items-center gap-1">
-            <span className="font-(family-name:--font-instrument-serif) text-lg text-zyvo-white/70">
-              ZYVO
-            </span>
-            <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold/60 mb-1.5" />
-          </div>
+        {/* Main grid */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-12 xl:gap-16 mb-12">
 
-          {/* Filosofía */}
-          <p className="text-zyvo-white/25 text-xs text-center">
-            Infraestructura inteligente. Resultados medibles.
-          </p>
+          {/* Col 1 — Brand */}
+          <AnimatedSection delay={0}>
+            <div className="space-y-4">
+              <div className="flex items-center gap-1">
+                <span className="font-(family-name:--font-instrument-serif) text-xl text-zyvo-white tracking-tight">
+                  ZYVO
+                </span>
+                <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold/70 mb-1.5" />
+              </div>
+              <p className="text-zyvo-white/35 text-sm leading-relaxed max-w-xs">
+                Infraestructura inteligente. Resultados medibles.
+              </p>
+              <div className="flex items-center gap-1.5 pt-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-zyvo-white/20 text-xs">Sistemas activos</span>
+              </div>
+              <div className="flex items-center gap-2 pt-2">
+                {SOCIAL_ICONS.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-8 h-8 rounded-full border border-white/8 flex items-center justify-center text-zyvo-white/30 hover:text-zyvo-gold hover:border-zyvo-gold/30 transition-colors duration-200"
+                  >
+                    <Icon />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </AnimatedSection>
 
-          {/* Redes sociales */}
-          <div className="flex items-center gap-3">
-            {SOCIAL_LINKS.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="w-8 h-8 rounded-full border border-white/8 flex items-center justify-center text-zyvo-white/30 hover:text-zyvo-gold hover:border-zyvo-gold/30 transition-colors duration-200"
-              >
-                <Icon />
-              </a>
+          {/* Cols 2-3 — Link sections */}
+          <div className="xl:col-span-2 grid grid-cols-2 sm:grid-cols-4 gap-8">
+            {LINK_SECTIONS.map((section, i) => (
+              <AnimatedSection key={section.title} delay={0.06 + i * 0.07}>
+                <div className="space-y-4">
+                  <h3 className="text-zyvo-white/60 text-xs font-semibold uppercase tracking-widest">
+                    {section.title}
+                  </h3>
+                  <ul className="space-y-3">
+                    {section.links.map(link => (
+                      <li key={link.label}>
+                        <a
+                          href={link.href}
+                          {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                          className="text-sm text-zyvo-white/40 hover:text-zyvo-white/70 transition-colors duration-200"
+                        >
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
 
-        {/* Fila inferior: uptime + copyright */}
-        <div className="flex items-center justify-center gap-6">
-          <div className="flex items-center gap-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            <span className="text-zyvo-white/20 text-xs">Sistemas activos</span>
-          </div>
-          <span className="text-zyvo-white/10">·</span>
-          <span className="text-zyvo-white/15 text-xs">© {year} ZYVO</span>
-        </div>
-
-        {/* Fila legal */}
-        <div className="border-t border-white/4 pt-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        {/* Bottom bar */}
+        <div className="border-t border-white/4 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-zyvo-white/20 text-xs">
             <Shield size={12} className="text-zyvo-gold/40 shrink-0" />
             <span>
-              Tratamiento de datos personales conforme a la{' '}
-              <strong className="text-zyvo-white/35 font-medium">
-                Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)
-              </strong>
+              Datos personales protegidos conforme a la{' '}
+              <strong className="text-zyvo-white/35 font-medium">LFPDPPP</strong>
               {' '}y su Reglamento vigente.
             </span>
           </div>
           <p className="text-zyvo-white/15 text-xs shrink-0">
-            México · IA Ética · Self-Hosted
+            © {year} ZYVO · México · IA Ética · Self-Hosted
           </p>
         </div>
+
       </div>
     </footer>
   )

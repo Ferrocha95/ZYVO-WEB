@@ -25,7 +25,7 @@ export default function FloatingContactButtons() {
                 transition={{ duration: 0.25 }}
                 className="text-xs font-medium text-zyvo-white/50 bg-zyvo-dark/80 border border-white/8 px-3 py-1.5 rounded-full backdrop-blur-md whitespace-nowrap"
               >
-                Habla con Rome IA
+                Rome IA
               </motion.span>
             )}
           </AnimatePresence>
@@ -34,7 +34,7 @@ export default function FloatingContactButtons() {
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.93 }}
             onClick={() => setRomeOpen(v => !v)}
-            className="w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-200"
+            className="relative w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-colors duration-200"
             style={{
               background: romeOpen
                 ? 'rgba(212,175,55,0.15)'
@@ -47,6 +47,9 @@ export default function FloatingContactButtons() {
             }}
             aria-label={romeOpen ? 'Cerrar Rome' : 'Abrir Rome IA'}
           >
+            {!romeOpen && (
+              <span className="absolute inset-0 rounded-full animate-ping bg-zyvo-gold/20 pointer-events-none" />
+            )}
             <AnimatePresence mode="wait">
               {romeOpen ? (
                 <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
