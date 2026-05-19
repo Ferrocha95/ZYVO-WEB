@@ -37,8 +37,8 @@ function LinkedInIcon() {
 }
 
 const SOCIAL_LINKS = [
-  { label: 'Instagram', href: 'https://instagram.com/zyvo.ai',  Icon: InstagramIcon },
-  { label: 'Facebook',  href: 'https://facebook.com/zyvo.ai',   Icon: FacebookIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/zyvo_ai/',           Icon: InstagramIcon },
+  { label: 'Facebook',  href: 'https://www.facebook.com/share/1Cqb4Qrti7/',   Icon: FacebookIcon },
   { label: 'TikTok',    href: 'https://tiktok.com/@zyvo.ai',    Icon: TikTokIcon },
   { label: 'LinkedIn',  href: 'https://linkedin.com/company/zyvo-ai', Icon: LinkedInIcon },
 ]
