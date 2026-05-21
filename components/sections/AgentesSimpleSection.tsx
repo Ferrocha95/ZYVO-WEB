@@ -2,7 +2,11 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, X, TrendingUp, MessageSquare, UserCheck, RefreshCw, FileText, GraduationCap } from 'lucide-react'
+import {
+  ChevronLeft, ChevronRight, X, TrendingUp,
+  Phone, ClipboardList, UserCheck, Headphones,
+  Workflow, FolderOpen, Package, GraduationCap, BarChart3,
+} from 'lucide-react'
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
@@ -17,44 +21,84 @@ interface Agent {
 
 const agents: Agent[] = [
   {
-    icon: <MessageSquare size={28} />,
-    name: 'Agente de Atención Instantánea',
-    tagline: 'Responde, filtra y guía a tus clientes en segundos, sin que nadie tenga que estar disponible.',
-    elimina: 'Tiempos de espera, respuestas perdidas y atención inconsistente.',
-    gana: 'Clientes atendidos al instante, a cualquier hora, sin costo operativo adicional.',
+    icon: <Phone size={28} />,
+    name: 'Recepcionista digital',
+    tagline: 'Recibe mensajes, responde lo básico, filtra solicitudes y lleva cada caso al canal correcto.',
+    elimina: 'La fricción de las respuestas lentas y de perder oportunidades por no contestar a tiempo.',
+    gana: 'Rapidez de atención, mejor experiencia para el cliente y más prospectos bien encaminados.',
+    color: '0,170,255',
+  },
+  {
+    icon: <ClipboardList size={28} />,
+    name: 'Capturista digital',
+    tagline: 'Toma datos de formularios, WhatsApp, correo o archivos y los registra automáticamente en CRM, hojas o bases internas.',
+    elimina: 'El trabajo manual de copiar y pegar, que suele causar errores y retrasos.',
+    gana: 'Precisión, tiempo libre y una operación mucho más ligera.',
     color: '74,144,226',
   },
   {
     icon: <UserCheck size={28} />,
-    name: 'Agente Calificador de Leads',
-    tagline: 'Analiza cada prospecto que llega, hace las preguntas correctas y te entrega solo los que vale la pena trabajar.',
-    elimina: 'El tiempo que tu equipo pierde con prospectos que nunca van a comprar.',
-    gana: 'Un pipeline más limpio, ciclos de venta más cortos y más cierres.',
+    name: 'Calificador de leads digital',
+    tagline: 'Detecta qué prospectos sí tienen potencial y cuáles no están listos todavía.',
+    elimina: 'La fricción de que ventas pierda tiempo con contactos fríos o mal calificados.',
+    gana: 'Enfoque comercial, mejor conversión y menos desgaste del equipo.',
     color: '0,170,255',
   },
   {
-    icon: <RefreshCw size={28} />,
-    name: 'Agente de Seguimiento Comercial',
-    tagline: 'Mantiene el contacto con cada prospecto en el momento exacto, con el mensaje correcto, sin que nadie lo recuerde manualmente.',
-    elimina: 'Los seguimientos olvidados y las oportunidades que se enfrían por falta de contacto.',
-    gana: 'Más conversiones sin aumentar la carga de tu equipo comercial.',
+    icon: <TrendingUp size={28} />,
+    name: 'Asesor de ventas digital',
+    tagline: 'Da seguimiento a prospectos, manda recordatorios y mantiene el pipeline vivo sin persecución manual.',
+    elimina: 'La fricción del seguimiento desordenado y los leads olvidados.',
+    gana: 'Más cierres, más consistencia y más control comercial.',
+    color: '74,144,226',
+  },
+  {
+    icon: <Headphones size={28} />,
+    name: 'Agente de atención al cliente',
+    tagline: 'Responde preguntas frecuentes, guía a los clientes y consulta información interna cuando hace falta.',
+    elimina: 'La fricción de repetir siempre las mismas respuestas y saturar al equipo humano.',
+    gana: 'Atención más rápida, respuestas más consistentes y disponibilidad 24/7.',
     color: '0,170,255',
   },
   {
-    icon: <FileText size={28} />,
-    name: 'Agente Operativo de Documentos',
-    tagline: 'Procesa, clasifica y extrae información de facturas, contratos y reportes de forma automática.',
-    elimina: 'La captura manual de datos y la revisión documento por documento.',
-    gana: 'Procesos administrativos que antes tomaban días, completados en minutos.',
+    icon: <Workflow size={28} />,
+    name: 'Coordinador operativo digital',
+    tagline: 'Mueve tareas entre áreas, avisa pendientes y dispara flujos según reglas del negocio.',
+    elimina: 'La fricción de los procesos atorados por seguimiento manual y correos perdidos.',
+    gana: 'Orden, trazabilidad y una operación que avanza sin tanto freno.',
+    color: '74,144,226',
+  },
+  {
+    icon: <FolderOpen size={28} />,
+    name: 'Administrador documental',
+    tagline: 'Recibe, clasifica, ordena y distribuye documentos al área correcta.',
+    elimina: 'La fricción del caos documental, las búsquedas eternas y la revisión manual de archivos.',
+    gana: 'Control, velocidad y menos errores administrativos.',
+    color: '0,170,255',
+  },
+  {
+    icon: <Package size={28} />,
+    name: 'Supervisor de inventario digital',
+    tagline: 'Vigila niveles de inventario, detecta faltantes y activa alertas cuando algo se sale de rango.',
+    elimina: 'La fricción de reaccionar tarde cuando ya hay desabasto o desorden.',
+    gana: 'Visibilidad, prevención y mejor control de operación.',
     color: '74,144,226',
   },
   {
     icon: <GraduationCap size={28} />,
-    name: 'Agente de Onboarding y Capacitación',
-    tagline: 'Incorpora a nuevos colaboradores o clientes con un proceso estructurado, consistente y sin fricción.',
-    elimina: 'La dependencia de una persona para explicar lo mismo una y otra vez.',
-    gana: 'Onboardings más rápidos, equipos listos antes y menos errores en los primeros días.',
+    name: 'Tutor interno digital',
+    tagline: 'Explica procesos, manuales y pasos de trabajo a nuevos colaboradores.',
+    elimina: 'La fricción de capacitar una y otra vez al mismo personal en tareas repetitivas.',
+    gana: 'Onboarding más rápido, menos carga para el equipo senior y más consistencia operativa.',
     color: '0,170,255',
+  },
+  {
+    icon: <BarChart3 size={28} />,
+    name: 'Analista de operación digital',
+    tagline: 'Resume información, detecta incidencias y entrega reportes que ayudan a decidir rápido.',
+    elimina: 'La fricción de operar con datos dispersos o con decisiones tardías.',
+    gana: 'Claridad, mejor control y una lectura más inteligente del negocio.',
+    color: '74,144,226',
   },
 ]
 
@@ -112,11 +156,11 @@ export default function AgentesSimpleSection() {
             Infraestructura Operativa
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-zyvo-white mb-5" style={{ fontFamily: 'var(--font-instrument-serif)' }}>
-            Agentes que trabajan<br />
-            <span className="text-gradient-gold">mientras tú cierras</span>
+            Empleados digitales que trabajan{' '}
+            <span className="text-gradient-gold">24/7</span>
           </h2>
           <p className="text-zyvo-white/50 text-base max-w-xl mx-auto leading-relaxed">
-            Tus operaciones no necesitan más gente. Necesitan mejor infraestructura. Los agentes de ZYVO trabajan en silencio, sin errores y sin días libres — para que tu equipo se enfoque en lo que realmente importa.
+            No reemplazan a tu equipo — lo potencian. Los empleados digitales de ZYVO absorben el trabajo repetitivo para que tus colaboradores se enfoquen en lo que realmente mueve el negocio.
           </p>
         </motion.div>
 
@@ -152,7 +196,7 @@ export default function AgentesSimpleSection() {
                     {agent.icon}
                   </div>
                   <span className="text-5xl font-bold tabular-nums" style={{ color: `rgba(${agent.color},0.12)`, fontFamily: 'var(--font-jetbrains-mono)' }}>
-                    0{current + 1}
+                    {String(current + 1).padStart(2, '0')}
                   </span>
                 </div>
 
@@ -204,7 +248,7 @@ export default function AgentesSimpleSection() {
         </div>
 
         {/* Dots */}
-        <div className="flex items-center justify-center gap-2 mt-8">
+        <div className="flex items-center justify-center gap-2 mt-8 flex-wrap">
           {agents.map((_, i) => (
             <button
               key={i}

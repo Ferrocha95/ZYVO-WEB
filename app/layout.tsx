@@ -9,6 +9,7 @@ import CustomCursor           from '@/components/ui/CustomCursor'
 import GlobalBackground       from '@/components/ui/GlobalBackground'
 import TechGrid               from '@/components/ui/TechGrid'
 import FloatingContactButtons from '@/components/ui/FloatingContactButtons'
+import CookieBanner           from '@/components/ui/CookieBanner'
 import { Toaster }            from 'sonner'
 
 const instrumentSerif = Instrument_Serif({
@@ -63,6 +64,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
           <FloatingContactButtons />
+          <CookieBanner />
           <Toaster
             position="bottom-right"
             theme="dark"

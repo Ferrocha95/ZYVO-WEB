@@ -49,7 +49,7 @@ export default function ContactSection() {
         throw new Error(data.error)
       }
     } catch {
-      toast.error('Error al enviar. Escríbenos directamente a contacto@zyvo.ai')
+      toast.error('Error al enviar. Escríbenos directamente a direccion@zyvo.com.mx')
     } finally {
       setLoading(false)
     }

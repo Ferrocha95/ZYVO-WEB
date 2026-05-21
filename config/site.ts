@@ -21,7 +21,7 @@ export const SITE_CONFIG = {
     'Arquitectura de sistemas inteligentes para PyMEs que no pueden darse el lujo de seguir operando como en 2020',
   description:
     'ZYVO es una boutique de Arquitectura de IA y Automatización Ética para PyMEs latinoamericanas. No somos una agencia de marketing — somos una firma de ingeniería de eficiencia operativa.',
-  email: 'contacto@zyvo.ai',
+  email: 'direccion@zyvo.com.mx',
   whatsapp: '+52 55 0000 0000',
   linkedin: 'https://linkedin.com/company/zyvo-ai',
   ctaPrimary: 'Solicita tu Auditoría de Fricción',

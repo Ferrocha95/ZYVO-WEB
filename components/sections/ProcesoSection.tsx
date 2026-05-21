@@ -100,9 +100,9 @@ export default function ProcesoSection() {
             >
               {/* Número con pulso de opacidad */}
               <motion.span
-                animate={{ opacity: [0.08, 0.16, 0.08] }}
+                animate={{ opacity: [0.45, 0.75, 0.45] }}
                 transition={{ duration: 3, repeat: Infinity, delay: i * 1 }}
-                className="font-(family-name:--font-instrument-serif) text-5xl text-zyvo-white/12 leading-none select-none"
+                className="font-(family-name:--font-instrument-serif) text-5xl text-zyvo-gold/60 leading-none select-none"
               >
                 {paso.numero}
               </motion.span>

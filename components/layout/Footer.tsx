@@ -55,9 +55,9 @@ const LINK_SECTIONS = [
   {
     title: 'Empresa',
     links: [
-      { label: 'Auditoría de Fricción', href: '#cta', external: false },
-      { label: 'Privacidad',            href: '#',    external: false },
-      { label: 'LFPDPPP',              href: '#',    external: false },
+      { label: 'Auditoría de Fricción', href: '/auditoria', external: false },
+      { label: 'Privacidad',            href: '/privacidad',         external: false },
+      { label: 'LFPDPPP',              href: '/privacidad#lfpdppp', external: false },
     ],
   },
   {
@@ -72,7 +72,7 @@ const LINK_SECTIONS = [
   {
     title: 'Soporte',
     links: [
-      { label: 'contacto@zyvo.ai', href: 'mailto:contacto@zyvo.ai', external: true },
+      { label: 'direccion@zyvo.com.mx', href: 'mailto:direccion@zyvo.com.mx', external: true },
       { label: 'WhatsApp',         href: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? ''}`, external: true },
       { label: 'Documentación',    href: '#',                       external: false },
     ],

@@ -165,7 +165,7 @@ export default function HeroSection() {
           >
             {[
               { value: 'ROI 3x',  label: 'mínimo garantizado' },
-              { value: '10 días', label: 'primera entrega' },
+              { value: 'Ágil',    label: 'primera entrega'  },
               { value: '85%',     label: 'menos carga manual' },
             ].map((s, i) => (
               <motion.div

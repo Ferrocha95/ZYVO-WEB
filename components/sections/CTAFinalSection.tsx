@@ -11,6 +11,8 @@ type Form = {
   email: string
   empresa: string
   facturacion: string
+  waPrefijo: string
+  waNumero: string
 }
 
 const RANGOS = [
@@ -20,8 +22,16 @@ const RANGOS = [
   '+$10M MXN/mes',
 ]
 
+const PREFIJOS = [
+  { code: '+52', label: '🇲🇽 +52' },
+  { code: '+1',  label: '🇺🇸 +1'  },
+  { code: '+57', label: '🇨🇴 +57' },
+  { code: '+54', label: '🇦🇷 +54' },
+  { code: '+34', label: '🇪🇸 +34' },
+]
+
 export default function CTAFinalSection() {
-  const [form, setForm]       = useState<Form>({ nombre: '', email: '', empresa: '', facturacion: '' })
+  const [form, setForm]       = useState<Form>({ nombre: '', email: '', empresa: '', facturacion: '', waPrefijo: '+52', waNumero: '' })
   const [loading, setLoading] = useState(false)
   const [sent, setSent]       = useState(false)
 
@@ -32,17 +42,18 @@ export default function CTAFinalSection() {
     e.preventDefault()
     if (!form.nombre || !form.email) { toast.error('Nombre y email son requeridos.'); return }
     setLoading(true)
+    const whatsapp = form.waNumero.trim() ? `${form.waPrefijo}${form.waNumero.trim()}` : undefined
     try {
       const r = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, tipo: 'auditoria' }),
+        body: JSON.stringify({ nombre: form.nombre, email: form.email, empresa: form.empresa, facturacion: form.facturacion, whatsapp, tipo: 'auditoria' }),
       })
       const d = await r.json()
       if (d.success) { setSent(true); toast.success('¡Recibido! Te contactamos en menos de 24 h.') }
       else throw new Error(d.error)
     } catch {
-      toast.error('Error al enviar. Escríbenos a contacto@zyvo.ai')
+      toast.error('Error al enviar. Escríbenos a direccion@zyvo.com.mx')
     } finally {
       setLoading(false)
     }
@@ -179,6 +190,32 @@ export default function CTAFinalSection() {
                     required
                     className="w-full bg-white/3 border border-white/8 rounded-xl px-4 py-2.5 text-zyvo-white text-sm placeholder-zyvo-white/20 focus:outline-none focus:border-zyvo-gold/35 transition-colors"
                   />
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-zyvo-white/35 text-xs uppercase tracking-wider">
+                    WhatsApp <span className="normal-case text-zyvo-white/20">(opcional)</span>
+                  </label>
+                  <div className="flex gap-2">
+                    <select
+                      name="waPrefijo"
+                      value={form.waPrefijo}
+                      onChange={set}
+                      className="bg-zyvo-dark border border-white/8 rounded-xl px-3 py-2.5 text-zyvo-white text-sm focus:outline-none focus:border-zyvo-gold/35 transition-colors shrink-0"
+                    >
+                      {PREFIJOS.map(p => (
+                        <option key={p.code} value={p.code}>{p.label}</option>
+                      ))}
+                    </select>
+                    <input
+                      type="tel"
+                      name="waNumero"
+                      value={form.waNumero}
+                      onChange={set}
+                      placeholder="55 1234 5678"
+                      className="flex-1 min-w-0 bg-white/3 border border-white/8 rounded-xl px-4 py-2.5 text-zyvo-white text-sm placeholder-zyvo-white/20 focus:outline-none focus:border-zyvo-gold/35 transition-colors"
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-1.5">

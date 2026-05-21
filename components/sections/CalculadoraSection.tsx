@@ -71,10 +71,10 @@ export default function CalculadoraSection() {
   const fugaMensual    = costoMensual * PCT_IMPRODUCTIVO                    // 40% malgastado
   const fugaAnual      = fugaMensual * 12
 
-  const ahorroMin        = fugaAnual   * 0.50
-  const ahorroMax        = fugaAnual   * 0.60
-  const ahorroMensualMin = fugaMensual * 0.50
-  const ahorroMensualMax = fugaMensual * 0.60
+  const ahorroMin        = fugaAnual   * 0.70
+  const ahorroMax        = fugaAnual   * 0.80
+  const ahorroMensualMin = fugaMensual * 0.70
+  const ahorroMensualMax = fugaMensual * 0.80
 
   const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
@@ -258,7 +258,7 @@ export default function CalculadoraSection() {
                   Impacto potencial con ZYVO
                 </p>
                 <p className="text-zyvo-white/50 text-sm leading-relaxed">
-                  Con nuestras implementaciones, empresas similares recuperan entre el 50% y 60% de su fuga operativa
+                  Con nuestras implementaciones, empresas similares recuperan entre el 70% y 80% de su fuga operativa
                 </p>
               </div>
 
@@ -284,19 +284,17 @@ export default function CalculadoraSection() {
                 </div>
               </div>
 
-              {/* Barra visual de rango 50–60% */}
+              {/* Barra visual de rango 70–80% */}
               <div className="space-y-2">
                 <div className="flex justify-between text-xs text-zyvo-white/30">
-                  <span>50%</span>
-                  <span>60%</span>
+                  <span>70%</span>
+                  <span>80%</span>
                 </div>
                 <div className="relative h-2 w-full rounded-full overflow-hidden">
-                  {/* Fondo sutil */}
                   <div className="absolute inset-0 bg-white/5 rounded-full" />
-                  {/* Barra animada de rango */}
                   <motion.div
                     initial={{ width: 0 }}
-                    whileInView={{ width: '55%' }}
+                    whileInView={{ width: '75%' }}
                     viewport={{ once: true }}
                     transition={{ duration: 1.0, delay: 0.3, ease: EASE }}
                     className="absolute inset-y-0 left-0 rounded-full bg-linear-to-r from-zyvo-white/20 to-zyvo-electric/60"
@@ -327,6 +325,38 @@ export default function CalculadoraSection() {
                     className="text-lg font-semibold text-zyvo-gold/80 tabular-nums"
                   />
                 </div>
+              </div>
+            </div>
+
+            {/* Card de ventajas de tiempo */}
+            <div className="glass rounded-2xl p-6 space-y-4">
+              <div className="space-y-1">
+                <p className="text-xs text-zyvo-white/30 font-medium uppercase tracking-widest">
+                  Optimización del talento humano
+                </p>
+                <p className="text-zyvo-white/65 text-sm font-medium">Tu equipo hace más, en menos tiempo</p>
+                <p className="text-zyvo-white/35 text-xs leading-relaxed">
+                  Los empleados digitales absorben el trabajo repetitivo para que tus colaboradores se enfoquen en lo que realmente importa.
+                </p>
+              </div>
+              <div className="space-y-2">
+                {/* Encabezado tabla */}
+                <div className="grid grid-cols-3 gap-2 pb-2 border-b border-white/6">
+                  <span className="text-zyvo-white/25 text-xs">Tarea</span>
+                  <span className="text-zyvo-gold/50 text-xs font-medium text-center">Empleado digital</span>
+                  <span className="text-zyvo-white/25 text-xs text-right">Equipo humano</span>
+                </div>
+                {[
+                  { tarea: 'Respuesta a mensajes', digital: '< 10 seg', humano: '2–4 hrs' },
+                  { tarea: 'Registro de datos',    digital: 'Instantáneo', humano: '1–2 hrs/día' },
+                  { tarea: 'Seguimiento a leads',  digital: 'Automático 24/7', humano: 'Solo en horario' },
+                ].map(row => (
+                  <div key={row.tarea} className="grid grid-cols-3 gap-2 items-center py-1.5">
+                    <span className="text-zyvo-white/45 text-xs">{row.tarea}</span>
+                    <span className="text-zyvo-gold text-xs font-medium text-center">{row.digital}</span>
+                    <span className="text-zyvo-white/35 text-xs text-right">{row.humano}</span>
+                  </div>
+                ))}
               </div>
             </div>
 
