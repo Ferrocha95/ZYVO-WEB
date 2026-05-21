@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
@@ -21,6 +22,9 @@ function scrollTo(href: string) {
 }
 
 export default function Navbar() {
+  const pathname = usePathname()
+  const isHome   = pathname === '/'
+
   const [collapsed, setCollapsed]   = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const collapseAtY = useRef(0)
@@ -67,16 +71,25 @@ export default function Navbar() {
                 className="flex items-center"
               >
                 {/* Logo */}
-                <a
-                  href="#"
-                  onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-                  className="flex items-center gap-1 pl-5 pr-3 shrink-0"
-                >
-                  <span className="font-(family-name:--font-instrument-serif) text-base text-zyvo-white tracking-tight whitespace-nowrap">
-                    ZYVO
-                  </span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold mb-1.5 shrink-0" />
-                </a>
+                {isHome ? (
+                  <a
+                    href="#"
+                    onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+                    className="flex items-center gap-1 pl-5 pr-3 shrink-0"
+                  >
+                    <span className="font-(family-name:--font-instrument-serif) text-base text-zyvo-white tracking-tight whitespace-nowrap">
+                      ZYVO
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold mb-1.5 shrink-0" />
+                  </a>
+                ) : (
+                  <Link href="/" className="flex items-center gap-1 pl-5 pr-3 shrink-0">
+                    <span className="font-(family-name:--font-instrument-serif) text-base text-zyvo-white tracking-tight whitespace-nowrap">
+                      ZYVO
+                    </span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold mb-1.5 shrink-0" />
+                  </Link>
+                )}
 
                 <div className="w-px h-5 bg-white/10 mx-1 shrink-0" />
 
@@ -91,7 +104,7 @@ export default function Navbar() {
                       >
                         {link.label}
                       </Link>
-                    ) : (
+                    ) : isHome ? (
                       <button
                         key={link.href}
                         onClick={() => scrollTo(link.href)}
@@ -99,17 +112,34 @@ export default function Navbar() {
                       >
                         {link.label}
                       </button>
+                    ) : (
+                      <Link
+                        key={link.href}
+                        href={`/${link.href}`}
+                        className="px-4 py-2 text-sm text-zyvo-white/55 hover:text-zyvo-white hover:bg-white/5 rounded-full transition-colors duration-200 whitespace-nowrap"
+                      >
+                        {link.label}
+                      </Link>
                     )
                   )}
                 </nav>
 
                 {/* CTA */}
-                <button
-                  onClick={() => scrollTo('#cta')}
-                  className="flex items-center px-5 py-2 mx-2 text-sm shrink-0 whitespace-nowrap btn-glow-nav"
-                >
-                  Auditoría →
-                </button>
+                {isHome ? (
+                  <button
+                    onClick={() => scrollTo('#cta')}
+                    className="flex items-center px-5 py-2 mx-2 text-sm shrink-0 whitespace-nowrap btn-glow-nav"
+                  >
+                    Auditoría →
+                  </button>
+                ) : (
+                  <Link
+                    href="/#cta"
+                    className="flex items-center px-5 py-2 mx-2 text-sm shrink-0 whitespace-nowrap btn-glow-nav"
+                  >
+                    Auditoría →
+                  </Link>
+                )}
               </motion.div>
             ) : (
               <motion.button
@@ -132,14 +162,21 @@ export default function Navbar() {
       {/* ── Mobile header ────────────────────────────────────────── */}
       <header className="md:hidden fixed top-0 inset-x-0 z-50 bg-zyvo-dark/90 backdrop-blur-xl border-b border-white/6 py-4">
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          <a
-            href="#"
-            onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
-            className="flex items-center gap-1"
-          >
-            <span className="font-(family-name:--font-instrument-serif) text-xl text-zyvo-white tracking-tight">ZYVO</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold mb-2" />
-          </a>
+          {isHome ? (
+            <a
+              href="#"
+              onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}
+              className="flex items-center gap-1"
+            >
+              <span className="font-(family-name:--font-instrument-serif) text-xl text-zyvo-white tracking-tight">ZYVO</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold mb-2" />
+            </a>
+          ) : (
+            <Link href="/" className="flex items-center gap-1">
+              <span className="font-(family-name:--font-instrument-serif) text-xl text-zyvo-white tracking-tight">ZYVO</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-zyvo-gold mb-2" />
+            </Link>
+          )}
           <button
             className="p-2 text-zyvo-white/60 hover:text-zyvo-white transition-colors"
             onClick={() => setMobileOpen(v => !v)}
@@ -170,7 +207,7 @@ export default function Navbar() {
                 >
                   {link.label}
                 </Link>
-              ) : (
+              ) : isHome ? (
                 <button
                   key={link.href}
                   onClick={() => { scrollTo(link.href); setMobileOpen(false) }}
@@ -178,14 +215,33 @@ export default function Navbar() {
                 >
                   {link.label}
                 </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={`/${link.href}`}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-2xl font-medium text-zyvo-white/70 hover:text-zyvo-white transition-colors"
+                >
+                  {link.label}
+                </Link>
               )
             )}
-            <button
-              onClick={() => { scrollTo('#cta'); setMobileOpen(false) }}
-              className="mt-4 px-8 py-3.5 btn-glow"
-            >
-              Solicitar auditoría
-            </button>
+            {isHome ? (
+              <button
+                onClick={() => { scrollTo('#cta'); setMobileOpen(false) }}
+                className="mt-4 px-8 py-3.5 btn-glow"
+              >
+                Solicitar auditoría
+              </button>
+            ) : (
+              <Link
+                href="/#cta"
+                onClick={() => setMobileOpen(false)}
+                className="mt-4 px-8 py-3.5 btn-glow"
+              >
+                Solicitar auditoría
+              </Link>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
