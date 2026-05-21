@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
@@ -9,6 +10,8 @@ const NAV = [
   { label: 'Agentes',     href: '#agentes' },
   { label: 'Proceso',     href: '#proceso' },
   { label: 'Calculadora', href: '#calculadora' },
+  { label: 'Partners',    href: '#partners' },
+  { label: 'Blog',        href: '/blog' },
 ]
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
@@ -79,15 +82,25 @@ export default function Navbar() {
 
                 {/* Nav items */}
                 <nav className="flex items-center px-1">
-                  {NAV.map(link => (
-                    <button
-                      key={link.href}
-                      onClick={() => scrollTo(link.href)}
-                      className="px-4 py-2 text-sm text-zyvo-white/55 hover:text-zyvo-white hover:bg-white/5 rounded-full transition-colors duration-200 whitespace-nowrap"
-                    >
-                      {link.label}
-                    </button>
-                  ))}
+                  {NAV.map(link =>
+                    link.href.startsWith('/') ? (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        className="px-4 py-2 text-sm text-zyvo-white/55 hover:text-zyvo-white hover:bg-white/5 rounded-full transition-colors duration-200 whitespace-nowrap"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <button
+                        key={link.href}
+                        onClick={() => scrollTo(link.href)}
+                        className="px-4 py-2 text-sm text-zyvo-white/55 hover:text-zyvo-white hover:bg-white/5 rounded-full transition-colors duration-200 whitespace-nowrap"
+                      >
+                        {link.label}
+                      </button>
+                    )
+                  )}
                 </nav>
 
                 {/* CTA */}
@@ -147,15 +160,26 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 bg-zyvo-dark/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 md:hidden"
           >
-            {NAV.map(link => (
-              <button
-                key={link.href}
-                onClick={() => { scrollTo(link.href); setMobileOpen(false) }}
-                className="text-2xl font-medium text-zyvo-white/70 hover:text-zyvo-white transition-colors"
-              >
-                {link.label}
-              </button>
-            ))}
+            {NAV.map(link =>
+              link.href.startsWith('/') ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-2xl font-medium text-zyvo-white/70 hover:text-zyvo-white transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <button
+                  key={link.href}
+                  onClick={() => { scrollTo(link.href); setMobileOpen(false) }}
+                  className="text-2xl font-medium text-zyvo-white/70 hover:text-zyvo-white transition-colors"
+                >
+                  {link.label}
+                </button>
+              )
+            )}
             <button
               onClick={() => { scrollTo('#cta'); setMobileOpen(false) }}
               className="mt-4 px-8 py-3.5 btn-glow"
