@@ -10,7 +10,7 @@ const NAV = [
   { label: 'Agentes',     href: '#agentes' },
   { label: 'Proceso',     href: '#proceso' },
   { label: 'Calculadora', href: '#calculadora' },
-  { label: 'Partners',    href: '#partners' },
+  { label: 'Partners',    href: '/partners' },
   { label: 'Blog',        href: '/blog' },
 ]
 
