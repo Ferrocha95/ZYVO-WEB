@@ -42,7 +42,6 @@ function AnimatedNumber({
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 const RATES = {
-  referidor:   { setup: 0.05, mensual: 0,    maxMeses: 0  },
   comercial:   { setup: 0.10, mensual: 0.05, maxMeses: 6  },
   estrategico: { setup: 0.15, mensual: 0.10, maxMeses: 12 },
 } as const
@@ -50,7 +49,6 @@ const RATES = {
 type Nivel = keyof typeof RATES
 
 const NIVELES: { key: Nivel; label: string }[] = [
-  { key: 'referidor',   label: 'Referidor'          },
   { key: 'comercial',   label: 'Partner Comercial'  },
   { key: 'estrategico', label: 'Partner Estratégico'},
 ]
@@ -186,6 +184,7 @@ function Slider({
         min={min} max={max} step={step}
         value={value}
         onChange={e => onChange(Number(e.target.value))}
+        onWheel={e => e.currentTarget.blur()}
         className="w-full h-1.5 rounded-full appearance-none cursor-pointer"
         style={{
           background: `linear-gradient(to right, #00AAFF ${pct}%, rgba(255,255,255,0.08) ${pct}%)`,
@@ -228,7 +227,6 @@ export default function PartnersSection() {
   const mesesActivos   = Math.min(duracion, rate.maxMeses)
   const totalRecur     = comMensual * mesesActivos
   const totalGeneral   = comSetup + totalRecur
-  const isReferidor    = nivel === 'referidor'
 
   // Form state
   const [form,    setForm]    = useState<PartnerForm>(EMPTY_FORM)
@@ -628,38 +626,30 @@ export default function PartnersSection() {
 
               {/* Comisión mensual */}
               <div
-                className={`glass rounded-xl p-5 text-center space-y-1 transition-opacity duration-300 ${isReferidor ? 'opacity-40' : ''}`}
+                className="glass rounded-xl p-5 text-center space-y-1"
                 style={{ borderColor: 'rgba(255,255,255,0.07)' }}
               >
                 <p className="text-xs text-zyvo-white/30 uppercase tracking-wider">Por mes</p>
-                {isReferidor ? (
-                  <span className="block text-xl font-bold text-zyvo-white/30 font-mono">N/A</span>
-                ) : (
-                  <AnimatedNumber
-                    target={comMensual}
-                    prefix="$"
-                    suffix=" USD"
-                    className="block text-xl font-bold text-zyvo-electric font-mono"
-                  />
-                )}
+                <AnimatedNumber
+                  target={comMensual}
+                  prefix="$"
+                  suffix=" USD"
+                  className="block text-xl font-bold text-zyvo-electric font-mono"
+                />
               </div>
 
               {/* Total recurrencia */}
               <div
-                className={`glass rounded-xl p-5 text-center space-y-1 transition-opacity duration-300 ${isReferidor ? 'opacity-40' : ''}`}
+                className="glass rounded-xl p-5 text-center space-y-1"
                 style={{ borderColor: 'rgba(255,255,255,0.07)' }}
               >
                 <p className="text-xs text-zyvo-white/30 uppercase tracking-wider">Recurrencia total</p>
-                {isReferidor ? (
-                  <span className="block text-xl font-bold text-zyvo-white/30 font-mono">N/A</span>
-                ) : (
-                  <AnimatedNumber
-                    target={totalRecur}
-                    prefix="$"
-                    suffix=" USD"
-                    className="block text-xl font-bold text-zyvo-electric font-mono"
-                  />
-                )}
+                <AnimatedNumber
+                  target={totalRecur}
+                  prefix="$"
+                  suffix=" USD"
+                  className="block text-xl font-bold text-zyvo-electric font-mono"
+                />
               </div>
 
               {/* Total general */}
