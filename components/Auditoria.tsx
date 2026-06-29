@@ -17,14 +17,14 @@ export default function Auditoria() {
     setSubmitted(true)
   }
   return (
-    <section id="auditoria" className="py-28" style={{ backgroundColor:'#050508' }}>
+    <section id="auditoria" className="py-32" style={{ backgroundColor:'#050508' }}>
       <div className="max-w-5xl mx-auto px-6">
         <motion.div className="text-center mb-14" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-6 text-sm font-medium" style={{ background:'linear-gradient(135deg,rgba(108,92,231,0.25),rgba(168,85,247,0.2))', border:'1px solid rgba(108,92,231,0.4)', color:'#A855F7' }}>✦ LANZAMIENTO — Auditoría gratuita por tiempo limitado</motion.div>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Descubre exactamente dónde está<br/><span className="gradient-text">perdiendo dinero tu empresa.</span></motion.h2>
           <motion.p variants={fadeUp} className="text-lg max-w-2xl mx-auto" style={{ color:'#8888A8' }}>Normalmente la Auditoría de Fricción Operativa tiene un costo. Durante nuestro lanzamiento, la ofrecemos sin cargo para empresas calificadas en México y LATAM.</motion.p>
         </motion.div>
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-16">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <p className="section-label mb-5">Lo que incluye</p>
             <ul className="space-y-4 mb-8">{incluye.map((item,i)=><li key={i} className="flex items-start gap-3 text-sm" style={{ color:'#F0F0FF' }}><span style={{ color:'#6C5CE7',marginTop:2 }}>✓</span>{item}</li>)}</ul>

@@ -3,7 +3,6 @@ import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import LenisProvider          from '@/components/providers/LenisProvider'
 import GrainOverlay           from '@/components/ui/GrainOverlay'
-import CustomCursor           from '@/components/ui/CustomCursor'
 import GlobalBackground       from '@/components/ui/GlobalBackground'
 import TechGrid               from '@/components/ui/TechGrid'
 import CookieBanner           from '@/components/ui/CookieBanner'
@@ -61,8 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <GlobalBackground />
           <TechGrid />
           <GrainOverlay />
-          <CustomCursor />
-          <main>{children}</main>
+<main>{children}</main>
           <RomeWidget />
           <CookieBanner />
           <Toaster

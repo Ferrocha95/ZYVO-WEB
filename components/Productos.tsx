@@ -8,16 +8,16 @@ const productos = [
 ]
 export default function Productos() {
   return (
-    <section id="productos" className="py-28" style={{ backgroundColor:'#050508' }}>
+    <section id="productos" className="py-32" style={{ backgroundColor:'#050508' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+        <motion.div className="text-center mb-20" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">Arquitectura completa</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Una arquitectura completa.<br/><span className="gradient-text">Tres capas de poder.</span></motion.h2>
           <motion.p variants={fadeUp} className="text-lg max-w-xl mx-auto" style={{ color:'#8888A8' }}>No vendemos herramientas aisladas. Construimos la infraestructura completa.</motion.p>
         </motion.div>
         <motion.div className="grid md:grid-cols-3 gap-6" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           {productos.map((p,i)=>(
-            <motion.div key={i} variants={fadeUp} whileHover={{ y:-6, transition:{ type:'spring',stiffness:300,damping:20 } }} className="glass-card p-8 flex flex-col relative overflow-hidden" style={{ borderTop:`2px solid ${p.glow}` }}>
+            <motion.div key={i} variants={fadeUp} whileHover={{ y:-6, transition:{ type:'spring',stiffness:300,damping:20 } }} className="glass-card p-9 flex flex-col relative overflow-hidden" style={{ borderTop:`2px solid ${p.glow}` }}>
               <div className="absolute top-0 left-0 right-0 h-24 pointer-events-none" style={{ background:`radial-gradient(ellipse at top,${p.glow}15 0%,transparent 70%)` }}/>
               <div className="text-4xl mb-4">{p.emoji}</div>
               <span className="pill mb-4 self-start" style={{ fontSize:11 }}>{p.badge}</span>

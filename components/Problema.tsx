@@ -10,16 +10,16 @@ const antes = ['Leads que se pierden sin seguimiento','Respuestas que tardan hor
 const con = ['Pipeline que avanza solo','Respuesta automática en segundos','Reportes generados en tiempo real','Operación que funciona sola','Todo trazable y accesible siempre']
 export default function Problema() {
   return (
-    <section className="py-28" style={{ backgroundColor:'#0A0A12' }}>
+    <section className="py-32" style={{ backgroundColor:'#0A0A12' }}>
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+        <motion.div className="text-center mb-20" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">El problema</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Tu empresa pierde dinero<br/><span className="gradient-text">todos los días sin saberlo.</span></motion.h2>
           <motion.p variants={fadeUp} className="text-lg max-w-xl mx-auto" style={{ color:'#8888A8' }}>La fuga operativa es el costo silencioso del desorden: tiempo, errores y procesos manuales que drenan el margen mes a mes.</motion.p>
         </motion.div>
         <motion.div className="grid md:grid-cols-3 gap-6 mb-20" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           {sintomas.map((s,i)=>(
-            <motion.div key={i} variants={fadeUp} className="glass-card p-7">
+            <motion.div key={i} variants={fadeUp} className="glass-card p-8">
               <div className="text-3xl mb-4">{s.icon}</div>
               <h3 className="text-lg font-semibold mb-2" style={{ fontFamily:'Space Grotesk,sans-serif' }}>{s.titulo}</h3>
               <p className="text-sm leading-relaxed" style={{ color:'#8888A8' }}>{s.desc}</p>

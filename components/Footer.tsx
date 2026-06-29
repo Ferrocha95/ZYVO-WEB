@@ -8,7 +8,7 @@ const ls = { color:'#8888A8', fontSize:14, textDecoration:'none', display:'block
 export default function Footer() {
   return (
     <footer style={{ backgroundColor:'#0D0D14', borderTop:'1px solid rgba(108,92,231,0.15)' }}>
-      <div className="max-w-7xl mx-auto px-6 pt-16 pb-10">
+      <div className="max-w-7xl mx-auto px-6 pt-20 pb-12">
         <motion.div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12" variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="gradient-text font-bold text-2xl mb-3" style={{ fontFamily:'Space Grotesk,sans-serif' }}>ZYVO</div>
@@ -16,8 +16,7 @@ export default function Footer() {
             <div className="flex gap-3 mb-6">{redes.map(r=><a key={r.label} href={r.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center text-sm transition-all" style={{ width:36,height:36,borderRadius:12,backgroundColor:'rgba(108,92,231,0.1)',border:'1px solid rgba(108,92,231,0.2)' }} title={r.label}>{r.icon}</a>)}</div>
             <div className="glass-card p-4 text-xs space-y-1.5">
               <p style={{ color:'#8888A8' }}>🏢 Empresa legalmente constituida en México</p>
-              <p style={{ color:'#8888A8' }}>📄 RFC: ROMF9511032U6</p>
-              <p style={{ color:'#8888A8' }}>☁️ Infraestructura propia · Google Cloud</p>
+<p style={{ color:'#8888A8' }}>☁️ Infraestructura propia · Google Cloud</p>
               <p style={{ color:'#8888A8' }}>🔒 Self-Hosted · IA Ética</p>
             </div>
           </div>

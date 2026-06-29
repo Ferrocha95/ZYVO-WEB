@@ -9,7 +9,7 @@ const bc: Record<string,{bg:string,border:string,text:string}> = {
 }
 export default function EmpleadosDigitales() {
   return (
-    <section id="empleados" className="py-28" style={{ backgroundColor:'#050508' }}>
+    <section id="empleados" className="py-32" style={{ backgroundColor:'#050508' }}>
       <div className="max-w-7xl mx-auto px-6">
         <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">Marketplace</motion.p>
@@ -20,7 +20,7 @@ export default function EmpleadosDigitales() {
           {empleados.map(e=>{
             const c=bc[e.badgeColor]
             return (
-              <motion.div key={e.id} variants={fadeUp} whileHover={{ y:-5, transition:{ type:'spring',stiffness:300,damping:20 } }} className="glass-card p-7 flex flex-col relative overflow-hidden" style={e.destacado?{ borderColor:'rgba(108,92,231,0.6)', boxShadow:'0 0 40px rgba(108,92,231,0.15)' }:{}}>
+              <motion.div key={e.id} variants={fadeUp} whileHover={{ y:-5, transition:{ type:'spring',stiffness:300,damping:20 } }} className="glass-card p-8 flex flex-col relative overflow-hidden" style={e.destacado?{ borderColor:'rgba(108,92,231,0.6)', boxShadow:'0 0 40px rgba(108,92,231,0.15)' }:{}}>
                 {e.destacado&&<div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl" style={{ background:'linear-gradient(90deg,#6C5CE7,#00D4FF)' }}/>}
                 <div className="text-3xl mb-4">{e.emoji}</div>
                 <div className="flex items-start justify-between gap-2 mb-2">

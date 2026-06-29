@@ -24,10 +24,10 @@ export default function Nav() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style={{ backgroundColor: scrolled ? 'rgba(5,5,8,0.85)' : 'transparent', backdropFilter: scrolled ? 'blur(20px)' : 'none', borderBottom: scrolled ? '1px solid rgba(108,92,231,0.1)' : 'none' }}>
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <Link href="/" className="gradient-text font-bold text-xl" style={{ fontFamily:'Space Grotesk,sans-serif' }}>ZYVO</Link>
-          <div className="hidden lg:flex items-center gap-8">
-            {links.map(l => <a key={l.label} href={l.href} className="text-sm transition-colors duration-200" style={{ color:'#8888A8', fontFamily:'Inter,sans-serif' }} onMouseEnter={e=>(e.currentTarget.style.color='#F0F0FF')} onMouseLeave={e=>(e.currentTarget.style.color='#8888A8')}>{l.label}</a>)}
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between" style={{ height: 72 }}>
+          <Link href="/" className="gradient-text font-bold text-2xl" style={{ fontFamily:'Space Grotesk,sans-serif', letterSpacing:'-0.02em' }}>ZYVO</Link>
+          <div className="hidden lg:flex items-center gap-10">
+            {links.map(l => <a key={l.label} href={l.href} className="text-sm transition-colors duration-200" style={{ color:'#8888A8', fontFamily:'Inter,sans-serif', fontWeight: 500, letterSpacing:'0.01em' }} onMouseEnter={e=>(e.currentTarget.style.color='#F0F0FF')} onMouseLeave={e=>(e.currentTarget.style.color='#8888A8')}>{l.label}</a>)}
           </div>
           <div className="hidden lg:flex items-center gap-3">
             <button className="btn-ghost" style={{ padding:'8px 20px', fontSize:'14px' }} onClick={triggerRome}>Hablar con Rome</button>

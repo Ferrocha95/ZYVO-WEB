@@ -10,10 +10,10 @@ const chat = [
 ]
 export default function HubSpotlight() {
   return (
-    <section id="hub" className="py-28 relative overflow-hidden" style={{ backgroundColor:'#0A0A12' }}>
+    <section id="hub" className="py-32 relative overflow-hidden" style={{ backgroundColor:'#0A0A12' }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse 60% 60% at 50% 50%,rgba(108,92,231,0.07) 0%,transparent 70%)' }}/>
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-24 items-center">
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <motion.div variants={fadeUp}><span className="pill" style={{ backgroundColor:'rgba(108,92,231,0.15)', borderColor:'rgba(108,92,231,0.3)', color:'#A855F7' }}>✦ Precio especial de lanzamiento activo</span></motion.div>
             <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mt-6 mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Empieza con tu<br/><span className="gradient-text">Asistente Directiva IA.</span></motion.h2>
@@ -27,7 +27,7 @@ export default function HubSpotlight() {
             <motion.p variants={fadeUp} className="mt-3 text-xs" style={{ color:'#8888A8' }}>Sin técnicos. Sin instalación. Activa en minutos.</motion.p>
           </motion.div>
           <motion.div initial={{ opacity:0,x:40 }} whileInView={{ opacity:1,x:0 }} transition={{ duration:0.8,ease:[0.22,1,0.36,1] }} viewport={viewportOnce}>
-            <div className="glass-card p-8 relative overflow-hidden" style={{ minHeight:400, borderColor:'rgba(108,92,231,0.3)' }}>
+            <div className="glass-card p-8 relative overflow-hidden" style={{ minHeight:440, borderColor:'rgba(108,92,231,0.3)' }}>
               <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse at top right,rgba(108,92,231,0.12) 0%,transparent 60%)' }}/>
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{ background:'linear-gradient(135deg,#6C5CE7,#A855F7)', color:'white' }}>Z</div>
