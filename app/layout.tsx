@@ -1,26 +1,28 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Inter, JetBrains_Mono, Instrument_Serif } from 'next/font/google'
+import { Instrument_Serif, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
-import LenisProvider    from '@/components/providers/LenisProvider'
-import GrainOverlay     from '@/components/ui/GrainOverlay'
-import GlobalBackground from '@/components/ui/GlobalBackground'
-import TechGrid         from '@/components/ui/TechGrid'
-import CookieBanner     from '@/components/ui/CookieBanner'
-import SmoothScroll     from '@/components/SmoothScroll'
-import RomeWidget       from '@/components/RomeWidget'
-import { Toaster }      from 'sonner'
+import Navbar                 from '@/components/layout/Navbar'
+import Footer                 from '@/components/layout/Footer'
+import LenisProvider          from '@/components/providers/LenisProvider'
+import GrainOverlay           from '@/components/ui/GrainOverlay'
+import CustomCursor           from '@/components/ui/CustomCursor'
+import GlobalBackground       from '@/components/ui/GlobalBackground'
+import TechGrid               from '@/components/ui/TechGrid'
+import FloatingContactButtons from '@/components/ui/FloatingContactButtons'
+import CookieBanner           from '@/components/ui/CookieBanner'
+import { Toaster }            from 'sonner'
 
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
+const instrumentSerif = Instrument_Serif({
+  variable: '--font-instrument-serif',
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400'],
   display: 'swap',
 })
 
-const inter = Inter({
-  variable: '--font-inter',
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: '--font-plus-jakarta',
   subsets: ['latin'],
-  weight: ['400', '500'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
 })
 
@@ -31,52 +33,46 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
-const instrumentSerif = Instrument_Serif({
-  variable: '--font-instrument-serif',
-  subsets: ['latin'],
-  weight: '400',
-  style: ['normal', 'italic'],
-  display: 'swap',
-})
-
 export const metadata: Metadata = {
-  title: 'ZYVO — Arquitectura de Sistemas Inteligentes · México y LATAM',
-  description: 'Diseñamos infraestructura operativa inteligente para empresas en México y LATAM. Empleados digitales, CRM inteligente, ERP agéntico y ZYVO Hub.',
+  title: 'ZYVO — Arquitectura de sistemas inteligentes para PyMEs',
+  description:
+    'Diseñamos sistemas de IA y automatización que eliminan la fuga operativa en PyMEs mexicanas. Menos trabajo manual, más control, mejores márgenes.',
+  keywords: ['automatización empresarial', 'agentes IA', 'n8n', 'PyMEs México', 'ERP agéntico'],
   openGraph: {
-    locale: 'es_MX',
+    title: 'ZYVO — Arquitectura de sistemas inteligentes',
+    description: 'Erradicamos la fuga operativa de tu empresa con sistemas inteligentes.',
     type: 'website',
-    url: 'https://zyvo.com.mx',
-    title: 'ZYVO — Arquitectura de Sistemas Inteligentes · México y LATAM',
-    description: 'Diseñamos infraestructura operativa inteligente para empresas en México y LATAM. Empleados digitales, CRM inteligente, ERP agéntico y ZYVO Hub.',
+    locale: 'es_MX',
   },
-  twitter: { card: 'summary_large_image' },
-  alternates: { canonical: 'https://zyvo.com.mx' },
   robots: { index: true, follow: true },
+  alternates: { canonical: 'https://zyvo.ai' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="es"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} h-full`}
+      className={`${instrumentSerif.variable} ${plusJakarta.variable} ${jetbrainsMono.variable} h-full`}
     >
-      <body className="min-h-full antialiased overflow-x-hidden">
-        <SmoothScroll />
+      <body className="min-h-full bg-zyvo-dark text-zyvo-white antialiased overflow-x-hidden">
         <LenisProvider>
           <GlobalBackground />
           <TechGrid />
           <GrainOverlay />
+          <CustomCursor />
+          <Navbar />
           <main>{children}</main>
-          <RomeWidget />
+          <Footer />
+          <FloatingContactButtons />
           <CookieBanner />
           <Toaster
             position="bottom-right"
             theme="dark"
             toastOptions={{
               style: {
-                background: 'rgba(5,5,8,0.95)',
-                border: '1px solid rgba(108,92,231,0.25)',
-                color: '#F0F0FF',
+                background: 'rgba(8,12,20,0.95)',
+                border: '1px solid rgba(0,170,255,0.25)',
+                color: '#F5F5F5',
               },
             }}
           />

@@ -1,31 +1,51 @@
-import Nav from '@/components/Nav'
-import Hero from '@/components/Hero'
-import Problema from '@/components/Problema'
-import Productos from '@/components/Productos'
-import HubSpotlight from '@/components/HubSpotlight'
-import EmpleadosDigitales from '@/components/EmpleadosDigitales'
-import Calculadora from '@/components/Calculadora'
-import Proceso from '@/components/Proceso'
-import RomeSection from '@/components/RomeSection'
-import Auditoria from '@/components/Auditoria'
-import ParaQuienEs from '@/components/ParaQuienEs'
-import Footer from '@/components/Footer'
+import HeroSection          from '@/components/sections/HeroSection'
+import ProblemaValorSection  from '@/components/sections/ProblemaValorSection'
+import ServiciosSection      from '@/components/sections/ServiciosSection'
+import CalculadoraSection    from '@/components/sections/CalculadoraSection'
+import AgentesSimpleSection  from '@/components/sections/AgentesSimpleSection'
+import ProcesoSection        from '@/components/sections/ProcesoSection'
+import ResenasSection        from '@/components/sections/ResenasSection'
+import FAQSection            from '@/components/sections/FAQSection'
+import CTAFinalSection       from '@/components/sections/CTAFinalSection'
 
-export default function Home() {
+type DividerVariant = 'gold' | 'blue' | 'subtle'
+
+function Divider({ variant = 'gold' }: { variant?: DividerVariant }) {
+  const via: Record<DividerVariant, string> = {
+    gold:   'via-zyvo-gold/30',
+    blue:   'via-zyvo-blue/50',
+    subtle: 'via-white/8',
+  }
   return (
-    <main>
-      <Nav />
-      <Hero />
-      <Problema />
-      <Productos />
-      <HubSpotlight />
-      <EmpleadosDigitales />
-      <Calculadora />
-      <Proceso />
-      <RomeSection />
-      <Auditoria />
-      <ParaQuienEs />
-      <Footer />
-    </main>
+    <div className="relative h-px max-w-6xl mx-auto px-6">
+      <div className={`h-px bg-linear-to-r from-transparent ${via[variant]} to-transparent`} />
+      {variant !== 'subtle' && (
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-zyvo-electric/60" />
+      )}
+    </div>
+  )
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <Divider variant="gold" />
+      <ProblemaValorSection />
+      <Divider variant="blue" />
+      <ServiciosSection />
+      <Divider variant="gold" />
+      <CalculadoraSection />
+      <Divider variant="subtle" />
+      <AgentesSimpleSection />
+      <Divider variant="blue" />
+      <ProcesoSection />
+      <Divider variant="subtle" />
+      <ResenasSection />
+      <Divider variant="blue" />
+      <FAQSection />
+      <Divider variant="subtle" />
+      <CTAFinalSection />
+    </>
   )
 }
