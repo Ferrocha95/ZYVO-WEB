@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
-import { SplineScene } from '@/components/ui/SplineScene'
+import AgentNetworkVisual from '@/components/ui/AgentNetworkVisual'
 import { Spotlight }   from '@/components/ui/Spotlight'
 
 function scrollTo(id: string) {
@@ -197,11 +197,8 @@ export default function HeroSection() {
           {/* Spotlight mouse-glow */}
           <Spotlight size={320} />
 
-          {/* Escena 3D */}
-          <SplineScene
-            scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-            className="w-full h-full"
-          />
+          {/* Red de agentes */}
+          <AgentNetworkVisual className="w-full h-full" />
         </motion.div>
       </div>
 
