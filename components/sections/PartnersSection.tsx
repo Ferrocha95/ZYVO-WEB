@@ -311,8 +311,8 @@ export default function PartnersSection() {
             <span className="text-gradient-gold italic"> Gana con ZYVO.</span>
           </h2>
           <p className="text-zyvo-white/50 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            No es un programa de afiliados genérico. Es un ecosistema de colaboración comercial estratégica
-            donde tu red tiene valor real — y se remunera con transparencia.
+            No es un programa de afiliados genérico. Es un ecosistema donde conectas empresas que necesitan
+            infraestructura inteligente con quien sabe construirla — y generas ingreso real con cada proyecto que activas.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <motion.button
@@ -362,9 +362,9 @@ export default function PartnersSection() {
                   Partner ZYVO
                 </h3>
                 <p className="text-zyvo-white/45 text-sm leading-relaxed">
-                  Personas o profesionales que refieren, recomiendan o ayudan a cerrar oportunidades comerciales.
-                  Ideal para consultores independientes, directivos con red de contactos y profesionales que conocen
-                  el dolor operativo de sus clientes.
+                  Personas o profesionales que refieren y conectan a ZYVO con empresas que necesitan infraestructura inteligente.
+                  Ideal para consultores, directivos y profesionales que conocen el dolor operativo de sus clientes y quieren
+                  sumarles una solución real.
                 </p>
               </div>
               <div className="pt-4 border-t border-white/6">
@@ -389,9 +389,9 @@ export default function PartnersSection() {
                   Asociado ZYVO
                 </h3>
                 <p className="text-zyvo-white/45 text-sm leading-relaxed">
-                  Aliados estratégicos: consultoras, agencias, despachos, integradores o empresas que incorporan
-                  la capacidad de ZYVO dentro de su propia oferta o red. La colaboración se define por convenio
-                  según el alcance y modelo de cada alianza.
+                  Aliados estratégicos: consultoras, despachos, integradores o empresas que incorporan la arquitectura
+                  de sistemas inteligentes de ZYVO dentro de su propia oferta o red comercial. Las condiciones se
+                  definen por convenio según el alcance de cada alianza.
                 </p>
               </div>
               <div className="pt-4 border-t border-white/6">

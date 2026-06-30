@@ -104,9 +104,14 @@ export default function CTAFinalSection() {
             className="space-y-6"
           >
             <div className="space-y-4">
-              <p className="text-xs text-zyvo-white/30 font-medium uppercase tracking-widest">
-                El primer paso
-              </p>
+              <div className="flex items-center gap-3">
+                <p className="text-xs text-zyvo-white/30 font-medium uppercase tracking-widest">
+                  El primer paso
+                </p>
+                <span className="text-xs font-medium text-zyvo-electric border border-zyvo-electric/25 bg-zyvo-electric/8 px-2.5 py-1 rounded-full">
+                  Gratuita por tiempo de lanzamiento
+                </span>
+              </div>
               <h2 className="font-(family-name:--font-instrument-serif) text-3xl md:text-5xl font-normal text-zyvo-white leading-snug">
                 Descubre cuánto dinero está perdiendo tu empresa{' '}
                 <span className="text-gradient-gold italic">hoy</span>
@@ -122,9 +127,9 @@ export default function CTAFinalSection() {
             <ul className="space-y-3">
               {[
                 'Diagnóstico de procesos en 1–3 días',
-                'Roadmap de automatización priorizado por ROI',
+                'Mapa de fricción operativa de tu empresa',
+                'Roadmap priorizado por ROI',
                 'Sin compromiso de implementación',
-                'ROI mínimo 3x garantizado en proyectos',
               ].map(item => (
                 <li key={item} className="flex items-center gap-3">
                   <CheckCircle2 size={15} className="text-zyvo-gold shrink-0" />

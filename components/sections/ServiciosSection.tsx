@@ -6,28 +6,28 @@ import { Workflow, Bot, LayoutDashboard, ArrowRight, type LucideIcon } from 'luc
 
 const SERVICIOS = [
   {
-    icon: Workflow,
-    titulo: 'Automatización de Procesos',
+    icon: LayoutDashboard,
+    titulo: 'ZYVO Hub',
     descripcion:
-      'Conectamos tus sistemas y eliminamos la captura manual de datos, los reenvíos y las tareas repetitivas que consumen el tiempo de tu equipo.',
-    resultado: 'Operación continua sin intervención humana en tareas rutinarias',
-    tag: 'Procesos',
+      'Centro de mando operativo donde viven todos los empleados digitales de tu empresa. Desde aquí controlas la infraestructura completa: la Asistente Directiva IA y todos los agentes que operan tu negocio.',
+    resultado: 'Toda la operación de tu empresa en un solo lugar',
+    tag: 'Plataforma',
   },
   {
     icon: Bot,
-    titulo: 'Agentes IA Personalizados',
+    titulo: 'CRM Inteligente',
     descripcion:
-      'Empleados digitales autónomos que gestionan leads, atienden soporte, procesan documentos y actualizan sistemas en tiempo real.',
-    resultado: 'Capacidad operativa sin aumentar nómina',
-    tag: 'Inteligencia',
+      'Sistema de gestión comercial con IA que califica leads automáticamente, da seguimiento sin persecución manual y mueve el pipeline de ventas por ti.',
+    resultado: 'Pipeline activo sin que nadie lo persiga',
+    tag: 'Comercial',
   },
   {
-    icon: LayoutDashboard,
-    titulo: 'Sistemas Agénticos',
+    icon: Workflow,
+    titulo: 'ERP Agéntico',
     descripcion:
-      'CRM y ERP operados por agentes IA que califican leads, gestionan inventario, generan reportes y coordinan equipos de forma autónoma.',
+      'Sistema empresarial construido a medida donde agentes de IA coordinan inventario, logística, finanzas, documentación y equipos de forma autónoma.',
     resultado: 'Tu operación funciona aunque nadie esté mirando',
-    tag: 'Plataforma',
+    tag: 'Empresarial',
   },
 ]
 

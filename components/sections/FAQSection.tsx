@@ -7,36 +7,28 @@ const EASE = [0.25, 0.46, 0.45, 0.94] as const
 
 const FAQS = [
   {
-    q: '¿Qué es ZYVO?',
-    a: 'ZYVO diseña sistemas inteligentes para que tu empresa opere con menos fricción, menos trabajo manual y más control.',
+    q: '¿La información de mi empresa está segura? ¿Dónde vive?',
+    a: 'Los sistemas de ZYVO se instalan sobre la infraestructura del propio cliente: nube privada o servidor físico. Tu información no pasa por servidores de terceros ni queda en manos de ZYVO. Tú tienes el control total de tus datos en todo momento.',
   },
   {
-    q: '¿Qué tipo de soluciones construyen?',
-    a: 'Automatizaciones, agentes de IA, CRM inteligentes, ERP agénticos y LMS inteligentes, según lo que tu operación realmente necesite.',
+    q: '¿Qué pasa si después de la implementación algo no funciona como se esperaba?',
+    a: 'El proceso incluye una fase de estabilización continua. Si algo no opera como debe, lo corregimos — sin costo adicional. ZYVO no entrega un sistema y desaparece: acompañamos la operación real hasta que los resultados sean consistentes.',
   },
   {
-    q: '¿ZYVO sustituye a mi equipo?',
-    a: 'No. ZYVO ayuda a que tu equipo trabaje mejor, quitando tareas repetitivas y ordenando procesos que hoy consumen tiempo.',
+    q: '¿Cuánto tiempo tarda en verse el primer resultado?',
+    a: 'Los primeros resultados visibles aparecen dentro de las primeras dos semanas de implementación. La reducción de carga operativa es inmediata; el impacto financiero medible suele consolidarse en los primeros 30 a 90 días.',
   },
   {
-    q: '¿Esto sirve si ya usamos WhatsApp, Excel o un CRM?',
-    a: 'Sí. ZYVO se integra con lo que ya usas para conectar procesos y evitar que la información se quede dispersa.',
+    q: '¿Necesito personal técnico interno para operar los sistemas?',
+    a: 'No. Los sistemas de ZYVO están diseñados para que cualquier persona de tu equipo pueda interactuar con ellos sin formación técnica. Si se necesita mantenimiento o actualización, ZYVO lo gestiona directamente.',
   },
   {
-    q: '¿Qué problema resuelve ZYVO?',
-    a: 'Resuelve fugas operativas: leads perdidos, respuestas lentas, seguimiento desordenado, errores manuales y falta de trazabilidad.',
+    q: '¿Qué pasa si mi empresa crece o cambia de necesidades?',
+    a: 'Los sistemas de ZYVO se construyen para escalar. Si tu operación crece, cambia de enfoque o necesitas nuevas áreas automatizadas, el sistema se extiende — no se reemplaza. Esto es infraestructura diseñada para crecer contigo.',
   },
   {
-    q: '¿Cómo es el proceso de trabajo?',
-    a: 'Primero detectamos la fricción, luego entendemos el problema, diseñamos la solución, la implementamos y después damos seguimiento.',
-  },
-  {
-    q: '¿Dónde se instala la solución?',
-    a: 'Puede vivir en la nube con un VPS o dentro de la empresa con una caja física ZYVO, según el nivel de control que necesites.',
-  },
-  {
-    q: '¿Qué pasa después de la entrega?',
-    a: 'ZYVO no solo entrega el sistema: también acompaña la estabilización, el soporte y las mejoras para que siga dando resultados.',
+    q: '¿Cómo se garantiza el retorno de inversión?',
+    a: 'Antes de cualquier implementación, la auditoría de fricción cuantifica el impacto financiero esperado. El roadmap se prioriza por ROI, no por complejidad técnica. Y el resultado mínimo que garantizamos es 3x sobre la inversión — o devolvemos lo invertido.',
   },
 ]
 
@@ -144,7 +136,7 @@ export default function FAQSection() {
       >
         <div
           ref={spiralRef}
-          className="[mask-image:radial-gradient(circle_at_center,rgba(255,255,255,0.9),rgba(255,255,255,0.2)_55%,transparent_75%)]"
+          className="mask-[radial-gradient(circle_at_center,rgba(255,255,255,0.9),rgba(255,255,255,0.2)_55%,transparent_75%)]"
         />
       </div>
 
@@ -201,7 +193,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
         aria-expanded={open}
       >
         <div className="flex items-baseline gap-3 min-w-0">
-          <span className="font-(family-name:--font-jetbrains-mono) text-xs text-zyvo-white/25 shrink-0">
+          <span className="font-mono text-xs text-zyvo-white/25 shrink-0">
             {String(index).padStart(2, '0')}
           </span>
           <h3 className="text-zyvo-white/85 text-sm md:text-base font-medium leading-snug">{q}</h3>
@@ -212,7 +204,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       </button>
 
       <div
-        className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(.4,0,.2,1)] ${
+        className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
           open ? 'mt-3 grid-rows-[1fr]' : 'grid-rows-[0fr]'
         }`}
       >

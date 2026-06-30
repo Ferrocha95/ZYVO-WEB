@@ -212,7 +212,7 @@ export default function CalculadoraSection() {
                   <AlertTriangle size={14} className="text-red-400" />
                 </div>
                 <div>
-                  <p className="text-zyvo-white/70 text-sm font-medium">Fuga operativa estimada</p>
+                  <p className="text-zyvo-white/70 text-sm font-medium">Lo que pierdes hoy sin hacer nada</p>
                   <p className="text-zyvo-white/35 text-xs mt-0.5">
                     {empleados} empleado{empleados > 1 ? 's' : ''} · 40% tiempo improductivo
                   </p>
@@ -239,6 +239,10 @@ export default function CalculadoraSection() {
                   />
                 </div>
               </div>
+
+              <p className="text-red-400/55 text-xs mt-4 leading-relaxed">
+                Ese dinero ya sale de tu empresa cada mes — en tiempo pagado que no produce. No es una proyección: es lo que ya está pasando.
+              </p>
             </motion.div>
           </motion.div>
 
@@ -255,10 +259,10 @@ export default function CalculadoraSection() {
             <div className="glass rounded-2xl p-7 space-y-6">
               <div className="space-y-1">
                 <p className="text-xs text-zyvo-white/30 font-medium uppercase tracking-widest">
-                  Impacto potencial con ZYVO
+                  Lo que recuperas con ZYVO
                 </p>
                 <p className="text-zyvo-white/50 text-sm leading-relaxed">
-                  Con nuestras implementaciones, empresas similares recuperan entre el 70% y 80% de su fuga operativa
+                  Empresas similares recuperan entre el 70% y 80% de su fuga operativa en los primeros 3 meses de implementación
                 </p>
               </div>
 
@@ -372,7 +376,7 @@ export default function CalculadoraSection() {
               onClick={() => document.getElementById('cta')?.scrollIntoView({ behavior: 'smooth' })}
               className="w-full flex items-center justify-center gap-2 py-4 btn-glow text-sm cursor-hover"
             >
-              Quiero recuperar ese dinero
+              Agendar auditoría gratuita
               <ChevronRight size={16} />
             </motion.button>
           </motion.div>

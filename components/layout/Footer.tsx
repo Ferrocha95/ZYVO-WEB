@@ -46,10 +46,10 @@ const LINK_SECTIONS = [
   {
     title: 'Soluciones',
     links: [
-      { label: 'Automatización',     href: '#servicios',   external: false },
-      { label: 'Agentes IA',         href: '#agentes',     external: false },
-      { label: 'Sistemas Agénticos', href: '#servicios',   external: false },
-      { label: 'Calculadora',        href: '#calculadora', external: false },
+      { label: 'ZYVO Hub',          href: '#servicios',   external: false },
+      { label: 'CRM Inteligente',   href: '#servicios',   external: false },
+      { label: 'ERP Agéntico',      href: '#servicios',   external: false },
+      { label: 'Calculadora',       href: '#calculadora', external: false },
     ],
   },
   {

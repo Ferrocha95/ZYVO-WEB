@@ -5,23 +5,30 @@ import { motion } from 'framer-motion'
 const PASOS = [
   {
     numero: '01',
-    titulo: 'Diagnóstico',
+    titulo: 'Auditoría de Fricción',
     descripcion:
-      'Auditamos tus procesos operativos, identificamos las fugas de tiempo y dinero, y entregamos un roadmap priorizado por impacto financiero real.',
+      'Diagnosticamos tus procesos, identificamos dónde pierde tiempo y dinero tu empresa, y entregamos un mapa de oportunidades priorizado por impacto financiero. Gratuita durante el lanzamiento.',
     duracion: '1–3 días hábiles',
   },
   {
     numero: '02',
-    titulo: 'Diseño e implementación',
+    titulo: 'Diagnóstico y Roadmap',
     descripcion:
-      'Construimos los sistemas, flujos y agentes sobre tu infraestructura. Sin vendor lock-in, sin dependencias externas. Todo queda en tu control.',
-    duracion: '7–14 días hábiles',
+      'Presentamos los resultados, definimos qué automatizar primero y diseñamos la arquitectura del sistema específico para tu operación. Incluido dentro de la auditoría.',
+    duracion: 'Incluido en auditoría',
   },
   {
     numero: '03',
-    titulo: 'Estabilización y mejora',
+    titulo: 'Diseño e Implementación',
     descripcion:
-      'Monitoreamos el sistema en producción, corregimos lo que sea necesario y mejoramos de forma iterativa según los resultados reales.',
+      'Construimos los sistemas sobre la infraestructura del cliente. Sin dependencias externas ni vendor lock-in. Todo queda en tu control desde el primer día.',
+    duracion: '7–14 días hábiles',
+  },
+  {
+    numero: '04',
+    titulo: 'Estabilización y Mejora',
+    descripcion:
+      'Monitoreamos en producción, corregimos lo necesario y mejoramos de forma iterativa según los resultados reales. El sistema crece con tu operación.',
     duracion: 'Continuo',
   },
 ]
@@ -82,8 +89,8 @@ export default function ProcesoSection() {
           />
         </div>
 
-        {/* 3 pasos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/4 rounded-2xl overflow-hidden border border-white/6">
+        {/* 4 pasos */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/4 rounded-2xl overflow-hidden border border-white/6">
           {PASOS.map((paso, i) => (
             <motion.div
               key={paso.numero}

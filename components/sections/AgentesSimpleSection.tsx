@@ -4,8 +4,8 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   ChevronLeft, ChevronRight, X, TrendingUp,
-  Phone, ClipboardList, UserCheck, Headphones,
-  Workflow, FolderOpen, Package, GraduationCap, BarChart3,
+  Phone, Bot, Headphones,
+  Workflow, GraduationCap, BarChart3,
 } from 'lucide-react'
 
 const EASE = [0.25, 0.46, 0.45, 0.94] as const
@@ -21,83 +21,51 @@ interface Agent {
 
 const agents: Agent[] = [
   {
-    icon: <Phone size={28} />,
-    name: 'Recepcionista digital',
-    tagline: 'Recibe mensajes, responde lo básico, filtra solicitudes y lleva cada caso al canal correcto.',
-    elimina: 'La fricción de las respuestas lentas y de perder oportunidades por no contestar a tiempo.',
-    gana: 'Rapidez de atención, mejor experiencia para el cliente y más prospectos bien encaminados.',
-    color: '0,170,255',
-  },
-  {
-    icon: <ClipboardList size={28} />,
-    name: 'Capturista digital',
-    tagline: 'Toma datos de formularios, WhatsApp, correo o archivos y los registra automáticamente en CRM, hojas o bases internas.',
-    elimina: 'El trabajo manual de copiar y pegar, que suele causar errores y retrasos.',
-    gana: 'Precisión, tiempo libre y una operación mucho más ligera.',
-    color: '74,144,226',
-  },
-  {
-    icon: <UserCheck size={28} />,
-    name: 'Calificador de leads digital',
-    tagline: 'Detecta qué prospectos sí tienen potencial y cuáles no están listos todavía.',
-    elimina: 'La fricción de que ventas pierda tiempo con contactos fríos o mal calificados.',
-    gana: 'Enfoque comercial, mejor conversión y menos desgaste del equipo.',
+    icon: <Bot size={28} />,
+    name: 'Asistente Directiva IA',
+    tagline: 'Centro de coordinación de tu empresa: un equipo de agentes especializados que gestiona agenda, correos y prioridades, y aprende el contexto específico de tu negocio 24/7.',
+    elimina: 'Las horas perdidas gestionando lo administrativo que le roba foco estratégico a quien dirige.',
+    gana: 'Más tiempo para decidir y crear, con toda la operación bajo control desde un solo punto.',
     color: '0,170,255',
   },
   {
     icon: <TrendingUp size={28} />,
-    name: 'Asesor de ventas digital',
-    tagline: 'Da seguimiento a prospectos, manda recordatorios y mantiene el pipeline vivo sin persecución manual.',
-    elimina: 'La fricción del seguimiento desordenado y los leads olvidados.',
-    gana: 'Más cierres, más consistencia y más control comercial.',
+    name: 'Área de Ventas',
+    tagline: 'Un equipo de agentes de IA especializados que trabaja coordinado para calificar leads, dar seguimiento sin persecución y mover el pipeline comercial en todo momento.',
+    elimina: 'El seguimiento desordenado y los leads olvidados que se pierden por falta de atención constante.',
+    gana: 'Más cierres, más consistencia y pipeline siempre activo sin depender de que alguien recuerde seguir.',
     color: '74,144,226',
   },
   {
     icon: <Headphones size={28} />,
-    name: 'Agente de atención al cliente',
-    tagline: 'Responde preguntas frecuentes, guía a los clientes y consulta información interna cuando hace falta.',
-    elimina: 'La fricción de repetir siempre las mismas respuestas y saturar al equipo humano.',
-    gana: 'Atención más rápida, respuestas más consistentes y disponibilidad 24/7.',
-    color: '0,170,255',
-  },
-  {
-    icon: <Workflow size={28} />,
-    name: 'Coordinador operativo digital',
-    tagline: 'Mueve tareas entre áreas, avisa pendientes y dispara flujos según reglas del negocio.',
-    elimina: 'La fricción de los procesos atorados por seguimiento manual y correos perdidos.',
-    gana: 'Orden, trazabilidad y una operación que avanza sin tanto freno.',
-    color: '74,144,226',
-  },
-  {
-    icon: <FolderOpen size={28} />,
-    name: 'Administrador documental',
-    tagline: 'Recibe, clasifica, ordena y distribuye documentos al área correcta.',
-    elimina: 'La fricción del caos documental, las búsquedas eternas y la revisión manual de archivos.',
-    gana: 'Control, velocidad y menos errores administrativos.',
-    color: '0,170,255',
-  },
-  {
-    icon: <Package size={28} />,
-    name: 'Supervisor de inventario digital',
-    tagline: 'Vigila niveles de inventario, detecta faltantes y activa alertas cuando algo se sale de rango.',
-    elimina: 'La fricción de reaccionar tarde cuando ya hay desabasto o desorden.',
-    gana: 'Visibilidad, prevención y mejor control de operación.',
-    color: '74,144,226',
-  },
-  {
-    icon: <GraduationCap size={28} />,
-    name: 'Tutor interno digital',
-    tagline: 'Explica procesos, manuales y pasos de trabajo a nuevos colaboradores.',
-    elimina: 'La fricción de capacitar una y otra vez al mismo personal en tareas repetitivas.',
-    gana: 'Onboarding más rápido, menos carga para el equipo senior y más consistencia operativa.',
+    name: 'Área de Atención al Cliente',
+    tagline: 'Agentes especializados coordinados que responden en todos tus canales al instante, resuelven casos, filtran lo urgente y escalan lo que requiere intervención humana.',
+    elimina: 'La saturación del equipo respondiendo siempre las mismas preguntas y los contactos sin respuesta.',
+    gana: 'Atención 24/7, respuestas consistentes y clientes mejor atendidos sin aumentar nómina.',
     color: '0,170,255',
   },
   {
     icon: <BarChart3 size={28} />,
-    name: 'Analista de operación digital',
-    tagline: 'Resume información, detecta incidencias y entrega reportes que ayudan a decidir rápido.',
-    elimina: 'La fricción de operar con datos dispersos o con decisiones tardías.',
-    gana: 'Claridad, mejor control y una lectura más inteligente del negocio.',
+    name: 'Área de Marketing',
+    tagline: 'Varios agentes coordinados que generan contenido con IA, programan publicaciones en redes y reportan resultados en tiempo real — sin intervención manual constante.',
+    elimina: 'El tiempo perdido en contenido manual, publicaciones tardías y reportes dispersos que nadie lee.',
+    gana: 'Presencia digital constante, datos claros para decidir y equipo enfocado en estrategia.',
+    color: '74,144,226',
+  },
+  {
+    icon: <Phone size={28} />,
+    name: 'Área de Recepción',
+    tagline: 'Un equipo de agentes que recibe, filtra y dirige cada contacto, responde lo básico y escala lo urgente al canal correcto. Siempre activos, nunca descansan.',
+    elimina: 'Los contactos perdidos por lentitud y el tiempo del equipo en llamadas y mensajes de bajo valor.',
+    gana: 'Cero oportunidades perdidas y equipo enfocado en lo que realmente mueve el negocio.',
+    color: '0,170,255',
+  },
+  {
+    icon: <GraduationCap size={28} />,
+    name: 'Área de RRHH',
+    tagline: 'Agentes coordinados que gestionan el onboarding de nuevos colaboradores, responden dudas internas sobre políticas y automatizan procesos de personal de forma continua.',
+    elimina: 'La carga repetitiva de inducción, responder las mismas preguntas y los procesos manuales de personal.',
+    gana: 'Onboarding más rápido, equipo senior libre de gestión operativa y RRHH más ágil.',
     color: '74,144,226',
   },
 ]
@@ -156,11 +124,11 @@ export default function AgentesSimpleSection() {
             Infraestructura Operativa
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-zyvo-white mb-5" style={{ fontFamily: 'var(--font-instrument-serif)' }}>
-            Empleados digitales que trabajan{' '}
+            Seis áreas multiagente que operan{' '}
             <span className="text-gradient-gold">24/7</span>
           </h2>
           <p className="text-zyvo-white/50 text-base max-w-xl mx-auto leading-relaxed">
-            No reemplazan a tu equipo — lo potencian. Los empleados digitales de ZYVO absorben el trabajo repetitivo para que tus colaboradores se enfoquen en lo que realmente mueve el negocio.
+            Cada área es un equipo de agentes de IA especializados trabajando coordinados. No reemplazan a tu equipo — potencian su capacidad para que se enfoquen en lo que importa.
           </p>
         </motion.div>
 

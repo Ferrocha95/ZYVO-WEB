@@ -113,10 +113,10 @@ export default function HeroSection() {
             transition={{ delay: 0.12, duration: 0.7, ease: EASE }}
             className="font-(family-name:--font-instrument-serif) text-5xl md:text-6xl lg:text-[68px] font-normal leading-[1.12] tracking-tight text-zyvo-white"
           >
-            Erradicamos la fuga
+            Libera a tu equipo
             <br className="hidden sm:block" />
-            <span className="text-gradient-gold italic"> operativa</span>{' '}
-            de tu empresa
+            de la operación que
+            <span className="text-gradient-gold italic"> los frena</span>
           </motion.h1>
 
           {/* Subheadline */}
@@ -126,8 +126,9 @@ export default function HeroSection() {
             transition={{ delay: 0.25, duration: 0.6, ease: EASE }}
             className="max-w-xl text-base md:text-lg text-zyvo-white/65 leading-relaxed"
           >
-            Diseñamos sistemas de IA y automatización que eliminan el trabajo
-            manual, reducen errores y devuelven el control operativo a tu equipo.
+            La IA absorbe el trabajo repetitivo para que tus colaboradores
+            se enfoquen en lo que realmente mueve el negocio.
+            Menos operación, más potencial humano.
           </motion.p>
 
           {/* CTAs */}
