@@ -10,8 +10,8 @@ const antes = ['Leads que se pierden sin seguimiento','Respuestas que tardan hor
 const con = ['Pipeline que avanza solo','Respuesta automática en segundos','Reportes generados en tiempo real','Operación que funciona sola','Todo trazable y accesible siempre']
 export default function Problema() {
   return (
-    <section className="py-32" style={{ backgroundColor:'#0A0A12' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-32 w-full" style={{ backgroundColor:'#0A0A12' }}>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div className="text-center mb-20" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">El problema</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Tu empresa pierde dinero<br/><span className="gradient-text">todos los días sin saberlo.</span></motion.h2>

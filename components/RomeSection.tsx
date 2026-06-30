@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewportOnce } from '@/lib/animations'
 export default function RomeSection() {
   return (
-    <section className="py-32" style={{ backgroundColor:'#0A0A12' }}>
-      <div className="max-w-3xl mx-auto px-6">
+    <section className="py-32 w-full" style={{ backgroundColor:'#0A0A12' }}>
+      <div className="max-w-3xl mx-auto px-6 lg:px-8">
         <motion.div className="glass-card p-14 text-center relative overflow-hidden" style={{ borderColor:'rgba(108,92,231,0.4)', boxShadow:'0 0 60px rgba(108,92,231,0.1)' }} variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse at center,rgba(108,92,231,0.08) 0%,transparent 70%)' }}/>
           <motion.div variants={fadeUp} className="flex items-center justify-center gap-2 mb-6">

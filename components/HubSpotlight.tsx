@@ -10,9 +10,9 @@ const chat = [
 ]
 export default function HubSpotlight() {
   return (
-    <section id="hub" className="py-32 relative overflow-hidden" style={{ backgroundColor:'#0A0A12' }}>
+    <section id="hub" className="py-32 w-full relative overflow-hidden" style={{ backgroundColor:'#0A0A12' }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background:'radial-gradient(ellipse 60% 60% at 50% 50%,rgba(108,92,231,0.07) 0%,transparent 70%)' }}/>
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
             <motion.div variants={fadeUp}><span className="pill" style={{ backgroundColor:'rgba(108,92,231,0.15)', borderColor:'rgba(108,92,231,0.3)', color:'#A855F7' }}>✦ Precio especial de lanzamiento activo</span></motion.div>

@@ -9,8 +9,8 @@ const bc: Record<string,{bg:string,border:string,text:string}> = {
 }
 export default function EmpleadosDigitales() {
   return (
-    <section id="empleados" className="py-32" style={{ backgroundColor:'#050508' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="empleados" className="py-32 w-full" style={{ backgroundColor:'#050508' }}>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">Marketplace</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Tu equipo nunca duerme.</motion.h2>

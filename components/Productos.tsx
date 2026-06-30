@@ -8,8 +8,8 @@ const productos = [
 ]
 export default function Productos() {
   return (
-    <section id="productos" className="py-32" style={{ backgroundColor:'#050508' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="productos" className="py-32 w-full" style={{ backgroundColor:'#050508' }}>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div className="text-center mb-20" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">Arquitectura completa</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Una arquitectura completa.<br/><span className="gradient-text">Tres capas de poder.</span></motion.h2>

@@ -8,7 +8,7 @@ const ls = { color:'#8888A8', fontSize:14, textDecoration:'none', display:'block
 export default function Footer() {
   return (
     <footer style={{ backgroundColor:'#0D0D14', borderTop:'1px solid rgba(108,92,231,0.15)' }}>
-      <div className="max-w-7xl mx-auto px-6 pt-20 pb-12">
+      <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20 pb-12">
         <motion.div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12" variants={fadeUp} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="gradient-text font-bold text-2xl mb-3" style={{ fontFamily:'Space Grotesk,sans-serif' }}>ZYVO</div>

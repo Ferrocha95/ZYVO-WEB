@@ -48,8 +48,8 @@ export default function Calculadora() {
   const fmt = (n: number) => new Intl.NumberFormat('es-MX', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Math.round(n))
 
   return (
-    <section id="calculadora" className="py-28" style={{ backgroundColor:'#0A0A12' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="calculadora" className="py-32 w-full" style={{ backgroundColor:'#0A0A12' }}>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">Calculadora de fuga operativa</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>

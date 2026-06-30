@@ -1,14 +1,14 @@
 import type { Metadata } from 'next'
-import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
+import { Space_Grotesk, Inter, JetBrains_Mono, Instrument_Serif } from 'next/font/google'
 import './globals.css'
-import LenisProvider          from '@/components/providers/LenisProvider'
-import GrainOverlay           from '@/components/ui/GrainOverlay'
-import GlobalBackground       from '@/components/ui/GlobalBackground'
-import TechGrid               from '@/components/ui/TechGrid'
-import CookieBanner           from '@/components/ui/CookieBanner'
-import SmoothScroll           from '@/components/SmoothScroll'
-import RomeWidget             from '@/components/RomeWidget'
-import { Toaster }            from 'sonner'
+import LenisProvider    from '@/components/providers/LenisProvider'
+import GrainOverlay     from '@/components/ui/GrainOverlay'
+import GlobalBackground from '@/components/ui/GlobalBackground'
+import TechGrid         from '@/components/ui/TechGrid'
+import CookieBanner     from '@/components/ui/CookieBanner'
+import SmoothScroll     from '@/components/SmoothScroll'
+import RomeWidget       from '@/components/RomeWidget'
+import { Toaster }      from 'sonner'
 
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
@@ -31,6 +31,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
+const instrumentSerif = Instrument_Serif({
+  variable: '--font-instrument-serif',
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'ZYVO — Arquitectura de Sistemas Inteligentes · México y LATAM',
   description: 'Diseñamos infraestructura operativa inteligente para empresas en México y LATAM. Empleados digitales, CRM inteligente, ERP agéntico y ZYVO Hub.',
@@ -41,9 +49,7 @@ export const metadata: Metadata = {
     title: 'ZYVO — Arquitectura de Sistemas Inteligentes · México y LATAM',
     description: 'Diseñamos infraestructura operativa inteligente para empresas en México y LATAM. Empleados digitales, CRM inteligente, ERP agéntico y ZYVO Hub.',
   },
-  twitter: {
-    card: 'summary_large_image',
-  },
+  twitter: { card: 'summary_large_image' },
   alternates: { canonical: 'https://zyvo.com.mx' },
   robots: { index: true, follow: true },
 }
@@ -52,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="es"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${instrumentSerif.variable} h-full`}
     >
       <body className="min-h-full antialiased overflow-x-hidden">
         <SmoothScroll />
@@ -60,7 +66,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <GlobalBackground />
           <TechGrid />
           <GrainOverlay />
-<main>{children}</main>
+          <main>{children}</main>
           <RomeWidget />
           <CookieBanner />
           <Toaster

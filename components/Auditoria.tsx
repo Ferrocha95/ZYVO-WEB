@@ -17,8 +17,8 @@ export default function Auditoria() {
     setSubmitted(true)
   }
   return (
-    <section id="auditoria" className="py-32" style={{ backgroundColor:'#050508' }}>
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="auditoria" className="py-32 w-full" style={{ backgroundColor:'#050508' }}>
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <motion.div className="text-center mb-14" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-6 text-sm font-medium" style={{ background:'linear-gradient(135deg,rgba(108,92,231,0.25),rgba(168,85,247,0.2))', border:'1px solid rgba(108,92,231,0.4)', color:'#A855F7' }}>✦ LANZAMIENTO — Auditoría gratuita por tiempo limitado</motion.div>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>Descubre exactamente dónde está<br/><span className="gradient-text">perdiendo dinero tu empresa.</span></motion.h2>

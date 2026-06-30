@@ -4,10 +4,10 @@ import { motion } from 'framer-motion'
 import { fadeUp, stagger } from '@/lib/animations'
 
 const METRICS = [
-  { label: 'Tiempo ahorrado', value: '68%', icon: '⚡' },
-  { label: 'ROI promedio', value: '3.4x', icon: '📈' },
+  { label: 'Tiempo ahorrado',   value: '68%',  icon: '⚡' },
+  { label: 'ROI promedio',      value: '3.4x', icon: '📈' },
   { label: 'Fricción eliminada', value: '85%', icon: '🔁' },
-  { label: 'Días a 1ª entrega', value: '10', icon: '🚀' },
+  { label: '1ª entrega en',     value: '10d',  icon: '🚀' },
 ]
 
 const AGENTS = ['Ventas IA', 'Soporte 24/7', 'Admin Digital', 'CRM Agéntico', 'Logística IA']
@@ -47,11 +47,21 @@ function Terminal() {
 
 function HeroVisual() {
   return (
-    <div className="relative w-full max-w-md mx-auto">
+    /*
+      Padding de 32px en el wrapper para que los badges absolutos queden
+      dentro del área visual sin clipear contra el borde del contenedor.
+    */
+    <div className="relative w-full max-w-md mx-auto" style={{ padding: '32px' }}>
       {/* Ambient glow */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(108,92,231,0.18) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 80% 60% at 50% 50%, rgba(108,92,231,0.18) 0%, transparent 70%)',
+          filter: 'blur(40px)',
+        }}
+      />
 
-      {/* Hub card */}
+      {/* Hub card — centrado dentro del wrapper */}
       <motion.div
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -108,16 +118,16 @@ function HeroVisual() {
         </div>
       </motion.div>
 
-      {/* Floating badge — ROI */}
+      {/* Badge — ROI: esquina superior-derecha del wrapper (padding absorbe el overflow) */}
       <motion.div
-        initial={{ opacity: 0, x: 20, y: -10 }}
+        initial={{ opacity: 0, x: 12, y: -8 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.5, delay: 1.1 }}
         style={{
           position: 'absolute',
-          top: -18,
-          right: -18,
-          backgroundColor: 'rgba(13,13,20,0.95)',
+          top: 8,
+          right: 8,
+          backgroundColor: 'rgba(13,13,20,0.96)',
           border: '1px solid rgba(0,212,255,0.3)',
           borderRadius: 14,
           padding: '10px 14px',
@@ -130,16 +140,16 @@ function HeroVisual() {
         <div className="font-bold text-base" style={{ fontFamily: 'Space Grotesk,sans-serif', color: '#00D4FF' }}>3.4x</div>
       </motion.div>
 
-      {/* Floating badge — Tiempo */}
+      {/* Badge — Tiempo: esquina inferior-izquierda del wrapper */}
       <motion.div
-        initial={{ opacity: 0, x: -20, y: 10 }}
+        initial={{ opacity: 0, x: -12, y: 8 }}
         animate={{ opacity: 1, x: 0, y: 0 }}
         transition={{ duration: 0.5, delay: 1.25 }}
         style={{
           position: 'absolute',
-          bottom: -18,
-          left: -18,
-          backgroundColor: 'rgba(13,13,20,0.95)',
+          bottom: 8,
+          left: 8,
+          backgroundColor: 'rgba(13,13,20,0.96)',
           border: '1px solid rgba(168,85,247,0.3)',
           borderRadius: 14,
           padding: '10px 14px',
@@ -158,18 +168,18 @@ function HeroVisual() {
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden dot-grid-bg">
+    <section className="relative min-h-screen w-full flex items-center pt-24 pb-20 overflow-hidden dot-grid-bg">
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(108,92,231,0.1) 0%, transparent 70%)' }} />
-      <div className="max-w-7xl mx-auto px-6 w-full">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-16 xl:gap-20 items-center">
           <motion.div variants={stagger} initial="hidden" animate="visible">
             <motion.div variants={fadeUp}>
               <span className="pill">✦ Infraestructura inteligente para México y LATAM</span>
             </motion.div>
             <motion.h1
               variants={fadeUp}
-              className="mt-7 text-5xl lg:text-[3.75rem] font-bold leading-none"
-              style={{ fontFamily: 'Space Grotesk,sans-serif', letterSpacing: '-0.025em', lineHeight: 1.08 }}
+              className="mt-7 font-bold"
+              style={{ fontFamily: 'Space Grotesk,sans-serif', letterSpacing: '-0.025em', lineHeight: 1.08, fontSize: 'clamp(2.5rem, 5vw, 3.75rem)' }}
             >
               La infraestructura que tu empresa necesita para{' '}
               <span className="gradient-text">dejar de operar en modo manual.</span>
@@ -187,11 +197,12 @@ export default function Hero() {
               <a href="#hub" className="btn-ghost">Explorar ZYVO Hub →</a>
             </motion.div>
           </motion.div>
+
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden lg:flex justify-center items-center py-10"
+            className="hidden lg:flex justify-center items-center"
           >
             <HeroVisual />
           </motion.div>

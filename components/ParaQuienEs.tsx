@@ -5,8 +5,8 @@ const si = ['Tu empresa ya opera y factura activamente','Tienes procesos manuale
 const no = ['Estás en fase de idea o pre-revenue','Buscas un bot de WhatsApp genérico','Quieres una agencia tradicional de marketing digital','No tienes procesos definidos aún']
 export default function ParaQuienEs() {
   return (
-    <section className="py-32" style={{ backgroundColor:'#0A0A12' }}>
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="py-32 w-full" style={{ backgroundColor:'#0A0A12' }}>
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <motion.div className="text-center mb-14" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">Perfil ideal</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold" style={{ fontFamily:'Space Grotesk,sans-serif' }}>ZYVO es para ti si...</motion.h2>

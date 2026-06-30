@@ -4,8 +4,8 @@ import { fadeUp, stagger, viewportOnce } from '@/lib/animations'
 import { pasos } from '@/lib/constants'
 export default function Proceso() {
   return (
-    <section id="proceso" className="py-32" style={{ backgroundColor:'#050508' }}>
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="proceso" className="py-32 w-full" style={{ backgroundColor:'#050508' }}>
+      <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div className="text-center mb-20" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
           <motion.p variants={fadeUp} className="section-label mb-3">Cómo trabajamos</motion.p>
           <motion.h2 variants={fadeUp} className="text-4xl lg:text-5xl font-bold mb-5" style={{ fontFamily:'Space Grotesk,sans-serif' }}>De la auditoría al sistema<br/><span className="gradient-text">en producción.</span></motion.h2>
