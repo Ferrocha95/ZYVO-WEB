@@ -5,7 +5,6 @@ import Navbar                 from '@/components/layout/Navbar'
 import Footer                 from '@/components/layout/Footer'
 import LenisProvider          from '@/components/providers/LenisProvider'
 import GrainOverlay           from '@/components/ui/GrainOverlay'
-import CustomCursor           from '@/components/ui/CustomCursor'
 import GlobalBackground       from '@/components/ui/GlobalBackground'
 import TechGrid               from '@/components/ui/TechGrid'
 import FloatingContactButtons from '@/components/ui/FloatingContactButtons'
@@ -59,7 +58,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <GlobalBackground />
           <TechGrid />
           <GrainOverlay />
-          <CustomCursor />
           <Navbar />
           <main>{children}</main>
           <Footer />

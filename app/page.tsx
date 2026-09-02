@@ -1,6 +1,7 @@
 import HeroSection          from '@/components/sections/HeroSection'
 import ProblemaValorSection  from '@/components/sections/ProblemaValorSection'
 import ServiciosSection      from '@/components/sections/ServiciosSection'
+import ZyvoHubBanner         from '@/components/sections/ZyvoHubBanner'
 import CalculadoraSection    from '@/components/sections/CalculadoraSection'
 import AgentesSimpleSection  from '@/components/sections/AgentesSimpleSection'
 import ProcesoSection        from '@/components/sections/ProcesoSection'
@@ -34,6 +35,8 @@ export default function HomePage() {
       <ProblemaValorSection />
       <Divider variant="blue" />
       <ServiciosSection />
+      <Divider variant="gold" />
+      <ZyvoHubBanner />
       <Divider variant="gold" />
       <CalculadoraSection />
       <Divider variant="subtle" />

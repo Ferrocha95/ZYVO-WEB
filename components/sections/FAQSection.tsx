@@ -8,7 +8,7 @@ const EASE = [0.25, 0.46, 0.45, 0.94] as const
 const FAQS = [
   {
     q: '¿La información de mi empresa está segura? ¿Dónde vive?',
-    a: 'Los sistemas de ZYVO se instalan sobre la infraestructura del propio cliente: nube privada o servidor físico. Tu información no pasa por servidores de terceros ni queda en manos de ZYVO. Tú tienes el control total de tus datos en todo momento.',
+    a: 'Tu información se aloja en infraestructura cloud de nivel empresarial, con aislamiento estricto por cliente (cada empresa opera en su propio espacio lógico, sin cruce de datos entre cuentas), credenciales y tokens cifrados en bóveda —nunca en texto plano— y sin acceso humano de terceros a tu operación. No es un servidor físico dedicado a tu empresa: es una arquitectura cloud diseñada para que tus datos estén aislados, cifrados y bajo control de acceso en todo momento. Si necesitas el detalle técnico completo para tu área legal o de compliance, lo compartimos bajo NDA.',
   },
   {
     q: '¿Qué pasa si después de la implementación algo no funciona como se esperaba?',

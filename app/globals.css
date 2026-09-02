@@ -24,15 +24,12 @@ html {
   color: #F5F5F5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: none;
 }
 
 body {
   background-color: transparent;
   font-family: var(--font-plus-jakarta, 'Plus Jakarta Sans', system-ui, sans-serif);
 }
-
-a, button, input, textarea, select, [role="button"] { cursor: none; }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; }
