@@ -1,12 +1,19 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { useTheme } from 'next-themes'
 import * as THREE from 'three'
 
 export default function GlobalBackground() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const { resolvedTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  // En modo día dejamos el fondo limpio (sin aurora WebGL)
+  const isLight = mounted && resolvedTheme === 'light'
 
   useEffect(() => {
+    if (isLight) return
     const container = containerRef.current
     if (!container) return
 
@@ -140,7 +147,9 @@ export default function GlobalBackground() {
       material.dispose()
       renderer.dispose()
     }
-  }, [])
+  }, [isLight])
+
+  if (isLight) return null
 
   return (
     <div

@@ -4,6 +4,7 @@ import { Shield, ArrowLeft } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Aviso de Privacidad — ZYVO',
+  alternates: { canonical: '/privacidad' },
   description:
     'Aviso de Privacidad de ZYVO conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y su Reglamento.',
 }

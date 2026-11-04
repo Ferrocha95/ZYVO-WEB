@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Search, CheckCircle2, Clock, FileText, TrendingU
 
 export const metadata: Metadata = {
   title: 'Auditoría de Fricción Operativa — ZYVO',
+  alternates: { canonical: '/auditoria' },
   description:
     'Diagnóstico de los puntos donde tu empresa pierde tiempo y control. Entregable: un roadmap de automatización priorizado por impacto.',
 }

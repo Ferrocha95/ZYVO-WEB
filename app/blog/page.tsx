@@ -5,6 +5,7 @@ import BlogHeroOrbs from '@/components/blog/BlogHeroOrbs'
 
 export const metadata: Metadata = {
   title: 'Blog — Ideas y sistemas para operar mejor | ZYVO',
+  alternates: { canonical: '/blog' },
   description:
     'Contenido pensado para empresas que necesitan menos fricción, más control y una operación más inteligente.',
 }

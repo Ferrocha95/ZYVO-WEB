@@ -29,6 +29,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://zyvo.com.mx'),
   title: 'ZYVO — Crece sin perder el control',
   description:
     'ZYVO diseña e implementa sistemas inteligentes (agénticos) para que tu empresa crezca sin perder el control de su operación.',
@@ -46,17 +47,35 @@ export const metadata: Metadata = {
       'Sistemas inteligentes para crecer sin perder el control de tu operación. Human in the loop, trazabilidad y roadmap por fases.',
     type: 'website',
     locale: 'es_MX',
-    // TODO (fase SEO): agregar og:image (1200×630) en public/ y registrarla aquí
+    url: '/',
+    siteName: 'ZYVO',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ZYVO — Crece sin perder el control',
     description:
       'Sistemas inteligentes para crecer sin perder el control de tu operación.',
-    // TODO (fase SEO): agregar twitter:image
   },
   robots: { index: true, follow: true },
-  alternates: { canonical: 'https://zyvo.com.mx' },
+  alternates: { canonical: '/' },
+}
+
+// Datos estructurados (JSON-LD) de la organización
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ZYVO',
+  url: 'https://zyvo.com.mx',
+  description:
+    'Sistemas inteligentes para crecer sin perder el control de tu operación.',
+  email: 'direccion@zyvo.com.mx',
+  areaServed: 'MX',
+  sameAs: [
+    'https://www.instagram.com/zyvo_ai/',
+    'https://www.facebook.com/share/1Cqb4Qrti7/',
+    'https://tiktok.com/@zyvo.ai',
+    'https://linkedin.com/company/zyvo-ai',
+  ],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -67,6 +86,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${manrope.variable} ${inter.variable} h-full`}
     >
       <body className="min-h-full antialiased overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <ThemeProvider>
           <LenisProvider>
             <GlobalBackground />
