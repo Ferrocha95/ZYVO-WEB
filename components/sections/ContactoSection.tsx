@@ -26,6 +26,7 @@ export default function ContactoSection() {
   const [whatsapp, setWhatsapp] = useState('')
   const [equipo, setEquipo] = useState(TAMANOS[0])
   const [friccion, setFriccion] = useState(FRICCIONES[0])
+  const [website, setWebsite] = useState('') // honeypot anti-bot
   const [enviando, setEnviando] = useState(false)
 
   async function onSubmit(e: React.FormEvent) {
@@ -44,6 +45,7 @@ export default function ContactoSection() {
           empresa,
           mensaje: `Tamaño de equipo: ${equipo}. Fricción principal: ${friccion}.`,
           tipo: 'contacto',
+          website,
         }),
       })
       const data = await res.json()
@@ -97,6 +99,18 @@ export default function ContactoSection() {
 
         {/* Formulario */}
         <form onSubmit={onSubmit} className="rounded-2xl glass-card p-6 md:p-8 space-y-4">
+          {/* Honeypot: oculto para humanos; si un bot lo llena, el backend descarta */}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            value={website}
+            onChange={e => setWebsite(e.target.value)}
+            style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+          />
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="Nombre">
               <input className={inputClass} value={nombre} onChange={e => setNombre(e.target.value)} required placeholder="Tu nombre" />

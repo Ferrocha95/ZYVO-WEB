@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { rateLimit } from '@/lib/rate-limit'
 
 type ContactPayload = {
   nombre: string
@@ -8,11 +9,44 @@ type ContactPayload = {
   facturacion?: string
   mensaje?: string
   tipo: 'auditoria' | 'contacto'
+  website?: string // honeypot anti-bot (campo oculto en el formulario)
+}
+
+const MAX = { nombre: 120, email: 160, whatsapp: 40, empresa: 160, facturacion: 60, mensaje: 2000 }
+
+function clientIp(req: NextRequest): string {
+  const xff = req.headers.get('x-forwarded-for')
+  if (xff) return xff.split(',')[0].trim()
+  return req.headers.get('x-real-ip') ?? 'unknown'
 }
 
 export async function POST(req: NextRequest) {
   try {
-    const body: ContactPayload = await req.json()
+    // Content-Type esperado
+    if (!req.headers.get('content-type')?.includes('application/json')) {
+      return NextResponse.json({ success: false, error: 'Content-Type inválido' }, { status: 415 })
+    }
+
+    // Rate limit por IP (best-effort en memoria; ver lib/rate-limit.ts)
+    const rl = rateLimit(`contact:${clientIp(req)}`, 5, 60_000)
+    if (!rl.ok) {
+      return NextResponse.json(
+        { success: false, error: 'Demasiadas solicitudes. Intenta de nuevo en un momento.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfter ?? 60) } },
+      )
+    }
+
+    let body: ContactPayload
+    try {
+      body = await req.json()
+    } catch {
+      return NextResponse.json({ success: false, error: 'JSON inválido' }, { status: 400 })
+    }
+
+    // Honeypot: si el campo oculto viene lleno, es un bot → aceptamos en silencio
+    if (typeof body.website === 'string' && body.website.trim() !== '') {
+      return NextResponse.json({ success: true, message: 'Solicitud recibida.' })
+    }
 
     // Validación básica
     if (!body.nombre || !body.email || !body.tipo) {
@@ -22,12 +56,28 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    if (body.tipo !== 'auditoria' && body.tipo !== 'contacto') {
+      return NextResponse.json({ success: false, error: 'Tipo inválido' }, { status: 400 })
+    }
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(body.email)) {
       return NextResponse.json(
         { success: false, error: 'Email inválido' },
         { status: 400 },
       )
+    }
+
+    // Topes de tamaño (anti-abuso)
+    if (
+      body.nombre.length > MAX.nombre ||
+      body.email.length > MAX.email ||
+      (body.whatsapp?.length ?? 0) > MAX.whatsapp ||
+      (body.empresa?.length ?? 0) > MAX.empresa ||
+      (body.facturacion?.length ?? 0) > MAX.facturacion ||
+      (body.mensaje?.length ?? 0) > MAX.mensaje
+    ) {
+      return NextResponse.json({ success: false, error: 'Algún campo excede el tamaño permitido' }, { status: 413 })
     }
 
     // Intentar guardar en Supabase si está configurado
