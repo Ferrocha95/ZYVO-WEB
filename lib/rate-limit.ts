@@ -6,6 +6,7 @@
 type Hit = { count: number; reset: number }
 
 const store = new Map<string, Hit>()
+const MAX_KEYS = 10_000
 
 export interface RateLimitResult {
   ok: boolean
@@ -17,9 +18,17 @@ export function rateLimit(key: string, limit = 5, windowMs = 60_000): RateLimitR
   const now = Date.now()
   const hit = store.get(key)
 
-  // Limpieza ocasional para que el Map no crezca sin límite
-  if (store.size > 5000) {
+  // Tope duro del store: evita crecimiento sin límite (ataques con muchas IPs)
+  if (store.size >= MAX_KEYS) {
     for (const [k, v] of store) if (now > v.reset) store.delete(k)
+    // Si sigue lleno (todas activas), elimina las más viejas por inserción
+    if (store.size >= MAX_KEYS) {
+      let over = store.size - MAX_KEYS + 1
+      for (const k of store.keys()) {
+        store.delete(k)
+        if (--over <= 0) break
+      }
+    }
   }
 
   if (!hit || now > hit.reset) {
