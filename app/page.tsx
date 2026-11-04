@@ -5,6 +5,9 @@ import SistemasSection    from '@/components/sections/SistemasSection'
 import ProcesoSection     from '@/components/sections/ProcesoSection'
 import ControlSection     from '@/components/sections/ControlSection'
 import EvidenciaSection   from '@/components/sections/EvidenciaSection'
+import RutasLateralesSection from '@/components/sections/RutasLateralesSection'
+import EstimadorSection   from '@/components/sections/EstimadorSection'
+import FaqSection         from '@/components/sections/FaqSection'
 import SectionPlaceholder from '@/components/sections/SectionPlaceholder'
 
 // Estructura de la home — identidad 2026.
@@ -22,9 +25,9 @@ export default function HomePage() {
       <ProcesoSection />
       <ControlSection />
       <EvidenciaSection />
-      <SectionPlaceholder id="rutas"       n="07" eyebrow="Rutas laterales"        title="EscuderIA y Fuelle Studio" />
-      <SectionPlaceholder id="estimador"   n="08" eyebrow="Estimador de fricción"  title="El costo mensual de operar a mano" />
-      <SectionPlaceholder id="faq"         n="09" eyebrow="FAQ"                     title="Preguntas frecuentes" />
+      <RutasLateralesSection />
+      <EstimadorSection />
+      <FaqSection />
       <SectionPlaceholder id="contacto"    n="10" eyebrow="Contacto"               title="Hablemos de tu operación" />
     </>
   )
