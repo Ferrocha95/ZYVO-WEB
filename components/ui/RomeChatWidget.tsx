@@ -29,7 +29,7 @@ function TypingDots() {
           key={i}
           animate={{ opacity: [0.3, 1, 0.3], y: [0, -3, 0] }}
           transition={{ duration: 1.1, repeat: Infinity, delay: i * 0.18, ease: 'easeInOut' }}
-          className="w-1.5 h-1.5 rounded-full bg-zyvo-gold/60 block"
+          className="w-1.5 h-1.5 rounded-full bg-cyan/60 block"
         />
       ))}
     </div>
@@ -120,14 +120,14 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-white/6 shrink-0">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-zyvo-gold/15 border border-zyvo-gold/30 flex items-center justify-center">
-            <Bot size={15} className="text-zyvo-gold" />
+          <div className="w-8 h-8 rounded-full bg-cyan/15 border border-cyan/30 flex items-center justify-center">
+            <Bot size={15} className="text-cyan" />
           </div>
           <div>
             <div className="flex items-center gap-2">
               <p className="text-zyvo-white text-sm font-semibold leading-none">Rome · Asesor ZYVO</p>
-              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-zyvo-gold/10 text-zyvo-gold/70 border border-zyvo-gold/20 leading-none">
-                GPT-4o
+              <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan/10 text-cyan/70 border border-cyan/20 leading-none">
+                Claude
               </span>
             </div>
             <div className="flex items-center gap-1.5 mt-1">
@@ -144,8 +144,12 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
         </button>
       </div>
 
-      {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+      {/* Messages — data-lenis-prevent evita que Lenis capture el wheel sobre este contenedor */}
+      <div
+        className="flex-1 overflow-y-auto px-4 py-4 space-y-3"
+        data-lenis-prevent=""
+        style={{ overscrollBehavior: 'contain' }}
+      >
         <AnimatePresence initial={false}>
           {messages.map(msg => (
             <motion.div
@@ -158,7 +162,7 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
               <div
                 className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-zyvo-gold/15 text-zyvo-white border border-zyvo-gold/20 rounded-br-sm'
+                    ? 'bg-cyan/15 text-zyvo-white border border-cyan/20 rounded-br-sm'
                     : 'bg-zinc-700/40 text-zyvo-white/85 border border-zinc-600/30 rounded-bl-sm'
                 }`}
               >
@@ -197,7 +201,7 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
               <button
                 key={chip}
                 onClick={() => send(chip)}
-                className="px-3 py-1.5 text-xs text-zyvo-white/55 border border-zinc-600/40 rounded-full hover:border-zyvo-gold/30 hover:text-zyvo-gold transition-colors duration-200 whitespace-nowrap"
+                className="px-3 py-1.5 text-xs text-zyvo-white/55 border border-zinc-600/40 rounded-full hover:border-cyan/30 hover:text-cyan transition-colors duration-200 whitespace-nowrap"
               >
                 {chip}
               </button>
@@ -232,7 +236,7 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
               className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 disabled:opacity-30"
               style={{
                 background: input.trim() && !loading
-                  ? 'radial-gradient(circle farthest-corner at 10% 20%, rgba(255,94,247,0.9) 17.8%, rgba(2,245,255,0.9) 100.2%)'
+                  ? 'radial-gradient(circle farthest-corner at 10% 20%, rgba(0,229,255,0.95) 17.8%, rgba(47,107,255,0.95) 100.2%)'
                   : 'transparent',
                 color: input.trim() && !loading ? '#F5F5F5' : 'rgba(255,255,255,0.3)',
               }}
