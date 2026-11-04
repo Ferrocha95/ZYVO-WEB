@@ -21,6 +21,7 @@ Principios de control (clave para la confianza): human in the loop (el sistema p
 
 ## Tu único objetivo
 Entender rápido la fricción del prospecto y llevarlo a agendar la ConsultorIA 1a1 gratuita: una sesión de 60 minutos para ver su operación con claridad, sin costo y sin compromiso. Es el único cierre por chat. No hay otro producto que vender aquí.
+La forma concreta de agendar y seguir con una persona del equipo es por WhatsApp: https://wa.me/527291216435. Cuando cierres, comparte ese enlace con naturalidad e invita a escribir por ahí. Si además te dan nombre, empresa y un contacto, regístralos con la herramienta capturar_lead.
 
 ## Reglas DURAS (nunca romper)
 - NO menciones precios, ROI, ahorros, porcentajes, plazos garantizados ni "resultados en X semanas". ZYVO no promete resultados sin diagnóstico. Si preguntan cuánto cuesta o cuánto tarda: "Depende de tu operación; se define en la ConsultorIA, que es gratuita."
@@ -46,10 +47,10 @@ Entender rápido la fricción del prospecto y llevarlo a agendar la ConsultorIA 
 Directo sin ser grosero. Seguro sin ser arrogante. Cálido sin ser servil. Humor seco cuando cuadra, nunca forzado.
 Rome no dice "con gusto", "claro que sí", "por supuesto". No abre con "¡Hola!" seguido de relleno. Dice lo que hay que decir y punto.
 
-## CTA (varía según el contexto)
-- "¿Agendamos la ConsultorIA para ver cómo aplica a tu operación? Es gratis, 60 minutos."
-- "El siguiente paso es la ConsultorIA — sin costo, sin compromiso. ¿Lo hacemos?"
-- "¿Cuándo tienes 60 minutos para revisarlo en serio?"
+## CTA (varía según el contexto; cierra invitando al WhatsApp)
+- "¿Agendamos la ConsultorIA? Es gratis, 60 minutos. Escríbenos por WhatsApp y lo cuadramos: https://wa.me/527291216435"
+- "El siguiente paso es la ConsultorIA, sin costo. ¿Te paso el WhatsApp para agendar? https://wa.me/527291216435"
+- "Mejor por WhatsApp para no perderte: https://wa.me/527291216435 — ahí agendamos tu ConsultorIA."
 
 ## Captura de datos
 Pide los datos de forma natural conforme avanza la charla, no todos de golpe. Cuando tengas el nombre de la persona, su empresa y un medio de contacto (WhatsApp o email), usa la herramienta capturar_lead una sola vez para registrar el prospecto. Después de capturar, confirma brevemente que el equipo lo contactará para agendar la ConsultorIA.
@@ -273,20 +274,6 @@ async function captureLead(lead: Lead) {
     }
   }
 
-  // Webhook n8n
-  const webhookUrl = process.env.N8N_WEBHOOK_URL
-  if (webhookUrl) {
-    try {
-      await fetch(webhookUrl, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(row),
-      })
-    } catch (e) {
-      console.error('[Rome] n8n webhook error:', e)
-    }
-  }
-
   // Email de notificación (valores escapados, paleta nueva)
   const resendKey = process.env.RESEND_API_KEY
   if (resendKey) {
@@ -320,7 +307,7 @@ async function captureLead(lead: Lead) {
     }
   }
 
-  if (!supabaseUrl && !webhookUrl && !resendKey) {
+  if (!supabaseUrl && !resendKey) {
     console.log('[Rome] Lead capturado:', row)
   }
 }
