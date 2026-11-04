@@ -1,105 +1,117 @@
 # ZYVO Web — Instrucciones para Claude Code
 
-## Identidad del Proyecto
-ZYVO es una boutique de Arquitectura de IA y Automatización para PyMEs mexicanas.
-NO es agencia de marketing. Es firma de ingeniería de eficiencia operativa.
-Cliente ideal: dueño de "Boring Business" mexicano atrapado en la pinza financiera 2026.
+> **Identidad 2026 (vigente).** Este archivo reemplaza por completo la identidad anterior
+> (dorado/magenta/serif, ROI 3x, "Departamentos Digitales", ZYVO Hub/CRM/ERP). Si ves esos
+> conceptos o colores en el código, son restos a migrar, no la referencia.
 
-## Stack Tecnológico
-- Next.js 16 App Router — NO Pages Router
-- TypeScript strict mode — sin `any`, sin atajos
-- Tailwind CSS v4 — config vía `@theme inline` en globals.css (NO tailwind.config.ts)
-- Framer Motion v12 — todas las animaciones UI
-- Three.js — shader WebGL aurora en GlobalBackground (throttled ~36fps, pausa en tab oculto)
-- Spline — modelos 3D lazy-loaded vía `@splinetool/react-spline` en SplineScene.tsx
-- Lenis v1.3.x — smooth scroll vía LenisProvider
-- Supabase — leads en tabla `leads` y `rome_leads`
-- Lucide React — iconografía
+## Identidad del Proyecto
+ZYVO diseña e implementa sistemas inteligentes (agénticos) para empresas que quieren crecer sin
+perder el control de su operación.
+- **Claim:** "Crece sin perder el control."
+- Tono: serio, técnico, sobrio. Sin humo, sin promesas de resultados.
+
+## Reglas de contenido (NO negociables)
+PROHIBIDO en toda la web: promesas de ROI, ahorros, cifras de resultados, testimonios, logos de
+clientes, sellos tipo "Verificado" / "garantizado" / "Self-Hosted" / "IA Ética" / "sin vendor
+lock-in". Nada de magenta, violeta/púrpura ni tipografías serif.
+
+## Identidad Visual
+- **Colores (tokens):** fondo `#0A0A0B` · superficie `#17181C` · texto `#F5F7FA` ·
+  cian `#00E5FF` · azul `#2F6BFF` · gris `#8B93A1` · gradiente cian→azul.
+- **Tipografía:** Manrope (títulos) · Inter (texto), vía `next/font`.
+- **Modo noche/día:** `next-themes`. Sigue la preferencia del sistema, recuerda la elección del
+  visitante y no parpadea al cargar. Base dark-first.
+- Fondo de página: `var(--c-bg)` — NUNCA `#000000` puro.
+
+## Sistema de tokens (globals.css)
+- Tokens semánticos nuevos → clases Tailwind: `bg-base` `bg-surface` `text-ink` `text-muted`
+  `*-cyan` `*-blue` `*-grey`. Mapean a variables `--c-*` que cambian según el tema
+  (`:root` = noche, `.light` = día).
+- Fuentes nuevas: `font-display` (Manrope) · `font-sans` (Inter).
+- **Puente temporal:** las variables viejas `--font-instrument-serif` / `--font-plus-jakarta` /
+  `--font-jetbrains-mono` están aliasadas a Manrope/Inter para no romper componentes aún no
+  migrados. Los tokens `--color-zyvo-*` siguen definidos y se retiran sección por sección.
 
 ## Tailwind v4 — Clases canónicas (OBLIGATORIO)
-- `bg-linear-to-r` NO `bg-gradient-to-r`
-- `bg-white/4` NO `bg-white/[0.04]`
-- `border-white/6` NO `border-white/[0.06]`
-- `z-99998` NO `z-[99998]`
-- `font-(family-name:--font-instrument-serif)` NO `font-[family-name:...]`
-- Arrays de ease en Framer Motion SIEMPRE con `as const`
+`bg-linear-to-r` · `bg-white/4` · `border-white/6` · `z-99998` · `min-w-175` · `mask-[...]`
+ease arrays siempre `as const`.
+NO usar: `bg-gradient-to-r`, `bg-white/[0.04]`, `z-[99998]`, `min-w-[700px]`, `[mask-image:...]`.
 
-## Identidad Visual (NO negociar)
-- Fondo base: #080C14 — NUNCA #000000
-- Acento principal: #00AAFF (sky blue) — reemplaza oro; token `zyvo-gold` apunta a este color
-- Eléctrico texto: #00E5FF — token `zyvo-electric`; usar en highlights, métricas, stats
-- Azul corp: #0A2463 | Midnight: #1D3557 | Blanco: #F5F5F5
-- NO usar #D4AF37 ni amarillo en ningún elemento nuevo
-- Tipografía headlines: Instrument Serif | body: Plus Jakarta Sans | datos: JetBrains Mono
-- Estética: Glassmorphism + Dark Mode + aurora WebGL + grain overlay sutil
-- Motion: suave y deliberado. Ease estándar: `[0.25, 0.46, 0.45, 0.94] as const`
-- Glass: `backdrop-blur`, borde `rgba(255,255,255,0.08)`, clase `.glass`
+## Stack
+- Next.js 16 App Router · React 19 · TypeScript strict (sin `any`) · Tailwind CSS v4 ·
+  Framer Motion v12 · Lenis (smooth scroll) · Supabase · Resend · sonner · lucide-react.
+- `next-themes` para el tema. `three` (fondo WebGL) en revisión (debe hacerse theme-aware).
 
-## Sistema de Botones CTA
-- `.btn-glow` — `isolation: isolate` + `::after` blur glow pink→cyan exterior. Usar en secciones.
-- `.btn-glow-nav` — gradiente directo sin `::after` (para contenedores con `overflow:hidden`).
-- `whileHover: boxShadow '0 8px 40px rgba(255,94,247,0.45), 0 0 60px rgba(2,245,255,0.25)'`
-- `whileTap: { scale: 0.9, rotate: 3 }`
+## Estructura de la home (orden objetivo en page.tsx)
+1. Navbar — logo, 4 enlaces, interruptor noche/día, CTA "ConsultorIA gratuita"
+2. Hero — "Crece sin perder el control." + subtítulo + 2 botones + visual de sistema + fila de hechos
+3. Fricción operativa — 6 señales
+4. ConsultorIA 1a1 — 60 min, qué incluye / qué no
+5. Sistemas — SO agéntico · comercial inteligente · apps y plataformas a medida
+6. Cómo trabajamos — 7 pasos
+7. Control y seguridad — human in the loop, trazabilidad, permisos y auditoría, tus datos son tuyos
+8. Evidencia — "casos en construcción" (marcador para captura real)
+9. Rutas laterales — EscuderIA + Fuelle Studio
+10. Estimador de fricción — fórmula visible
+11. FAQ — 6 preguntas
+12. Contacto (formulario) + Footer
 
-## Estructura de Archivos Clave
-- `app/layout.tsx` — Server Component, 3 fuentes Google, GlobalBackground + GrainOverlay + CustomCursor + LenisProvider + FloatingContactButtons
-- `app/page.tsx` — 8 secciones en orden
-- `app/api/contact/route.ts` — POST leads a Supabase tabla `leads`
-- `app/api/rome/route.ts` — POST agente Rome → OpenAI GPT-4o-mini → Supabase `rome_leads` + n8n webhook
-- `components/ui/GlobalBackground.tsx` — Three.js WebGL shader aurora fijo z=-1, ~36fps throttle
-- `components/ui/SplineScene.tsx` — Spline 3D lazy-loaded con React.lazy + Suspense
-- `components/ui/CustomCursor.tsx` — crosshair eléctrico `#00E5FF`, 4 brazos + dot + outer ring en hover; retorna null en touch devices
-- `components/ui/GrainOverlay.tsx` — SVG fractalNoise fixed z-9999, opacity 0.038
-- `components/ui/FloatingContactButtons.tsx` — botón Rome IA (glow pink→cyan, animate-ping, Bot↔X)
-- `components/ui/RomeChatWidget.tsx` — chat panel zinc/glass, textarea rows=3, Shift+Enter=newline, contador /500
-- `components/providers/LenisProvider.tsx` — smooth scroll client component
-- `components/layout/Navbar.tsx` — AnimatedNavFramer pill centrada; colapsa a círculo scroll>150px; mobile: hamburger fullscreen
-- `components/layout/Footer.tsx` — grid xl:grid-cols-3, AnimatedSection whileInView, 4 secciones de links
+## Fila de hechos de proceso (Hero)
+`Human in the loop · Trazabilidad · Roadmap por fases · ConsultorIA sin costo`
 
-## Secciones de la Landing (orden en page.tsx)
-1. **HeroSection** — headline + badge + 2 CTAs + social proof stats (usa GlobalBackground)
-2. **ProblemaValorSection** — 2 cols: problema (lista stagger) + solución (glass card métricas)
-3. **ServiciosSection** — 3 cards glassmorphism: Automatización / Agentes IA / Sistemas Agénticos. SIN precios.
-4. **CalculadoraSection** — slider 1-20 empleados, fuga operativa MXN. Ahorro potencial 50-60%.
-5. **AgentesSimpleSection** — carrusel 5 agentes, auto-avance 4s, pause on hover
-6. **ProcesoSection** — 3 pasos: Diagnóstico / Diseño / Estabilización
-7. **ResenasSection** — testimonios de clientes con animación stagger
-8. **CTAFinalSection** — formulario auditoría 4 campos → /api/contact
+## Estimador de fricción
+Reemplaza la antigua Calculadora. Fórmula **visible** en la UI:
+`costo mensual = personas × horas/semana × 4.33 × costo/hora`.
+Sin porcentaje de recuperación y sin promesa de ahorro.
 
-## Calculadora — Lógica Financiera
-- Salario mínimo MX 2026: $315.04/día × 30 días = $9,451 MXN base
-- Carga social: 48% → costo real/empleado: ~$13,988 MXN/mes
-- Fuga operativa: 40% del tiempo improductivo
-- Ahorro con ZYVO: **50%–60% de la fuga operativa** (varía por implementación)
-- NO mostrar precio fijo de implementación
+## Fuelle Studio
+Nuevo nombre de lo que antes era "ZYVO Studio" (ruta para sitios web / landings aisladas).
+- Aparece SOLO en: la tarjeta "¿No es tu caso?" (botón "Hablar con Fuelle Studio" → `#contacto`
+  provisional) y en una pregunta del FAQ.
+- No tiene página ni dominio aún. No inventar logo, claims ni textos extra.
+- NUNCA usar "ZYVO Studio" en ningún texto.
 
-## Agente Rome
-- Personalidad: asesor comercial clínico, NO chatbot genérico
-- Backend: `app/api/rome/route.ts` llama OpenAI GPT-4o-mini con system prompt de calificación
-- Lead capturado cuando Rome detecta: nombre + empresa + contacto → bloque `LEAD_CAPTURE:{...}`
-- Payload n8n: `{nombre, empresa, whatsapp, email, facturacion, problema, resumen, intencion, timestamp, source:"landing_zyvo_rome"}`
-- Quick chips: "¿Qué hace ZYVO?" / "¿Qué servicios ofrecen?" / "¿Mi empresa califica?" / "Quiero dejar mis datos" / "Hablar por WhatsApp"
+## Rutas
+- `/` (home) · `/blog` + `/blog/[slug]` · `/privacidad` · `/auditoria` (restilizadas).
+- `/partners` se conserva pero SALE del menú de navegación (no se borra la ruta).
+- APIs: `/api/contact`, `/api/rome`, `/api/partners`.
 
-## Variables de Entorno (.env.local)
-- `OPENAI_API_KEY` — Rome agent
-- `SUPABASE_URL` + `SUPABASE_ANON_KEY` — leads storage
-- `N8N_WEBHOOK_URL` — notificaciones Rome leads
-- `NEXT_PUBLIC_WHATSAPP_NUMBER` — formato: 5215512345678
+## Formulario de contacto
+- NO filtra por facturación. Campos: nombre, **empresa (obligatoria)**, correo, WhatsApp,
+  tamaño de equipo, fricción principal.
+- Reutiliza el endpoint existente `/api/contact` (los campos nuevos se mapean al payload actual
+  mientras no se autorice tocar el route).
+- WhatsApp: `https://wa.me/527291216435` · Correo: `direccion@zyvo.com.mx`.
+
+## APIs (no tocar la lógica en fases de diseño)
+- `app/api/contact/route.ts` — POST leads → Supabase tabla `leads` + email Resend.
+- `app/api/rome/route.ts` — OpenAI gpt-4o-mini, temp 0.55, max_tokens 350, últimos 12 mensajes
+  → Supabase `rome_leads` + webhook n8n + Resend. El prompt de Rome se reescribe en tarea aparte.
+- La seguridad de estas rutas (rate limiting, validación, captcha) se añade en su fase propia.
+
+## Seguridad y arquitectura (plan activo)
+- Repo **PÚBLICO**: jamás subir secretos. Llaves solo en variables de entorno de Vercel.
+- `service_role` de Supabase NUNCA con prefijo `NEXT_PUBLIC_`.
+- Fases dedicadas: cabeceras de seguridad HTTP (`next.config.ts`), sin source-maps en prod,
+  rate limiting + honeypot/captcha + validación zod en APIs, RLS en Supabase.
+- No ocultamos el bundle del navegador (imposible al 100%); sí evitamos exponer fuente/secretos.
+
+## Variables de Entorno (.env.local — NUNCA commitear)
+`OPENAI_API_KEY` · Supabase (URL + keys) · `N8N_WEBHOOK_URL` · `RESEND_API_KEY` ·
+`NEXT_PUBLIC_WHATSAPP_NUMBER`.
+⚠️ Pendiente: unificar nombres de Supabase entre `/api/contact`
+(`NEXT_PUBLIC_SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`) y `/api/rome`
+(`SUPABASE_URL` + `SUPABASE_ANON_KEY`).
 
 ## Reglas de Código
-- `'use client'` SOLO para hooks/eventos/animaciones — Server Components por defecto
-- API routes: try/catch, retornan `{ success, data?, error? }`
-- Variables de entorno: NUNCA exponer en cliente (usar NEXT_PUBLIC_ solo si es necesario)
-- Comentarios en español. PascalCase para componentes, camelCase para hooks/utils.
-- Easing arrays siempre `as const`. Sin `any`.
+- `'use client'` SOLO para hooks/eventos/animaciones.
+- API routes: try/catch, retornan `{ success, data?, error? }`, credenciales solo por `process.env`.
+- Comentarios en español · PascalCase componentes · camelCase hooks/utils.
+- `data-lenis-prevent=""` en contenedores con scroll propio dentro de Lenis.
+- Navegación cross-route: `usePathname()==='/'` → scroll a `#id`, si no `router.push('/#id')`.
 
-## Filosofía de Diseño
-- Autoridad clínica + pragmatismo financiero + estética futurista sobria
-- Cada sección: infraestructura, no marketing
-- Fondo vivo: GlobalBackground Three.js shader siempre activo en z=-1
-- Decoraciones por sección: floating orbs (motion.div blur gradients) en loop infinito
-- Cursor: crosshair eléctrico premium; retorna null en dispositivos touch
-
-## Lo que ZYVO NO es
-- No agencia digital | No chatbots baratos | No promete "rápido y fácil"
-- No buzzwords vacíos | No neón ni gradientes púrpura genéricos | No amarillo
+## Flujo de trabajo del rediseño
+- Identidad + estructura primero; limpieza de código/deps muertas al final, en commits separados
+  y solo tras aprobación con lista de evidencia.
+- Cada fase cierra con `npm run lint` + `npm run build` en verde.
+- No hacer commit, push ni merge sin aprobación explícita del usuario.

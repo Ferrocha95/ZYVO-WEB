@@ -1,7 +1,20 @@
 @import "tailwindcss";
 
+/* Dark mode por clase (lo controla next-themes), no por prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ─── Design Tokens ──────────────────────────────────────────────────────── */
 @theme inline {
+  /* ── Tokens identidad 2026 — theming en runtime vía --c-* ── */
+  --color-base:    var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-ink:     var(--c-text);
+  --color-muted:   var(--c-muted);
+  --color-cyan:    #00E5FF;
+  --color-blue:    #2F6BFF;
+  --color-grey:    #8B93A1;
+
+  /* ── Tokens heredados (se retiran sección por sección) ── */
   --color-zyvo-dark:     #080C14;
   --color-zyvo-blue:     #0A2463;
   --color-zyvo-midnight: #1D3557;
@@ -11,24 +24,50 @@
   --color-zyvo-white:    #F5F5F5;
   --color-zyvo-electric: #00E5FF;
 
+  --font-display: var(--font-manrope);
+  --font-sans:    var(--font-inter);
+
+  /* heredados (aliasados abajo a las fuentes nuevas) */
   --font-instrument: var(--font-instrument-serif);
   --font-jakarta:    var(--font-plus-jakarta);
   --font-mono:       var(--font-jetbrains-mono);
+}
+
+/* ─── Aliases: fuentes viejas → nuevas (puente, sin tocar componentes aún) ── */
+:root {
+  --font-instrument-serif: var(--font-manrope);
+  --font-plus-jakarta:     var(--font-inter);
+  --font-jetbrains-mono:   var(--font-inter);
+}
+
+/* ─── Temas ───────────────────────────────────────────────────────────────── */
+:root {                      /* NOCHE — por defecto (dark-first) */
+  --c-bg:      #0A0A0B;
+  --c-surface: #17181C;
+  --c-text:    #F5F7FA;
+  --c-muted:   #8B93A1;
+}
+.light {                     /* DÍA */
+  --c-bg:      #F5F7FA;
+  --c-surface: #FFFFFF;
+  --c-text:    #0A0A0B;
+  --c-muted:   #5A6270;
 }
 
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  background-color: #080C14;
-  color: #F5F5F5;
+  background-color: var(--c-bg);
+  color: var(--c-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
   background-color: transparent;
-  font-family: var(--font-plus-jakarta, 'Plus Jakarta Sans', system-ui, sans-serif);
+  font-family: var(--font-inter, system-ui, sans-serif);
 }
 
 /* ─── Scrollbar ──────────────────────────────────────────────────────────── */

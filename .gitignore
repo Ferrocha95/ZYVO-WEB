@@ -30,8 +30,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files — NUNCA commitear (repo publico)
+.env
+.env.*
+!.env.example
 
 # vercel
 .vercel
@@ -39,6 +41,16 @@ yarn-error.log*
 # claude code local config (may contain tokens)
 .claude/
 
+# editor / OS
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ── Skills del proyecto: SI se versionan ──
+# .agents/skills/ queda fuera de los ignores de arriba a proposito.
+# (Si algun dia hay artefactos locales dentro, ignoralos puntualmente aqui.)
