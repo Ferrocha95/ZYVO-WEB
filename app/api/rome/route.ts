@@ -162,18 +162,35 @@ export async function POST(req: NextRequest) {
     )
 
     if (toolUse) {
-      hasLead = true
       const input = toolUse.input as Record<string, unknown>
-      await captureLead({
-        nombre: asString(input.nombre),
-        empresa: asString(input.empresa),
-        whatsapp: asString(input.whatsapp),
-        email: asString(input.email),
-        friccion: asString(input.friccion),
-        resumen: asString(input.resumen) || text,
-      })
+      // Validación del lead (paridad con /api/contact): requeridos + regex + topes
+      const nombre = asString(input.nombre).slice(0, 120)
+      const empresa = asString(input.empresa).slice(0, 160)
+      const whatsapp = asString(input.whatsapp).slice(0, 40)
+      let email = asString(input.email).slice(0, 160)
+      const friccion = asString(input.friccion).slice(0, 500)
+      const resumen = (asString(input.resumen) || text).slice(0, 1000)
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) email = ''
+      const validLead = Boolean(nombre && empresa && (email || whatsapp))
 
-      // Segunda llamada: Rome cierra con un mensaje tras registrar el lead
+      // Rate limit propio y más estricto para la captura (anti lead-spam)
+      let captured = false
+      if (validLead) {
+        const leadRl = rateLimit(`rome-lead:${clientIp(req)}`, 3, 3_600_000)
+        if (leadRl.ok) {
+          captured = true
+          hasLead = true
+          await captureLead({ nombre, empresa, whatsapp, email, friccion, resumen })
+        }
+      }
+
+      const toolResultMsg = captured
+        ? 'Lead registrado. Confirma breve y cálidamente que el equipo lo contactará para agendar su ConsultorIA.'
+        : validLead
+          ? 'No se pudo registrar por ahora. Dile que lo intente en un momento o que escriba por WhatsApp.'
+          : 'Faltan datos para registrar (nombre, empresa y un contacto: WhatsApp o email). Pídelos de forma natural, sin presionar.'
+
+      // Segunda llamada: Rome cierra tras el intento de captura
       const follow = await client.messages.create({
         model: MODEL,
         max_tokens: 300,
@@ -185,14 +202,7 @@ export async function POST(req: NextRequest) {
           { role: 'assistant', content: first.content },
           {
             role: 'user',
-            content: [
-              {
-                type: 'tool_result',
-                tool_use_id: toolUse.id,
-                content:
-                  'Lead registrado. Confirma breve y cálidamente al prospecto que el equipo lo contactará para agendar su ConsultorIA.',
-              },
-            ],
+            content: [{ type: 'tool_result', tool_use_id: toolUse.id, content: toolResultMsg }],
           },
         ],
       })
@@ -244,7 +254,8 @@ async function captureLead(lead: Lead) {
 
   // Supabase (acepta los nombres de variable de /api/contact o los antiguos)
   const supabaseUrl = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
-  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_ANON_KEY
+  // Clave anónima (insert-only vía RLS), NO la service-role: este endpoint es público
+  const supabaseKey = process.env.SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   if (supabaseUrl && supabaseKey) {
     try {
       await fetch(`${supabaseUrl}/rest/v1/rome_leads`, {
