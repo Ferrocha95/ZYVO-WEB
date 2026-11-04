@@ -1,235 +1,250 @@
 import { NextRequest, NextResponse } from 'next/server'
+import Anthropic from '@anthropic-ai/sdk'
+import { rateLimit } from '@/lib/rate-limit'
 
+// ─── Master prompt de Rome (identidad 2026) ──────────────────────────────────
 const SYSTEM_PROMPT = `## Identidad
+Tu nombre es Rome. Eres el asistente de IA de ZYVO y el primer punto de contacto en el sitio: parte atención, parte filtro comercial.
+Si te preguntan, sí: eres una inteligencia artificial. Lo dices con naturalidad, sin aspavientos, y puedes conectar a la persona con alguien del equipo cuando lo pida.
+Eres inteligente, directo, humano y eficiente. Sin rodeos, sin vender humo, sin frases de call-center.
 
-Tu nombre es Rome.
-Eres el agente comercial de ZYVO en su sitio web.
-No eres un chatbot genérico. Eres el primer punto de contacto con una firma de arquitectura de sistemas inteligentes.
-Tu trabajo es convertir cada conversación en una Auditoría de Fricción agendada.
+## Qué es ZYVO
+ZYVO diseña e implementa sistemas inteligentes (agénticos) para empresas que quieren crecer sin perder el control de su operación.
+Claim: "Crece sin perder el control." No es agencia de marketing ni vende software genérico. No promete "rápido y fácil".
 
-Eres inteligente, directo, humano y eficiente.
-No das rodeos. No perdes el tiempo. No vendes humo.
-Hablas como alguien que entiende negocios reales, no como un bot corporativo.
+Tres formas de sistematizar una empresa:
+1. Sistema operativo agéntico — agentes que operan áreas de la empresa con criterio y bajo las reglas del cliente: ejecutan tareas y procesos, escalan a una persona cuando toca decidir, y dejan registro de todo.
+2. Sistema comercial inteligente — captación, seguimiento y cierre asistidos, con todo trazable.
+3. Apps y plataformas a medida — software propio para la operación, no plantillas genéricas.
 
----
-
-## Empresa que representas
-
-ZYVO es un estudio de arquitectura de sistemas inteligentes.
-Diseña infraestructura operativa para eliminar fricción, recuperar tiempo, reducir errores y dar más control a empresas que ya operan y ya facturan, pero siguen dependiendo demasiado de trabajo manual, seguimiento desordenado y personas clave sobrecargadas.
-
-ZYVO construye:
-- Empleados digitales
-- CRM inteligentes
-- ERP agénticos
-- Sistemas agénticos
-- Apps agénticas
-- Automatizaciones empresariales
-
-Todo alojado en infraestructura propia. Con lógica de self-healing: sistemas que se monitorean, se autocorrigen y solo escalan a una persona cuando realmente hace falta.
-
-La promesa central de ZYVO es simple:
-Convertir complejidad operativa en claridad, velocidad y control.
-
----
+Principios de control (clave para la confianza): human in the loop (el sistema propone, la persona aprueba lo que importa), trazabilidad (cada acción queda registrada), permisos y auditoría, y los datos del cliente son suyos y viven en su infraestructura.
 
 ## Tu único objetivo
+Entender rápido la fricción del prospecto y llevarlo a agendar la ConsultorIA 1a1 gratuita: una sesión de 60 minutos para ver su operación con claridad, sin costo y sin compromiso. Es el único cierre por chat. No hay otro producto que vender aquí.
 
-Agendar la Auditoría de Fricción Operativa.
+## Reglas DURAS (nunca romper)
+- NO menciones precios, ROI, ahorros, porcentajes, plazos garantizados ni "resultados en X semanas". ZYVO no promete resultados sin diagnóstico. Si preguntan cuánto cuesta o cuánto tarda: "Depende de tu operación; se define en la ConsultorIA, que es gratuita."
+- NO inventes casos de éxito, testimonios ni clientes.
+- NO hables de herramientas técnicas (n8n, modelos, APIs) salvo que lo pidan; habla de impacto operativo.
+- NO existen "Departamentos Digitales", "Asistente Directiva", "ZYVO Hub", "CRM/ERP" como productos — eso es de una versión vieja de ZYVO; nunca lo menciones.
+- Si no sabes algo, dilo: "Eso lo aclaramos en la ConsultorIA" o conecto con el equipo.
 
-Esa es la única conversión que importa.
-Todo lo demás —dudas, preguntas, contexto, explicaciones— es el camino hacia ese cierre.
+## Comportamiento
+- Frases cortas. Una sola pregunta por mensaje si necesitas contexto. Cada mensaje acerca al CTA.
+- Si el prospecto ya sabe lo que quiere, valida en una frase y llévalo directo a la ConsultorIA.
+- Mantén el foco; vuelve siempre al hilo central.
 
-No tienes misión de educar al usuario durante horas.
-Tienes misión de entender rápido su problema y llevarlo al siguiente paso correcto.
-
----
-
-## Cómo funciona la Auditoría de Fricción
-
-Es el primer paso para trabajar con ZYVO.
-Es una sesión de diagnóstico donde ZYVO identifica los cuellos de botella reales de la operación del prospecto.
-Al final, el prospecto sabe exactamente dónde está perdiendo tiempo, dinero y energía, y qué sistema resolvería eso.
-
-Cuando el usuario pregunte el costo o el link, dirígelo al canal correcto de agendamiento. Si no tienes el link disponible en tu configuración, dile que un asesor le compartirá los detalles por WhatsApp o correo y pídele su información de contacto.
-
----
-
-## Reglas de comportamiento
-
-1. Conversación natural, no robótica. Habla como persona. Usa frases cortas. No generes párrafos enormes si no hacen falta. Adapta tu tono al tono del usuario.
-
-2. Velocidad de cierre. No alargas conversaciones innecesariamente. Cada mensaje tuyo debe acercar al usuario al CTA. Si ya entendiste el problema, no des tres vueltas más. Ve al grano.
-
-3. Si el usuario ya sabe lo que quiere, córtalo al CTA. Si alguien llega diciendo "quiero un agente de WhatsApp", "quiero automatizar mis cotizaciones", "quiero un CRM", "quiero algo para mis ventas" — no lo pongas a explicar más. Responde brevemente que eso es exactamente lo que ZYVO resuelve y llévalo directo a agendar la Auditoría.
-
-4. Responde dudas con brevedad y propósito. Si alguien pregunta qué hace ZYVO, qué es la Auditoría, cómo funciona el proceso o por qué deberían trabajar con ZYVO — responde claro y corto, y termina cada respuesta encaminando hacia el siguiente paso.
-
-5. No hagas preguntas en cadena. Si necesitas contexto, haz una sola pregunta. No interrogues al usuario como si fuera un formulario de onboarding.
-
-6. No inventes precios, plazos ni promesas específicas. Si te preguntan cuánto cuesta, di que depende del diagnóstico y que por eso existe la Auditoría. Si te preguntan tiempos, di que se definen después del diagnóstico.
-
-7. No hables de herramientas técnicas a menos que el usuario lo pida explícitamente. No menciones n8n, Make, GPT, APIs ni nada técnico si no viene al caso. Habla en términos de impacto operativo.
-
-8. No digas que "eres una IA" ni des detalles sobre tu arquitectura. Si alguien pregunta si eres humano o bot, puedes decir que eres el asistente de ZYVO y que si prefiere hablar con alguien del equipo, con gusto lo conectas.
-
-9. Si no sabes algo, no lo inventes. Di que eso se aclara en la Auditoría o que un asesor del equipo puede resolverlo directamente.
-
-10. Mantén siempre el foco. No importa si la conversación se va por las ramas. Tú regresas al hilo: ¿tiene sentido que le mostremos cómo funciona esto para tu operación?
-
----
-
-## Flujo general de conversación
-
-Entrada genérica (usuario no sabe bien qué quiere):
-→ Saluda. Pregunta en qué está trabajando el negocio o qué problema quiere resolver.
-→ Con su respuesta, conecta ese dolor con lo que ZYVO resuelve en una o dos frases.
-→ Invita a la Auditoría.
-
-Entrada con problema definido:
-→ Valida el problema brevemente.
-→ Conecta directo con la solución.
-→ Invita a la Auditoría sin más preámbulo.
-
-Entrada con solución en mente (usuario ya sabe qué quiere):
-→ Confirma que ZYVO lo construye.
-→ CTA directo. Sin escalas.
-
-Preguntas sobre ZYVO (qué hacen, cómo trabajan, qué es la Auditoría):
-→ Responde en máximo 3-4 líneas.
-→ Cierra con el CTA.
-
-Objeciones comunes:
-- "¿Cuánto cuesta?" → "Depende del sistema que necesitas. La Auditoría existe exactamente para definir eso."
-- "¿Y si no necesito tanto?" → "Eso lo descubrimos juntos. La Auditoría no es un compromiso de compra."
-- "Estoy comparando opciones" → "Bien. La Auditoría te da información concreta para comparar. No humo."
-- "No tengo tiempo ahorita" → "Entendido. ¿Cuándo sería un mejor momento? Te separo el espacio."
-
----
+## Objeciones (sin promesas)
+- "¿Mis datos están seguros?" → "Tu información vive en tu infraestructura y bajo tu control, con permisos y registro de accesos. Tú decides quién puede hacer qué."
+- "¿Pierdo el control de mi operación?" → "No. Todo se diseña con human in the loop: el sistema propone y tú apruebas lo que importa. Cada acción queda registrada."
+- "¿Cuánto cuesta / cuánto tarda?" → "Depende de tu operación; se define en la ConsultorIA, y la sesión es gratuita."
+- "Estoy comparando opciones" → "La ConsultorIA te da una lectura concreta de tu operación para comparar. Sin humo."
+- "No tengo tiempo ahora" → "Entendido. ¿Cuándo te queda bien? Te aparto el espacio."
+- "¿Qué pasa si no funciona?" → "Se trabaja por fases, con una etapa de estabilización. Si algo no opera como debe, se corrige. No entregamos y desaparecemos."
 
 ## Tono de Rome
+Directo sin ser grosero. Seguro sin ser arrogante. Cálido sin ser servil. Humor seco cuando cuadra, nunca forzado.
+Rome no dice "con gusto", "claro que sí", "por supuesto". No abre con "¡Hola!" seguido de relleno. Dice lo que hay que decir y punto.
 
-- Directo, sin ser grosero.
-- Seguro, sin ser arrogante.
-- Cálido, sin ser servil.
-- Inteligente, sin ser pedante.
-- Puede usar algo de humor seco cuando el contexto lo permite. Nunca forzado.
-
-Rome no dice "con gusto", "claro que sí", "por supuesto", ni frases de call center.
-Rome no empieza respuestas con "¡Hola!" seguido de tres oraciones de relleno.
-Rome dice lo que hay que decir y punto.
-
----
-
-## CTA estándar
-
-Usa variaciones de estas frases para cerrar cada intercambio relevante:
-
-- "¿Agendamos la Auditoría para ver cómo aplica esto a tu operación?"
-- "El siguiente paso natural es la Auditoría. ¿Lo hacemos?"
-- "Eso es exactamente lo que diagnosticamos en la Auditoría. ¿Te separo un espacio?"
-- "Sin diagnóstico no hay sistema bien diseñado. ¿Arrancamos con la Auditoría?"
-- "¿Cuándo tienes 45 minutos para que lo revisemos en serio?"
-
----
-
-## Lo que Rome nunca hace
-
-- No alarga conversaciones sin propósito.
-- No genera entusiasmo falso.
-- No inventa datos o casos de éxito específicos.
-- No menciona precios sin que se pidan, y cuando se piden, los redirige a la Auditoría.
-- No contradice la identidad de ZYVO.
-- No habla como agencia tradicional.
-- No promete resultados exactos sin diagnóstico previo.
-- No da presentaciones largas cuando una pregunta directa funciona mejor.
-
----
+## CTA (varía según el contexto)
+- "¿Agendamos la ConsultorIA para ver cómo aplica a tu operación? Es gratis, 60 minutos."
+- "El siguiente paso es la ConsultorIA — sin costo, sin compromiso. ¿Lo hacemos?"
+- "¿Cuándo tienes 60 minutos para revisarlo en serio?"
 
 ## Captura de datos
+Pide los datos de forma natural conforme avanza la charla, no todos de golpe. Cuando tengas el nombre de la persona, su empresa y un medio de contacto (WhatsApp o email), usa la herramienta capturar_lead una sola vez para registrar el prospecto. Después de capturar, confirma brevemente que el equipo lo contactará para agendar la ConsultorIA.
+Si la persona solo quiere información general y no deja datos, NO uses la herramienta.`
 
-Cuando tengas nombre + empresa + un medio de contacto (WhatsApp o email), termina tu respuesta con este bloque exacto en JSON en una línea, sin explicación adicional:
-LEAD_CAPTURE:{"nombre":"...","empresa":"...","whatsapp":"...","email":"...","facturacion":"...","problema":"...","intencion":"calificado"}
+const LEAD_TOOL: Anthropic.Tool = {
+  name: 'capturar_lead',
+  description:
+    'Registra un prospecto calificado cuando ya tienes su nombre, su empresa y un medio de contacto (WhatsApp o email). Úsala una sola vez por conversación.',
+  input_schema: {
+    type: 'object',
+    properties: {
+      nombre: { type: 'string', description: 'Nombre de la persona' },
+      empresa: { type: 'string', description: 'Nombre de su empresa o negocio' },
+      whatsapp: { type: 'string', description: 'WhatsApp, si lo dio' },
+      email: { type: 'string', description: 'Correo, si lo dio' },
+      friccion: { type: 'string', description: 'La fricción o problema principal que describió' },
+      resumen: { type: 'string', description: 'Resumen breve de la conversación y la intención' },
+    },
+    required: ['nombre', 'empresa'],
+  },
+}
 
-Si el usuario solo quiere info general, NO generes el bloque LEAD_CAPTURE.`
+const MODEL = 'claude-haiku-5-5'
+const MAX_MSG_LEN = 2000
 
-interface Message {
+interface Msg {
   role: 'user' | 'assistant'
   content: string
 }
 
-interface RequestBody {
-  messages: Message[]
+const asString = (v: unknown): string => (typeof v === 'string' ? v.trim() : '')
+
+function clientIp(req: NextRequest): string {
+  const vercel = req.headers.get('x-vercel-forwarded-for')
+  if (vercel) return vercel.split(',')[0].trim()
+  return req.headers.get('x-real-ip') ?? req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
+}
+
+function textFrom(content: Anthropic.ContentBlock[]): string {
+  return content
+    .filter((b): b is Anthropic.TextBlock => b.type === 'text')
+    .map(b => b.text)
+    .join(' ')
+    .trim()
 }
 
 export async function POST(req: NextRequest) {
   try {
-    const body: RequestBody = await req.json()
-    const { messages } = body
+    if (!req.headers.get('content-type')?.includes('application/json')) {
+      return NextResponse.json({ error: 'Content-Type inválido' }, { status: 415 })
+    }
 
-    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+    // Rate limit por IP (chat: permite conversación activa, bloquea floods)
+    const rl = rateLimit(`rome:${clientIp(req)}`, 20, 60_000)
+    if (!rl.ok) {
+      return NextResponse.json(
+        { error: 'Demasiados mensajes. Espera un momento.' },
+        { status: 429, headers: { 'Retry-After': String(rl.retryAfter ?? 60) } },
+      )
+    }
+
+    const body: unknown = await req.json().catch(() => null)
+    const rawMessages = (body as { messages?: unknown })?.messages
+    if (!Array.isArray(rawMessages) || rawMessages.length === 0) {
       return NextResponse.json({ error: 'messages requerido' }, { status: 400 })
     }
 
-    const apiKey = process.env.OPENAI_API_KEY
+    // Normaliza y acota los mensajes (anti type-confusion / abuso)
+    const messages: Msg[] = rawMessages
+      .map((m): Msg | null => {
+        const role = (m as { role?: unknown })?.role
+        const content = asString((m as { content?: unknown })?.content).slice(0, MAX_MSG_LEN)
+        if ((role === 'user' || role === 'assistant') && content) return { role, content }
+        return null
+      })
+      .filter((m): m is Msg => m !== null)
+      .slice(-12)
+
+    if (messages.length === 0) {
+      return NextResponse.json({ error: 'messages inválido' }, { status: 400 })
+    }
+
+    const apiKey = process.env.ANTHROPIC_API_KEY
     if (!apiKey) {
       return NextResponse.json({ error: 'Servicio no configurado' }, { status: 503 })
     }
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${apiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          ...messages.slice(-12),
-        ],
-        max_tokens: 350,
-        temperature: 0.55,
-      }),
+    const client = new Anthropic({ apiKey })
+
+    const anthropicMessages: Anthropic.MessageParam[] = messages.map(m => ({
+      role: m.role,
+      content: m.content,
+    }))
+
+    const first = await client.messages.create({
+      model: MODEL,
+      max_tokens: 400,
+      system: SYSTEM_PROMPT,
+      tools: [LEAD_TOOL],
+      output_config: { effort: 'low' },
+      messages: anthropicMessages,
     })
 
-    if (!response.ok) {
-      const err = await response.text()
-      console.error('[Rome] OpenAI error:', err)
-      return NextResponse.json({ error: 'Error al procesar' }, { status: 502 })
+    let text = textFrom(first.content)
+    let hasLead = false
+
+    const toolUse = first.content.find(
+      (b): b is Anthropic.ToolUseBlock => b.type === 'tool_use' && b.name === 'capturar_lead',
+    )
+
+    if (toolUse) {
+      hasLead = true
+      const input = toolUse.input as Record<string, unknown>
+      await captureLead({
+        nombre: asString(input.nombre),
+        empresa: asString(input.empresa),
+        whatsapp: asString(input.whatsapp),
+        email: asString(input.email),
+        friccion: asString(input.friccion),
+        resumen: asString(input.resumen) || text,
+      })
+
+      // Segunda llamada: Rome cierra con un mensaje tras registrar el lead
+      const follow = await client.messages.create({
+        model: MODEL,
+        max_tokens: 300,
+        system: SYSTEM_PROMPT,
+        tools: [LEAD_TOOL],
+        output_config: { effort: 'low' },
+        messages: [
+          ...anthropicMessages,
+          { role: 'assistant', content: first.content },
+          {
+            role: 'user',
+            content: [
+              {
+                type: 'tool_result',
+                tool_use_id: toolUse.id,
+                content:
+                  'Lead registrado. Confirma breve y cálidamente al prospecto que el equipo lo contactará para agendar su ConsultorIA.',
+              },
+            ],
+          },
+        ],
+      })
+      text = textFrom(follow.content) || text
     }
 
-    const data = await response.json()
-    const raw: string = data.choices?.[0]?.message?.content ?? ''
-
-    // Extraer bloque LEAD_CAPTURE si existe
-    const leadMatch = raw.match(/LEAD_CAPTURE:(\{.*?\})/)
-    const text = raw.replace(/LEAD_CAPTURE:\{.*?\}/, '').trim()
-
-    if (leadMatch) {
-      try {
-        const lead = JSON.parse(leadMatch[1])
-        await captureLead({ ...lead, resumen: text })
-      } catch {
-        console.error('[Rome] Error parsing lead JSON')
-      }
-    }
-
-    return NextResponse.json({ text, hasLead: !!leadMatch })
+    return NextResponse.json({
+      text: text || 'Listo. El equipo te contacta para agendar tu ConsultorIA.',
+      hasLead,
+    })
   } catch (err) {
-    console.error('[Rome] Unexpected error:', err)
+    console.error('[Rome] Error:', err)
     return NextResponse.json({ error: 'Error interno' }, { status: 500 })
   }
 }
 
-async function captureLead(lead: Record<string, string>) {
+// ─── Captura de lead → Supabase + n8n + Resend ───────────────────────────────
+interface Lead {
+  nombre: string
+  empresa: string
+  whatsapp: string
+  email: string
+  friccion: string
+  resumen: string
+}
+
+function esc(s: string): string {
+  return s.replace(
+    /[&<>"']/g,
+    c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c] as string,
+  )
+}
+
+async function captureLead(lead: Lead) {
   const timestamp = new Date().toISOString()
-  const payload = { ...lead, timestamp, source: 'landing_zyvo_rome' }
+  // Mapea a las columnas existentes de la tabla rome_leads
+  const row = {
+    nombre: lead.nombre,
+    empresa: lead.empresa,
+    whatsapp: lead.whatsapp || null,
+    email: lead.email || null,
+    facturacion: null,
+    problema: lead.friccion || null,
+    resumen: lead.resumen || null,
+    intencion: 'calificado',
+    source: 'landing_zyvo_rome',
+    timestamp,
+  }
 
-  // Guardar en Supabase
-  const supabaseUrl  = process.env.SUPABASE_URL
-  const supabaseKey  = process.env.SUPABASE_ANON_KEY
-
+  // Supabase (acepta los nombres de variable de /api/contact o los antiguos)
+  const supabaseUrl = process.env.SUPABASE_URL ?? process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? process.env.SUPABASE_ANON_KEY
   if (supabaseUrl && supabaseKey) {
     try {
       await fetch(`${supabaseUrl}/rest/v1/rome_leads`, {
@@ -240,48 +255,51 @@ async function captureLead(lead: Record<string, string>) {
           Authorization: `Bearer ${supabaseKey}`,
           Prefer: 'return=minimal',
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(row),
       })
     } catch (e) {
       console.error('[Rome] Supabase insert error:', e)
     }
   }
 
-  // Enviar a n8n webhook
+  // Webhook n8n
   const webhookUrl = process.env.N8N_WEBHOOK_URL
   if (webhookUrl) {
     try {
       await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify(row),
       })
     } catch (e) {
       console.error('[Rome] n8n webhook error:', e)
     }
   }
 
-  // Enviar email de notificación
+  // Email de notificación (valores escapados, paleta nueva)
   const resendKey = process.env.RESEND_API_KEY
   if (resendKey) {
     try {
       const { Resend } = await import('resend')
       const resend = new Resend(resendKey)
+      const rowHtml = (label: string, value: string) =>
+        value
+          ? `<tr><td style="padding:8px 0;color:#8B93A1;width:120px">${label}</td><td style="padding:8px 0">${esc(value)}</td></tr>`
+          : ''
       await resend.emails.send({
         from: 'Rome IA <noreply@zyvo.com.mx>',
         to: 'direccion@zyvo.com.mx',
-        subject: `Nuevo lead Rome — ${lead.nombre ?? 'Sin nombre'}${lead.empresa ? ` (${lead.empresa})` : ''}`,
+        subject: `Nuevo lead Rome — ${esc(lead.nombre || 'Sin nombre')}${lead.empresa ? ` (${esc(lead.empresa)})` : ''}`,
         html: `
-          <div style="font-family:sans-serif;max-width:520px;margin:0 auto;background:#080C14;color:#F5F5F5;padding:32px;border-radius:12px;border:1px solid rgba(212,175,55,0.2)">
-            <h2 style="color:#D4AF37;margin:0 0 24px">Nuevo lead — Agente Rome</h2>
+          <div style="font-family:sans-serif;max-width:520px;margin:0 auto;background:#0A0A0B;color:#F5F7FA;padding:32px;border-radius:12px;border:1px solid rgba(0,229,255,0.2)">
+            <h2 style="color:#00E5FF;margin:0 0 24px">Nuevo lead — Agente Rome</h2>
             <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:8px 0;color:#aaa;width:120px">Nombre</td><td style="padding:8px 0">${lead.nombre ?? '—'}</td></tr>
-              <tr><td style="padding:8px 0;color:#aaa">Empresa</td><td style="padding:8px 0">${lead.empresa ?? '—'}</td></tr>
-              <tr><td style="padding:8px 0;color:#aaa">WhatsApp</td><td style="padding:8px 0">${lead.whatsapp ?? '—'}</td></tr>
-              <tr><td style="padding:8px 0;color:#aaa">Email</td><td style="padding:8px 0">${lead.email ?? '—'}</td></tr>
-              <tr><td style="padding:8px 0;color:#aaa">Facturación</td><td style="padding:8px 0">${lead.facturacion ?? '—'}</td></tr>
-              <tr><td style="padding:8px 0;color:#aaa">Problema</td><td style="padding:8px 0">${lead.problema ?? '—'}</td></tr>
-              <tr><td style="padding:8px 0;color:#aaa">Resumen</td><td style="padding:8px 0">${lead.resumen ?? '—'}</td></tr>
+              ${rowHtml('Nombre', lead.nombre)}
+              ${rowHtml('Empresa', lead.empresa)}
+              ${rowHtml('WhatsApp', lead.whatsapp)}
+              ${rowHtml('Email', lead.email)}
+              ${rowHtml('Fricción', lead.friccion)}
+              ${rowHtml('Resumen', lead.resumen)}
             </table>
           </div>
         `,
@@ -292,6 +310,6 @@ async function captureLead(lead: Record<string, string>) {
   }
 
   if (!supabaseUrl && !webhookUrl && !resendKey) {
-    console.log('[Rome] Lead capturado:', payload)
+    console.log('[Rome] Lead capturado:', row)
   }
 }
