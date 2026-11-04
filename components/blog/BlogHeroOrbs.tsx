@@ -10,7 +10,7 @@ export default function BlogHeroOrbs() {
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         className="absolute top-32 left-1/4 w-80 h-80 rounded-full"
         style={{
-          background: 'radial-gradient(circle, rgba(0,170,255,0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(0,229,255,0.18) 0%, transparent 70%)',
           filter: 'blur(48px)',
         }}
       />

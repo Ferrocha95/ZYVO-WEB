@@ -39,14 +39,14 @@ export default function BlogClient({ posts }: BlogClientProps) {
       >
         <Search
           size={16}
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-zyvo-white/25 pointer-events-none"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/25 pointer-events-none"
         />
         <input
           type="text"
           placeholder="Buscar artículos..."
           value={query}
           onChange={e => setQuery(e.target.value)}
-          className="w-full bg-white/3 border border-white/8 rounded-xl pl-10 pr-4 py-3 text-sm text-zyvo-white/80 placeholder-zyvo-white/25 outline-none focus:border-zyvo-gold/35 transition-colors duration-200"
+          className="w-full bg-white/3 border border-white/8 rounded-xl pl-10 pr-4 py-3 text-sm text-ink/80 placeholder-ink/25 outline-none focus:border-cyan/35 transition-colors duration-200"
         />
       </motion.div>
 
@@ -63,8 +63,8 @@ export default function BlogClient({ posts }: BlogClientProps) {
             onClick={() => setActiveCategory(cat)}
             className={`text-xs px-3.5 py-1.5 rounded-full border transition-all duration-200 ${
               activeCategory === cat
-                ? 'bg-zyvo-gold/15 border-zyvo-gold/40 text-zyvo-gold'
-                : 'border-white/8 text-zyvo-white/40 hover:border-white/20 hover:text-zyvo-white/60'
+                ? 'bg-cyan/15 border-cyan/40 text-cyan'
+                : 'border-white/8 text-ink/40 hover:border-white/20 hover:text-ink/60'
             }`}
           >
             {cat}
@@ -101,10 +101,10 @@ export default function BlogClient({ posts }: BlogClientProps) {
             transition={{ duration: 0.25 }}
             className="text-center py-20"
           >
-            <p className="text-zyvo-white/30 text-sm">No hay artículos para esta búsqueda.</p>
+            <p className="text-ink/30 text-sm">No hay artículos para esta búsqueda.</p>
             <button
               onClick={() => { setQuery(''); setActiveCategory('Todos') }}
-              className="mt-4 text-xs text-zyvo-gold/60 hover:text-zyvo-gold transition-colors"
+              className="mt-4 text-xs text-cyan/60 hover:text-cyan transition-colors"
             >
               Limpiar filtros
             </button>
@@ -119,15 +119,15 @@ export default function BlogClient({ posts }: BlogClientProps) {
         viewport={{ once: true }}
         transition={{ delay: 0.2, duration: 0.5, ease: EASE }}
         className="mt-20 glass rounded-2xl p-10 text-center"
-        style={{ borderColor: 'rgba(0,170,255,0.15)' }}
+        style={{ borderColor: 'rgba(0,229,255,0.15)' }}
       >
-        <p className="text-xs text-zyvo-white/30 uppercase tracking-widest mb-3">¿Listo para actuar?</p>
-        <h3 className="font-(family-name:--font-instrument-serif) text-2xl md:text-3xl text-zyvo-white mb-5 font-normal">
+        <p className="text-xs text-ink/30 uppercase tracking-widest mb-3">¿Listo para actuar?</p>
+        <h3 className="font-display text-2xl md:text-3xl text-ink mb-5 font-normal">
           ¿Listo para eliminar la fricción<br className="hidden sm:block" /> de tu operación?
         </h3>
         <Link
           href="/auditoria"
-          className="inline-flex items-center gap-2 px-8 py-3.5 btn-glow text-sm"
+          className="inline-flex items-center gap-2 px-8 py-3.5 btn-primary text-sm"
         >
           Agenda una Auditoría de Fricción Operativa
           <ArrowRight size={15} />

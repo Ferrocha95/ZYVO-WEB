@@ -25,22 +25,22 @@ export default function PostCard({ post, featured = false, index = 0 }: PostCard
     >
       <Link
         href={`/blog/${post.slug}`}
-        className="group glass rounded-2xl p-6 flex flex-col gap-4 h-full hover:border-zyvo-gold/30 transition-all duration-200 block"
+        className="group glass rounded-2xl p-6 flex flex-col gap-4 h-full hover:border-cyan/30 transition-all duration-200 block"
         style={{ borderColor: 'rgba(255,255,255,0.08)' }}
       >
         {/* Top row: category badge + date */}
         <div className="flex items-center justify-between gap-3 flex-wrap">
-          <span className="text-xs px-2.5 py-1 rounded-full border border-zyvo-gold/20 bg-zyvo-gold/5 text-zyvo-gold/70 shrink-0">
+          <span className="text-xs px-2.5 py-1 rounded-full border border-cyan/20 bg-cyan/5 text-cyan/70 shrink-0">
             {post.category}
           </span>
-          <span className="text-xs text-zyvo-white/25 font-mono shrink-0">
+          <span className="text-xs text-ink/25 font-mono shrink-0">
             {new Date(post.date).toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' })}
           </span>
         </div>
 
         {/* Title */}
         <h3
-          className={`font-(family-name:--font-instrument-serif) font-normal text-zyvo-white leading-snug flex-1 ${
+          className={`font-display font-normal text-ink leading-snug flex-1 ${
             featured ? 'text-2xl md:text-3xl' : 'text-xl'
           }`}
         >
@@ -48,17 +48,17 @@ export default function PostCard({ post, featured = false, index = 0 }: PostCard
         </h3>
 
         {/* Summary */}
-        <p className="text-zyvo-white/45 text-sm leading-relaxed line-clamp-3">
+        <p className="text-ink/45 text-sm leading-relaxed line-clamp-3">
           {post.summary}
         </p>
 
         {/* Footer: read time + arrow */}
         <div className="flex items-center justify-between pt-4 border-t border-white/6 mt-auto">
-          <div className="flex items-center gap-1.5 text-xs text-zyvo-white/30">
+          <div className="flex items-center gap-1.5 text-xs text-ink/30">
             <Clock size={12} />
             <span>{post.readTime} de lectura</span>
           </div>
-          <span className="flex items-center gap-1 text-xs text-zyvo-gold/60 group-hover:text-zyvo-gold transition-colors duration-200">
+          <span className="flex items-center gap-1 text-xs text-cyan/60 group-hover:text-cyan transition-colors duration-200">
             Leer más
             <ArrowRight
               size={12}

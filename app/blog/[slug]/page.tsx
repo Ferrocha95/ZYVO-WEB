@@ -35,7 +35,7 @@ function renderContent(content: string) {
       elements.push(
         <h3
           key={key++}
-          className="font-(family-name:--font-instrument-serif) text-xl text-zyvo-white mt-8 mb-3 font-normal"
+          className="font-display text-xl text-ink mt-8 mb-3 font-normal"
         >
           {trimmed.slice(4)}
         </h3>
@@ -44,14 +44,14 @@ function renderContent(content: string) {
       elements.push(
         <h2
           key={key++}
-          className="font-(family-name:--font-instrument-serif) text-2xl text-zyvo-white mt-10 mb-4 font-normal"
+          className="font-display text-2xl text-ink mt-10 mb-4 font-normal"
         >
           {trimmed.slice(3)}
         </h2>
       )
     } else {
       elements.push(
-        <p key={key++} className="text-zyvo-white/65 leading-relaxed">
+        <p key={key++} className="text-ink/65 leading-relaxed">
           {trimmed}
         </p>
       )
@@ -73,24 +73,24 @@ export default async function BlogPostPage({ params }: Props) {
         {/* Back link */}
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-xs text-zyvo-white/35 hover:text-zyvo-white/70 transition-colors mb-10"
+          className="inline-flex items-center gap-2 text-xs text-ink/35 hover:text-ink/70 transition-colors mb-10"
         >
           <ArrowLeft size={13} />
           Volver al blog
         </Link>
 
         {/* Category badge */}
-        <span className="inline-block text-xs px-2.5 py-1 rounded-full border border-zyvo-gold/20 bg-zyvo-gold/5 text-zyvo-gold/70 mb-5">
+        <span className="inline-block text-xs px-2.5 py-1 rounded-full border border-cyan/20 bg-cyan/5 text-cyan/70 mb-5">
           {post.category}
         </span>
 
         {/* Title */}
-        <h1 className="font-(family-name:--font-instrument-serif) text-3xl md:text-5xl font-normal text-zyvo-white leading-tight mb-6">
+        <h1 className="font-display text-3xl md:text-5xl font-normal text-ink leading-tight mb-6">
           {post.title}
         </h1>
 
         {/* Meta row */}
-        <div className="flex items-center gap-4 text-xs text-zyvo-white/30 mb-8">
+        <div className="flex items-center gap-4 text-xs text-ink/30 mb-8">
           <span>
             {new Date(post.date).toLocaleDateString('es-MX', {
               year: 'numeric',
@@ -106,7 +106,7 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-linear-to-r from-transparent via-zyvo-gold/20 to-transparent mb-10" />
+        <div className="h-px bg-linear-to-r from-transparent via-cyan/20 to-transparent mb-10" />
 
         {/* Article content */}
         <div className="space-y-5">
@@ -116,18 +116,18 @@ export default async function BlogPostPage({ params }: Props) {
         {/* CTA card */}
         <div
           className="mt-16 glass rounded-2xl p-8 text-center"
-          style={{ borderColor: 'rgba(0,170,255,0.15)' }}
+          style={{ borderColor: 'rgba(0,229,255,0.15)' }}
         >
-          <p className="text-xs text-zyvo-white/30 uppercase tracking-widest mb-3">Siguiente paso</p>
-          <h3 className="font-(family-name:--font-instrument-serif) text-xl md:text-2xl text-zyvo-white font-normal mb-2">
+          <p className="text-xs text-ink/30 uppercase tracking-widest mb-3">Siguiente paso</p>
+          <h3 className="font-display text-xl md:text-2xl text-ink font-normal mb-2">
             ¿Quieres aplicar esto en tu empresa?
           </h3>
-          <p className="text-zyvo-white/45 text-sm mb-6">
+          <p className="text-ink/45 text-sm mb-6">
             En una auditoría de 1 a 3 días identificamos exactamente dónde está tu fuga operativa y cuánto cuesta.
           </p>
           <Link
             href="/auditoria"
-            className="inline-flex items-center gap-2 px-7 py-3 btn-glow text-sm"
+            className="inline-flex items-center gap-2 px-7 py-3 btn-primary text-sm"
           >
             Solicitar Auditoría de Fricción
             <ArrowRight size={14} />
@@ -138,7 +138,7 @@ export default async function BlogPostPage({ params }: Props) {
         <div className="mt-12 pt-8 border-t border-white/6">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-xs text-zyvo-white/35 hover:text-zyvo-white/70 transition-colors"
+            className="inline-flex items-center gap-2 text-xs text-ink/35 hover:text-ink/70 transition-colors"
           >
             <ArrowLeft size={13} />
             Volver al blog
