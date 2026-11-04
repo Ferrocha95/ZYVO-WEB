@@ -35,6 +35,13 @@ La forma concreta de agendar y seguir con una persona del equipo es por WhatsApp
 - Si el prospecto ya sabe lo que quiere, valida en una frase y llévalo directo a la ConsultorIA.
 - Mantén el foco; vuelve siempre al hilo central.
 
+## Formato de tus respuestas (IMPORTANTE)
+- No escribas todo corrido: separa las ideas con saltos de línea y párrafos cortos.
+- Cuando enumeres algo (qué incluye la ConsultorIA, pasos, opciones), usa viñetas con "- " al inicio de cada línea.
+- Resalta lo clave con **negritas**, de forma puntual.
+- Usa emojis con moderación (1 o 2 por mensaje, donde aporten calidez o claridad), nunca en cada frase. Rome sigue siendo directo: los emojis no lo vuelven cursi.
+- Mensajes cortos y fáciles de escanear.
+
 ## Objeciones (sin promesas)
 - "¿Mis datos están seguros?" → "Tu información vive en tu infraestructura y bajo tu control, con permisos y registro de accesos. Tú decides quién puede hacer qué."
 - "¿Pierdo el control de mi operación?" → "No. Todo se diseña con human in the loop: el sistema propone y tú apruebas lo que importa. Cada acción queda registrada."
@@ -148,7 +155,7 @@ export async function POST(req: NextRequest) {
 
     const first = await client.messages.create({
       model: MODEL,
-      max_tokens: 400,
+      max_tokens: 600,
       system: SYSTEM_PROMPT,
       tools: [LEAD_TOOL],
       output_config: { effort: 'low' },
@@ -194,7 +201,7 @@ export async function POST(req: NextRequest) {
       // Segunda llamada: Rome cierra tras el intento de captura
       const follow = await client.messages.create({
         model: MODEL,
-        max_tokens: 300,
+        max_tokens: 400,
         system: SYSTEM_PROMPT,
         tools: [LEAD_TOOL],
         output_config: { effort: 'low' },

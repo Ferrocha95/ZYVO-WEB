@@ -36,6 +36,39 @@ function TypingDots() {
   )
 }
 
+// Renderiza **negritas** sin dangerouslySetInnerHTML
+function renderInline(text: string) {
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    part.startsWith('**') && part.endsWith('**') ? (
+      <strong key={i} className="font-semibold text-zyvo-white">
+        {part.slice(2, -2)}
+      </strong>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  )
+}
+
+// Texto con estructura: saltos de línea, viñetas y negritas
+function RichText({ text }: { text: string }) {
+  const lines = text.split('\n')
+  return (
+    <div className="space-y-1.5">
+      {lines.map((line, i) => {
+        if (line.trim() === '') return <div key={i} className="h-1.5" />
+        const t = line.trimStart()
+        const bullet = /^[-•*]\s+/.test(t)
+        return (
+          <div key={i} className={bullet ? 'flex gap-2' : ''}>
+            {bullet && <span className="mt-[7px] w-1 h-1 rounded-full bg-cyan shrink-0" />}
+            <span>{renderInline(bullet ? t.replace(/^[-•*]\s+/, '') : line)}</span>
+          </div>
+        )
+      })}
+    </div>
+  )
+}
+
 export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -106,15 +139,16 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 20, scale: 0.93 }}
       transition={{ duration: 0.35, ease: EASE }}
-      className="fixed bottom-24 right-4 md:right-6 z-99990 w-[calc(100vw-2rem)] max-w-sm flex flex-col"
+      className="fixed bottom-24 right-4 md:right-6 z-99990 w-[calc(100vw-2rem)] max-w-md flex flex-col"
       style={{
-        background: 'linear-gradient(135deg, rgba(39,39,42,0.88) 0%, rgba(24,24,27,0.96) 100%)',
-        border: '1px solid rgba(161,161,170,0.35)',
-        borderRadius: '20px',
-        backdropFilter: 'blur(32px)',
-        WebkitBackdropFilter: 'blur(32px)',
-        boxShadow: '0 32px 80px rgba(0,0,0,0.75), 0 0 0 1px rgba(0,170,255,0.06)',
-        maxHeight: 'min(75vh, 560px)',
+        background: 'linear-gradient(150deg, rgba(23,24,28,0.82) 0%, rgba(10,10,11,0.92) 100%)',
+        border: '1px solid rgba(0,229,255,0.16)',
+        borderRadius: '26px',
+        backdropFilter: 'blur(30px) saturate(1.3)',
+        WebkitBackdropFilter: 'blur(30px) saturate(1.3)',
+        boxShadow:
+          '0 40px 100px -24px rgba(0,0,0,0.82), 0 0 70px -24px rgba(0,229,255,0.28), inset 0 1px 0 rgba(255,255,255,0.05)',
+        maxHeight: 'min(84vh, 680px)',
       }}
     >
       {/* Header */}
@@ -160,13 +194,13 @@ export default function RomeChatWidget({ onClose }: { onClose: () => void }) {
               className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               <div
-                className={`max-w-[82%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                className={`max-w-[86%] px-4 py-3 rounded-2xl text-sm leading-relaxed ${
                   msg.role === 'user'
-                    ? 'bg-cyan/15 text-zyvo-white border border-cyan/20 rounded-br-sm'
-                    : 'bg-zinc-700/40 text-zyvo-white/85 border border-zinc-600/30 rounded-bl-sm'
+                    ? 'bg-cyan/15 text-zyvo-white border border-cyan/25 rounded-br-md'
+                    : 'bg-white/5 text-zyvo-white/90 border border-white/8 rounded-bl-md'
                 }`}
               >
-                {msg.content}
+                {msg.role === 'assistant' ? <RichText text={msg.content} /> : msg.content}
               </div>
             </motion.div>
           ))}
