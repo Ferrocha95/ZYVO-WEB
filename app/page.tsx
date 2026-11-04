@@ -8,7 +8,7 @@ import EvidenciaSection   from '@/components/sections/EvidenciaSection'
 import RutasLateralesSection from '@/components/sections/RutasLateralesSection'
 import EstimadorSection   from '@/components/sections/EstimadorSection'
 import FaqSection         from '@/components/sections/FaqSection'
-import SectionPlaceholder from '@/components/sections/SectionPlaceholder'
+import ContactoSection    from '@/components/sections/ContactoSection'
 
 // Estructura de la home — identidad 2026.
 // Hero + Fricción + ConsultorIA + Sistemas ya son reales; el resto son
@@ -28,7 +28,7 @@ export default function HomePage() {
       <RutasLateralesSection />
       <EstimadorSection />
       <FaqSection />
-      <SectionPlaceholder id="contacto"    n="10" eyebrow="Contacto"               title="Hablemos de tu operación" />
+      <ContactoSection />
     </>
   )
 }
