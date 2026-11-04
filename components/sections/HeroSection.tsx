@@ -1,7 +1,11 @@
 'use client'
 
+import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+
+// Hero 3D interactivo (Three.js): client-only, no crítico para el primer paint.
+const HeroNetwork = dynamic(() => import('@/components/ui/HeroNetwork'), { ssr: false })
 
 function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
@@ -108,57 +112,16 @@ export default function HeroSection() {
           </motion.ul>
         </div>
 
-        {/* ── Columna visual (placeholder: sistema por capas) ───────── */}
+        {/* ── Columna visual: red de nodos 3D interactiva ───────────── */}
         <motion.div
           initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.9, ease: EASE }}
-          className="hidden lg:block"
+          className="hidden lg:block glow-halo"
         >
-          <SystemLayersPlaceholder />
+          <HeroNetwork />
         </motion.div>
       </div>
     </section>
-  )
-}
-
-// Visual provisional: capas de un sistema con nodos conectados.
-// Se reemplaza por el visual definitivo en una fase posterior.
-function SystemLayersPlaceholder() {
-  const layers = [
-    { y: 40,  label: 'Interfaz' },
-    { y: 120, label: 'Agentes' },
-    { y: 200, label: 'Datos' },
-  ]
-  return (
-    <div className="relative mx-auto w-full max-w-md aspect-square rounded-2xl border border-white/8 bg-surface/30 overflow-hidden">
-      <svg viewBox="0 0 320 320" className="w-full h-full" aria-hidden="true">
-        {/* conexiones verticales */}
-        {[80, 160, 240].map(x => (
-          <line key={x} x1={x} y1="60" x2={x} y2="260" stroke="url(#g)" strokeWidth="1" opacity="0.35" />
-        ))}
-        {/* capas */}
-        {layers.map((l, i) => (
-          <g key={l.label}>
-            <rect
-              x="40" y={l.y} width="240" height="40" rx="10"
-              fill="none" stroke="url(#g)" strokeWidth="1.5" opacity={0.55 - i * 0.08}
-            />
-            {[80, 160, 240].map(x => (
-              <circle key={x} cx={x} cy={l.y + 20} r="5" fill="#00E5FF" opacity={0.8 - i * 0.15} />
-            ))}
-          </g>
-        ))}
-        <defs>
-          <linearGradient id="g" x1="0" y1="0" x2="320" y2="320" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stopColor="#00E5FF" />
-            <stop offset="100%" stopColor="#2F6BFF" />
-          </linearGradient>
-        </defs>
-      </svg>
-      <span className="absolute bottom-3 left-0 right-0 text-center font-mono text-[10px] tracking-[0.2em] uppercase text-muted">
-        visual provisional
-      </span>
-    </div>
   )
 }

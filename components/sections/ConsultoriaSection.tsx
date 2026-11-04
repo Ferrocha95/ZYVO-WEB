@@ -64,7 +64,7 @@ export default function ConsultoriaSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.45, delay: 0.08, ease: EASE }}
-            className="rounded-2xl border border-white/8 bg-surface/40 p-6"
+            className="rounded-2xl glass-card p-6"
           >
             <h3 className="font-display text-lg font-semibold text-ink">Qué no incluye</h3>
             <ul className="mt-4 space-y-3">

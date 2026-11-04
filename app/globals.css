@@ -268,6 +268,72 @@ body {
   white-space: nowrap;
 }
 
+/* ─── Glassmorphism + micro-interacciones ───────────────────────────────── */
+.glass-card {
+  background: color-mix(in srgb, var(--c-surface) 55%, transparent);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition:
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.glass-card:hover {
+  border-color: rgba(0, 229, 255, 0.35);
+  box-shadow:
+    0 16px 48px -16px rgba(0, 229, 255, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Glow dinámico del botón primario */
+.btn-primary {
+  box-shadow: 0 6px 22px -8px rgba(0, 229, 255, 0.55);
+}
+.btn-primary:hover {
+  box-shadow:
+    0 10px 34px -8px rgba(0, 229, 255, 0.7),
+    0 0 0 1px rgba(0, 229, 255, 0.2);
+}
+
+/* Borde con gradiente animado: envolver contenido con .grad-border */
+@keyframes grad-flow {
+  to { background-position: 200% 50%; }
+}
+.grad-border {
+  background:
+    linear-gradient(var(--c-surface), var(--c-surface)) padding-box,
+    linear-gradient(90deg, #00e5ff, #2f6bff, #00e5ff) border-box;
+  background-size: 200% 100%;
+  border: 1px solid transparent;
+  animation: grad-flow 6s linear infinite;
+}
+
+/* Halo ambiental suave detrás de un elemento (::before) */
+.glow-halo {
+  position: relative;
+  isolation: isolate;
+}
+.glow-halo::before {
+  content: '';
+  position: absolute;
+  inset: -30% -10% auto -10%;
+  height: 60%;
+  z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(0, 229, 255, 0.12), transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* Respeta la preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  .glass-card { transition: border-color 0.2s ease; }
+  .glass-card:hover { transform: none; }
+  .grad-border { animation: none; }
+  .animate-float, .animate-glow-pulse { animation: none; }
+  .shimmer::after { animation: none; }
+}
+
 /* ─── TestimonialStack ───────────────────────────────────────────────────── */
 .testimonials-stack { position: relative; }
 

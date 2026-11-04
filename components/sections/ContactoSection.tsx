@@ -80,14 +80,14 @@ export default function ContactoSection() {
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-xl border border-white/8 bg-surface/40 p-4 hover:border-cyan/40 transition-colors"
+              className="flex items-center gap-3 rounded-xl glass-card p-4 hover:border-cyan/40 transition-colors"
             >
               <MessageCircle size={18} className="text-cyan shrink-0" />
               <span className="text-sm text-ink">WhatsApp directo</span>
             </a>
             <a
               href={`mailto:${EMAIL}`}
-              className="flex items-center gap-3 rounded-xl border border-white/8 bg-surface/40 p-4 hover:border-cyan/40 transition-colors"
+              className="flex items-center gap-3 rounded-xl glass-card p-4 hover:border-cyan/40 transition-colors"
             >
               <Mail size={18} className="text-cyan shrink-0" />
               <span className="text-sm text-ink">{EMAIL}</span>
@@ -96,7 +96,7 @@ export default function ContactoSection() {
         </div>
 
         {/* Formulario */}
-        <form onSubmit={onSubmit} className="rounded-2xl border border-white/8 bg-surface/40 p-6 md:p-8 space-y-4">
+        <form onSubmit={onSubmit} className="rounded-2xl glass-card p-6 md:p-8 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Field label="Nombre">
               <input className={inputClass} value={nombre} onChange={e => setNombre(e.target.value)} required placeholder="Tu nombre" />

@@ -26,9 +26,10 @@ export default function RutasLateralesSection() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -6 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.45, ease: EASE }}
-            className="flex flex-col rounded-2xl border border-white/8 bg-surface/40 p-7"
+            className="flex flex-col rounded-2xl glass-card p-7"
           >
             <div className="flex items-center gap-3">
               <h3 className="font-display text-xl font-semibold text-ink">EscuderIA</h3>
@@ -54,9 +55,10 @@ export default function RutasLateralesSection() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -6 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.45, delay: 0.08, ease: EASE }}
-            className="flex flex-col rounded-2xl border border-white/8 bg-surface/40 p-7"
+            className="flex flex-col rounded-2xl glass-card p-7"
           >
             <h3 className="font-display text-xl font-semibold text-ink">Fuelle Studio</h3>
             <p className="mt-1 text-sm text-cyan/80">Sitios web y landing pages</p>

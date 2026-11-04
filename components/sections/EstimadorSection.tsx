@@ -30,7 +30,7 @@ export default function EstimadorSection() {
 
         <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 items-stretch">
           {/* Controles */}
-          <div className="rounded-2xl border border-white/8 bg-surface/40 p-6 space-y-7">
+          <div className="rounded-2xl glass-card p-6 space-y-7">
             <Control
               label="Personas en tareas repetitivas"
               value={`${personas}`}
